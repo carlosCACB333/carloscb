@@ -1,0 +1,31 @@
+
+syntax = "proto3";
+
+package pb;
+
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/carlosCACB333/cb-grpc/pb";
+
+
+message ChatpdfMessage{
+    string id = 1;
+    string content = 2;   
+    string chatpdfID = 3; 
+    string role = 4;  
+    google.protobuf.Timestamp createdAt = 5;
+    google.protobuf.Timestamp updatedAt = 6;
+}
+
+message CreateChatpdfMessageReq{
+    string content = 1;
+    string chatpdfID = 2;
+    string role = 3;
+}
+
+service ChatpdfMessageService{
+    rpc GetLastChatpdfMessage(GenericReq) returns (stream ChatpdfMessage);
+    rpc CreateChatpdfMessage(CreateChatpdfMessageReq) returns (GenericRes);
+    rpc DelteChatpdfMessage(GenericReq) returns (GenericRes);
+}

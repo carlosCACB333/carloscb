@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/carlosCACB333/cb-grpc/pb";
+
+message EmptyReq{ }
+
+enum Status{
+    OK = 0;
+    ERROR = 1;
+}
+
+message GenericRes{
+    Status status = 1;
+    string message = 2;
+    optional string value = 3;
+}
+
+message GenericReq{
+    string id = 1;
+}

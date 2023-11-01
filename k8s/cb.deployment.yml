@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cb-deployment
+  labels:
+    app: cb
+    service: front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cb
+      service: front
+  template:
+    metadata:
+      labels:
+        app: cb
+        service: front
+    spec:
+      containers:
+        - name: cb
+          image: carloscb8080/cb-front:1.5.7-prerelease0
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: cb-config
+          resources:
+            limits:
+              cpu: 500m
+              memory: 400Mi
+            requests:
+              cpu: 500m
+              memory: 400Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cb-service
+spec:
+  selector:
+    app: cb
+    service: front
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000

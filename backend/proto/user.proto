@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+package pb;
+
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/carlosCACB333/cb-grpc/pb";
+
+message User{
+    string id       =1;
+    string username  =2;
+    string firstName =3;
+    string lastName  =4;
+    string email     =5;
+    string gender    =6;
+    string fassword  =7;
+    string photo     =8;
+    string phone     =9;
+    string status    =10;
+    google.protobuf.Timestamp createdAt = 11;
+    google.protobuf.Timestamp updatedAt = 12;
+ }
+
+ message createOrUpdateUserReq{
+    string id      =1;
+    string username  =2;
+    string firstName =3;
+    string lastName  =4;
+    string phone    =5;
+    string photo   =6;
+    string gender   =7;
+    string email    =8;
+ }
+
+ service UserService{
+    rpc CreateOrUpdateUserWithoutAuth(createOrUpdateUserReq) returns (GenericRes);
+    rpc DeleteUserWithoutAuth(GenericReq) returns (GenericRes);
+ }

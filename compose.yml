@@ -1,0 +1,65 @@
+version: "3.9"
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${STAGE}
+    image: ${FRONT_IMAGE}
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - back
+    volumes:
+      - .:/app
+    environment:
+      - TZ=GMT-5
+    env_file:
+      - .env
+    networks:
+      - cb-net
+
+  back:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: ${STAGE}
+    image: ${BACK_IMAGE}
+    hostname: ${BACK_HOST}
+    expose:
+      - "${HTTP_PORT}"
+      - "${GRPC_PORT}"
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+      - "${GRPC_PORT}:${GRPC_PORT}"
+    volumes:
+      - ./backend:/app
+    environment:
+      - TZ=GMT-5
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    networks:
+      - cb-net
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    hostname: ${REDIS_HOST}
+    volumes:
+      - redis-data:/data
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    networks:
+      - cb-net
+
+volumes:
+  redis-data:
+    driver: local
+  nats-data:
+    driver: local
+
+networks:
+  cb-net:
+    driver: bridge

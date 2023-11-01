@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package pb;
+
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/carlosCACB333/cb-grpc/pb";
+
+
+message Chatpdf{
+    string id = 1;
+    string name = 2;       
+    string key = 3;        
+    string userID = 4;     
+    string contentType = 5;
+    google.protobuf.Timestamp createdAt = 6;
+    google.protobuf.Timestamp updatedAt = 7;
+}
+
+message GetContextReq{
+    string chatId = 1;
+    string query = 2;
+}
+
+message GetContextRes{
+    string context = 1;
+}
+
+message CreateChatpdfReq{
+    bytes chunk = 1;
+    string name = 2;
+    string contentType = 3;
+}
+
+
+
+
+service ChatpdfService{
+    rpc GetContext(GetContextReq) returns (GetContextRes);
+    rpc GetContextWithoutAuth(GetContextReq) returns (GetContextRes);
+    rpc GetChatpdfs(EmptyReq) returns (stream Chatpdf);
+    rpc CreateChatpdf(CreateChatpdfReq) returns (GenericRes);
+    rpc DeleteChatpdf(GenericReq) returns (GenericRes);
+    rpc GetFileUrl(GenericReq) returns (GenericRes);
+}
