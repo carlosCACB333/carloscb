@@ -27,8 +27,7 @@ export default async function RootLayout({
       <head />
       <body
         className={clsx(
-          "scroll overflow-x-clip",
-          "min-h-screen bg-background antialiased",
+          "scroll overflow-x-clip antialiased min-h-screen bg-background",
           fontRoboto.className
         )}
       >

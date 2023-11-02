@@ -1,5 +1,6 @@
 import { title } from "@/components";
 import { Footer } from "@/components/common/footer";
+import Link from "next/link";
 import { FaRobot } from "react-icons/fa";
 
 export default async function IAPage() {
@@ -22,7 +23,7 @@ export default async function IAPage() {
               pdfs
             </p>
 
-            <a
+            <Link
               href="/ia/chat-pdf"
               className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium bg-primary hover:bg-primary-600 text-primary-foreground"
             >
@@ -33,7 +34,7 @@ export default async function IAPage() {
                   Probar ahora
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </section>
         <br />
