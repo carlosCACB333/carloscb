@@ -11,6 +11,8 @@ spec:
     matchLabels:
       app: cb
       service: front
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:

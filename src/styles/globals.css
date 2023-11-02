@@ -67,18 +67,21 @@ pre {
 }
 
 
-.scroll{
+.scroll {
   &::-webkit-scrollbar {
     appearance: none;
+
     &:vertical {
       width: 6px;
     }
+
     &:horizontal {
       height: 6px;
     }
   }
 
   &::-webkit-scrollbar-button {
+
     &,
     &:increment {
       display: none;
@@ -89,9 +92,8 @@ pre {
     background-color: #babfca83;
     border-radius: 20px;
   }
+
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
 }
-
-

@@ -16,6 +16,11 @@ const SearcherComponent = ({ ...rest }: Props) => {
   const { push } = useRouter();
   const search = useDebounce(value);
   const fistRender = useRef(true);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
 
   useEffect(() => {
     if (fistRender.current) {
@@ -27,6 +32,8 @@ const SearcherComponent = ({ ...rest }: Props) => {
 
   return (
     <Input
+      color="default"
+      ref={inputRef}
       startContent={<Icon name="search" />}
       onValueChange={(v) => setValue(v || "")}
       value={value}

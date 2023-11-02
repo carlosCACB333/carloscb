@@ -7,12 +7,13 @@ import routes from "@/config/routes.json";
 import { siteConfig } from "@/config/site";
 import { fontRoboto } from "@/config/fonts";
 import { __PROD__ } from "@/utils";
-import { getAuthor, getCookie } from "@/action";
+import { getAuthor, } from "@/action";
 import { Locale } from "@/generated/graphql";
 import { Navbar } from "@/components/common/navbar";
 import { Cmdk } from "@/components/common/cmdk";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { cookies } from "next/headers";
 
 export default async function RootLayout({
   children,
@@ -20,7 +21,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const author = await getAuthor(Locale.Es);
-  const defaultTheme = await getCookie("theme", "dark");
+  const defaultTheme = cookies().get("theme")?.value || "dark";
   const isDark = defaultTheme === "dark";
   return (
     <html suppressHydrationWarning dir="ltr" lang="es">
@@ -64,8 +65,6 @@ export default async function RootLayout({
     </html>
   );
 }
-
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const author = await getAuthor(Locale.Es);

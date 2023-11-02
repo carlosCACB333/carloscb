@@ -4,7 +4,7 @@ import { searchPosts } from "@/action";
 import { PostCard } from "./PostCard";
 import { Button, Input } from "@nextui-org/react";
 import { Icon } from "../common/icon";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 interface SearchProps {
@@ -14,12 +14,8 @@ interface SearchProps {
 const PostSearcher = ({ onSearch }: SearchProps) => {
   const [value, setValue] = useState("");
   const search = useDebounce(value);
-  const firtRender = useRef(true);
+
   useEffect(() => {
-    if (firtRender.current) {
-      firtRender.current = false;
-      return;
-    }
     onSearch(search);
   }, [onSearch, search])
 

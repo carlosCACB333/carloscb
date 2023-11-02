@@ -5,17 +5,12 @@ import { LayoutProps } from "@/interfaces";
 import clsx from "clsx";
 import React from "react";
 import { getAllChatpdfs } from "@/grpc/chatpdf";
-import { Chatpdf } from "@/pb/chatpdf_pb";
 import { ChatCard } from "@/components/chatpdf/chat-card";
 
 
-const IALayout = async ({ children, ...rest }: LayoutProps) => {
-  // const data = await getAllChatpdf();
-  // const token = await auth().getToken()
+const IALayout = async ({ children, }: LayoutProps) => {
 
   const data = await getAllChatpdfs();
-
-
 
   return (
     <main className="lg:h-[calc(100vh-4rem)] flex flex-col gap-2 lg:flex-row">
@@ -33,7 +28,6 @@ const IALayout = async ({ children, ...rest }: LayoutProps) => {
         </header>
         <div className="flex flex-1 flex-col gap-2 h-full">
           {data?.data?.map((chat) => {
-            // chat.createdAt = formatDate(chat.createdAt);
             return <ChatCard key={chat.id} chat={chat} />;
           })}
         </div>

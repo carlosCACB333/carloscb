@@ -1,5 +1,4 @@
 {
-  "background_color": "#d4ddfb",
   "display": "standalone",
   "icons": [
     {
@@ -55,5 +54,4 @@
   "scope": "/",
   "short_name": "ccb",
   "start_url": "/",
-  "theme_color": "#d4ddfb"
 }
