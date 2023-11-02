@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: cb
-          image: carloscb8080/cb-front:1.5.7-prerelease0
+          image: carloscb8080/carloscb-front:0.0.1-prerelease0
           ports:
             - containerPort: 3000
           envFrom:

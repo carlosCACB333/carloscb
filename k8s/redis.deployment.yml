@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nats-deployment
+  name: redis-deployment
   labels:
     app: cb
-    service: nats
+    service: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: cb
-      service: nats
+      service: redis
   template:
     metadata:
       labels:
         app: cb
-        service: nats
+        service: redis
     spec:
       containers:
-        - name: nats
-          image: nats-streaming:alpine3.18
+        - name: redis
+          image: redis:7-alpine
           ports:
-            - containerPort: 4222
+            - containerPort: 6379
           resources:
             limits:
               cpu: 500m
@@ -34,13 +34,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nats-service
+  name: redis-service
 spec:
   selector:
     app: cb
-    service: nats
+    service: redis
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 4222
-      targetPort: 4222
+      port: 6379
+      targetPort: 6379

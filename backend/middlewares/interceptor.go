@@ -21,6 +21,8 @@ var (
 		"/pb.AuthService/Signup":                        true,
 		"/pb.UserService/CreateOrUpdateUserWithoutAuth": true,
 		"/pb.UserService/DeleteUserWithoutAuth":         true,
+		"/pb.ChatpdfService/GetContextWithoutAuth":      true,
+		"/pb.UtilService/SendEmail":                     true,
 	}
 )
 
