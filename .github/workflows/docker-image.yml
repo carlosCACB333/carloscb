@@ -32,7 +32,6 @@ jobs:
           echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/" >> .env
           echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/" >> .env
 
-          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
           echo "SITE_URL=${{ secrets.SITE_URL }}" >> .env
           echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
           echo "GRAPHCMS_URL=${{ secrets.GRAPHCMS_URL }}" >> .env
@@ -41,6 +40,7 @@ jobs:
           echo "NEXT_PUBLIC_X_API_KEY=${{ secrets.NEXT_PUBLIC_X_API_KEY }}" >> .env
           echo "NEXT_PUBLIC_GRAPHCMS_MEDIA=${{ secrets.NEXT_PUBLIC_GRAPHCMS_MEDIA }}" >> .env
           echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
+          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
 
           echo "FRONT_IMAGE=${{ secrets.DOCKERHUB_USER }}/carloscb-front:${{ steps.version.outputs.version }}" >> $GITHUB_ENV
           echo "BACK_IMAGE=${{ secrets.DOCKERHUB_USER }}/carloscb-back:${{ steps.version.outputs.version }}" >> $GITHUB_ENV

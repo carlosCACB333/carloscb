@@ -12,9 +12,9 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.26.1",
+    "@clerk/nextjs": "^4.26.2",
     "@clerk/themes": "^1.7.9",
-    "@grpc/grpc-js": "^1.9.8",
+    "@grpc/grpc-js": "^1.9.9",
     "@hookform/resolvers": "^3.3.2",
     "@nextui-org/react": "^2.1.13",
     "@react-aria/ssr": "^3.8.0",
@@ -33,7 +33,7 @@
     "next-pwa": "^5.6.0",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.2.1",
-    "openai": "^4.14.0",
+    "openai": "^4.14.2",
     "openai-edge": "^1.2.2",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.2.0",
@@ -51,7 +51,7 @@
     "svix": "^1.13.0",
     "swiper": "^11.0.3",
     "zod": "^3.22.4",
-    "zustand": "^4.4.4"
+    "zustand": "^4.4.5"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.27.2",
@@ -62,14 +62,14 @@
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@types/lodash": "^4.14.200",
-    "@types/node": "^20.8.9",
-    "@types/react": "^18.2.33",
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.16",
     "encoding": "^0.1.13",
     "env-cmd": "^10.1.0",
     "eslint": "^8.52.0",
-    "eslint-config-next": "14.0.0",
+    "eslint-config-next": "14.0.1",
     "grpc-tools": "^1.12.4",
     "grpc_tools_node_protoc_ts": "^5.3.3",
     "postcss": "^8.4.31",
@@ -80,7 +80,7 @@
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
     "remark-unwrap-images": "^4.0.0",
-    "tailwind-variants": "^0.1.17",
+    "tailwind-variants": "^0.1.18",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
   }
