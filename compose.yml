@@ -12,6 +12,8 @@ services:
       - back
     volumes:
       - .:/app
+      - /app/.next
+      - /app/node_modules
     environment:
       - TZ=GMT-5
     env_file:

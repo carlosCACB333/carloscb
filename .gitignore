@@ -36,6 +36,6 @@ yarn-error.log*
 next-env.d.ts
 compose.prod.yml
 
-
+backend/tmp/*
 k8s/*.config.yml
 k8s/*.secret.yml

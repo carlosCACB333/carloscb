@@ -26,11 +26,21 @@ jobs:
 
       - name: set env variables
         run: |
-          echo "NEXT_PUBLIC_GRAPHCMS_URL=${{ secrets.NEXT_PUBLIC_GRAPHCMS_URL }}" >> .env
-          echo "NEXT_PUBLIC_GRAPHCMS_KEY=${{ secrets.NEXT_PUBLIC_GRAPHCMS_KEY }}" >> .env
-          echo "NEXT_PUBLIC_GRAPHCMS_TOKEN=${{ secrets.NEXT_PUBLIC_GRAPHCMS_TOKEN }}" >> .env
+          echo "STAGE=production" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=/auth/sign-in" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up" >> .env
+          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/" >> .env
+          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/" >> .env
+
           echo "SITE_URL=${{ secrets.SITE_URL }}" >> .env
+          echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
+          echo "GRAPHCMS_URL=${{ secrets.GRAPHCMS_URL }}" >> .env
+          echo "GRAPHCMS_KEY=${{ secrets.GRAPHCMS_KEY }}" >> .env
+          echo "GRAPHCMS_TOKEN=${{ secrets.GRAPHCMS_TOKEN }}" >> .env
           echo "NEXT_PUBLIC_X_API_KEY=${{ secrets.NEXT_PUBLIC_X_API_KEY }}" >> .env
+          echo "NEXT_PUBLIC_GRAPHCMS_MEDIA=${{ secrets.NEXT_PUBLIC_GRAPHCMS_MEDIA }}" >> .env
+          echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
+
           echo "FRONT_IMAGE=${{ secrets.DOCKERHUB_USER }}/carloscb-front:${{ steps.version.outputs.version }}" >> $GITHUB_ENV
           echo "BACK_IMAGE=${{ secrets.DOCKERHUB_USER }}/carloscb-back:${{ steps.version.outputs.version }}" >> $GITHUB_ENV
 

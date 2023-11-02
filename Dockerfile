@@ -6,6 +6,7 @@ COPY . .
 RUN yarn install --frozen-lockfile
 CMD ["yarn", "dev"]
 
+
 FROM base as build
 WORKDIR /app
 COPY . .

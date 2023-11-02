@@ -21,8 +21,8 @@ import { Icon } from "../common/icon";
 import { FaUser } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
-import { sendEmails } from "@/grpc/utils";
-import { AUTHOR_EMAIL, STATUS, } from "@/utils";
+import { sendEmailContact } from "@/grpc/utils";
+import { STATUS } from "@/utils";
 
 export const ContactSection = () => {
   const { author } = useAuthor();
@@ -37,7 +37,7 @@ export const ContactSection = () => {
 
     try {
       const message = `Nombre: ${data.name}\nEmail: ${data.email}\nTeléfono: ${data.phone}\nMensaje: ${data.message}`;
-      const res = await sendEmails([AUTHOR_EMAIL], data.affair, message);
+      const res = await sendEmailContact(data.affair, message);
       if (res.status === STATUS.OK) {
         reset();
         toast.success("Gracias por contactarte conmigo. Me pondré en contacto contigo lo más pronto posible");
