@@ -8,9 +8,9 @@ import (
 	openai "github.com/sashabaranov/go-openai"
 )
 
-func GetEmbddingsPDF(texts []string) ([]openai.Embedding, error) {
+func GetEmbddingsPDF(ctx context.Context, texts []string) ([]openai.Embedding, error) {
 	oia := libs.OpenIA()
-	emb, err := oia.CreateEmbeddings(context.Background(), openai.EmbeddingRequest{
+	emb, err := oia.CreateEmbeddings(ctx, openai.EmbeddingRequest{
 		Input: texts,
 		Model: openai.AdaEmbeddingV2,
 	})

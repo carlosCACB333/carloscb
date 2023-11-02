@@ -11,13 +11,10 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func PutObject(bucket string, key string, file []byte, contentType string) error {
+func PutObject(ctx context.Context, bucket string, key string, file []byte, contentType string) error {
 
-	// Get S3 Client
 	s3Client := libs.GetS3Client()
-
-	// Upload file
-	_, err := s3Client.PutObject(context.TODO(), &s3.PutObjectInput{
+	_, err := s3Client.PutObject(ctx, &s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),
 		Body:   bytes.NewReader(file),
@@ -33,28 +30,20 @@ func PutObject(bucket string, key string, file []byte, contentType string) error
 
 }
 
-func DeleteObject(bucket string, key string) error {
+func DeleteObject(ctx context.Context, bucket string, key string) error {
 
-	// Get S3 Client
 	s3Client := libs.GetS3Client()
-
-	// Delete file
-	_, err := s3Client.DeleteObject(context.TODO(), &s3.DeleteObjectInput{
+	_, err := s3Client.DeleteObject(ctx, &s3.DeleteObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),
 	})
-	if err != nil {
-		return err
-	}
-
-	return nil
-
+	return err
 }
 
-func GetPresignUrl(bucket string, key string, contenType string) (string, error) {
+func GetPresignUrl(ctx context.Context, bucket string, key string, contenType string) (string, error) {
 	s3Client := libs.GetS3Client()
 	presign := s3.NewPresignClient(s3Client)
-	presignedUrl, err := presign.PresignGetObject(context.Background(),
+	presignedUrl, err := presign.PresignGetObject(ctx,
 		&s3.GetObjectInput{
 			Bucket:                     aws.String(bucket),
 			Key:                        aws.String(key),

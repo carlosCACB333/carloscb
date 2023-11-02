@@ -8,6 +8,7 @@ import (
 
 	"github.com/carlosCACB333/cb-grpc/libs"
 	mdw "github.com/carlosCACB333/cb-grpc/middlewares"
+	model "github.com/carlosCACB333/cb-grpc/models"
 	"github.com/carlosCACB333/cb-grpc/pb"
 	"github.com/carlosCACB333/cb-grpc/servers"
 	"github.com/carlosCACB333/cb-grpc/utils"
@@ -39,7 +40,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	// model.Migrate(db)
+	model.Migrate(db)
 	redisOpts := asynq.RedisClientOpt{
 		Addr: cfg.RedisAddr,
 	}
@@ -55,7 +56,6 @@ func main() {
 func runGrpcServer(cfg *utils.Config, db *gorm.DB, distributor worker.TaskDistributor, jwtManager *libs.JWTManager) {
 
 	authServer := servers.NewAuthServer(cfg, db, distributor, jwtManager)
-	postServer := servers.NewPostServer(cfg, db)
 	utilServer := servers.NewUtilServer(cfg, db, distributor)
 	chatpdfServer := servers.NewChatpdfServer(cfg, db, distributor)
 	chatpdfMessageServer := servers.NewChatpdfMessageServer(cfg, db)
@@ -71,7 +71,6 @@ func runGrpcServer(cfg *utils.Config, db *gorm.DB, distributor worker.TaskDistri
 	grpcServer := grpc.NewServer(serverOptions...)
 
 	pb.RegisterAuthServiceServer(grpcServer, authServer)
-	pb.RegisterPostServiceServer(grpcServer, postServer)
 	pb.RegisterUtilServiceServer(grpcServer, utilServer)
 	pb.RegisterChatpdfServiceServer(grpcServer, chatpdfServer)
 	pb.RegisterChatpdfMessageServiceServer(grpcServer, chatpdfMessageServer)

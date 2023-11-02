@@ -49,7 +49,7 @@ func (s *ChatpdfServer) GetContext(ctx context.Context, req *pb.GetContextReq) (
 		return nil, status.Error(codes.NotFound, "No se ha encontrado el chat")
 	}
 
-	c, err := utils.GetContext(query, chat.Key, 10)
+	c, err := utils.GetContext(ctx, query, chat.Key, 10)
 	if err != nil {
 		fmt.Println(err)
 		return nil, status.Error(codes.Internal, "No se ha podido obtener el contexto")
@@ -69,7 +69,7 @@ func (s *ChatpdfServer) GetContextWithoutAuth(ctx context.Context, req *pb.GetCo
 		return nil, status.Error(codes.NotFound, "No se ha encontrado el chat")
 	}
 
-	c, err := utils.GetContext(query, chat.Key, 10)
+	c, err := utils.GetContext(ctx, query, chat.Key, 10)
 	if err != nil {
 		fmt.Println(err)
 		return nil, status.Error(codes.Internal, "No se ha podido obtener el contexto")
@@ -123,7 +123,7 @@ func (s *ChatpdfServer) CreateChatpdf(ctx context.Context, req *pb.CreateChatpdf
 	var uploadChain = make(chan error)
 	defer close(uploadChain)
 	go func() {
-		uploadChain <- utils.PutObject(os.Getenv("AWS_S3_BUCKET"), key, imageData, contentType)
+		uploadChain <- utils.PutObject(ctx, os.Getenv("AWS_S3_BUCKET"), key, imageData, contentType)
 	}()
 
 	// VECTORIZE FILE
@@ -153,7 +153,7 @@ func (s *ChatpdfServer) CreateChatpdf(ctx context.Context, req *pb.CreateChatpdf
 	for _, d := range docs {
 		texts = append(texts, d.PageContent)
 	}
-	embeddings, err := utils.GetEmbddingsPDF(texts)
+	embeddings, err := utils.GetEmbddingsPDF(ctx, texts)
 	if err != nil {
 		return nil, status.Error(codes.Internal, "No se ha podido obtener los embeddings")
 	}
@@ -208,11 +208,9 @@ func (s *ChatpdfServer) DeleteChatpdf(ctx context.Context, req *pb.GenericReq) (
 	var s3Chain = make(chan error)
 	var piconeChain = make(chan error)
 	var dbChain = make(chan error)
-	defer close(s3Chain)
-	defer close(piconeChain)
-	defer close(dbChain)
+
 	go func() {
-		s3Chain <- utils.DeleteObject(os.Getenv("AWS_S3_BUCKET"), chat.Key)
+		s3Chain <- utils.DeleteObject(ctx, os.Getenv("AWS_S3_BUCKET"), chat.Key)
 	}()
 	go func() {
 		piconeChain <- utils.DeleteVectorsByNamespace(chat.Key)
@@ -225,6 +223,7 @@ func (s *ChatpdfServer) DeleteChatpdf(ctx context.Context, req *pb.GenericReq) (
 		select {
 		case err := <-s3Chain:
 			if err != nil {
+				fmt.Println(err)
 				return nil, status.Error(codes.Internal, "Error al eliminar el pdf")
 			}
 		case err := <-piconeChain:
@@ -252,7 +251,7 @@ func (s *ChatpdfServer) GetFileUrl(ctx context.Context, req *pb.GenericReq) (*pb
 	if err := s.DB.Where("id = ? AND user_id = ?", id, uid).First(&chat).Error; err != nil {
 		return nil, status.Error(codes.NotFound, "No se ha encontrado el chat")
 	}
-	url, err := utils.GetPresignUrl(os.Getenv("AWS_S3_BUCKET"), chat.Key, chat.ContentType)
+	url, err := utils.GetPresignUrl(ctx, os.Getenv("AWS_S3_BUCKET"), chat.Key, chat.ContentType)
 	if err != nil {
 		return nil, status.Error(codes.Internal, "Error al obtener el pdf")
 	}

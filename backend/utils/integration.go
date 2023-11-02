@@ -1,7 +1,9 @@
 package utils
 
-func GetContext(query string, namespace string, topK int) (string, error) {
-	embed, err := GetEmbddingsPDF([]string{query})
+import "context"
+
+func GetContext(ctx context.Context, query string, namespace string, topK int) (string, error) {
+	embed, err := GetEmbddingsPDF(ctx, []string{query})
 	if err != nil {
 		return "", err
 	}
