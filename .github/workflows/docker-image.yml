@@ -32,6 +32,7 @@ jobs:
           echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/" >> .env
           echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/" >> .env
 
+          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
           echo "SITE_URL=${{ secrets.SITE_URL }}" >> .env
           echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
           echo "GRAPHCMS_URL=${{ secrets.GRAPHCMS_URL }}" >> .env
