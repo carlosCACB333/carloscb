@@ -1,5 +1,7 @@
-fragment AuthorField on Author {
-  id
+
+query getAuthor($email: String!, $locales: [Locale!]!, $stage: Stage!) {
+  author(where: { email: $email }, locales: $locales, stage: $stage) {
+    id
   bio
   birth
   email
@@ -21,10 +23,5 @@ fragment AuthorField on Author {
   photos {
     url
   }
-}
-
-query getAuthor($email: String!, $locales: [Locale!]!, $stage: Stage!) {
-  author(where: { email: $email }, locales: $locales, stage: $stage) {
-    ...AuthorField
   }
 }

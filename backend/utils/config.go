@@ -40,8 +40,8 @@ func LoadConfig() (*Config, error) {
 		RefreshTokenDuration: time.Duration(RefreshTokenDuration) * time.Hour,
 		JWTSecret:            os.Getenv("JWT_SECRET"),
 		RedisAddr:            os.Getenv("REDIS_HOST")+":"+os.Getenv("REDIS_PORT"),
-		EmailUser:            os.Getenv("EMAIL_USER"),
-		EmailPass:            os.Getenv("EMAIL_PASSWORD"),
+		EmailUser:            os.Getenv("AUTHOR_EMAIL"),
+		EmailPass:            os.Getenv("AUTHOR_EMAIL_PASS"),
 		
 	}
 

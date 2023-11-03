@@ -30,7 +30,7 @@ fragment PostsField on Post {
   content
 }
 
-fragment CategoryField on Category {
+fragment CategoryPostField on Category {
   id
   slug
   name
@@ -50,7 +50,7 @@ query blogsLayout($stage: Stage!) {
   }
 
   categories {
-    ...CategoryField
+    ...CategoryPostField
   }
 
   skills {
@@ -64,7 +64,7 @@ query blogsPage($stage: Stage!) {
   }
 
   categories {
-    ...CategoryField
+    ...CategoryPostField
   }
 }
 

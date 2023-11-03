@@ -50,7 +50,7 @@ func GetPresignUrl(ctx context.Context, bucket string, key string, contenType st
 			ResponseContentDisposition: aws.String("inline"),
 			ResponseContentType:        aws.String(contenType),
 		},
-		s3.WithPresignExpires(time.Minute*5),
+		s3.WithPresignExpires(time.Minute*1),
 	)
 	if err != nil {
 		return "", err

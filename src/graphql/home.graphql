@@ -1,24 +1,4 @@
-fragment ProjectFields on Project {
-  id
-  slug
-  title
-  abstract
-  gitHub
-  webSide
-  pictures {
-    id
-    url
-    width
-    height
-  }
-  skills {
-    id
-    name
-    icon
-  }
-}
-
-fragment AuthorField on Author {
+fragment Author on Author {
   id
   bio
   birth
@@ -43,32 +23,10 @@ fragment AuthorField on Author {
   }
 }
 
-query getHomeData($locales: [Locale!]!, $stage: Stage!) {
-  categories(locales: $locales, stage: $stage) {
-    icon
-    id
-    name
-    detail
-    skills(locales: $locales, first: 1000) {
-      ... on Skill {
-        id
-        name
-        detail
-        icon
-        updatedAt
-      }
-    }
-  }
-  projects(orderBy: priority_DESC, first: 6, stage: $stage) {
-    ...ProjectFields
-  }
+query getHomeData($stage: Stage!, $email: String!) {
 
-  certifications(orderBy: priority_DESC, first: 6, stage: $stage) {
-    id
-    name
-    picture {
-      url
-    }
+  author(where: { email: $email }, stage: $stage) {
+    ...Author
   }
 
   certificationsConnection(stage: $stage) {

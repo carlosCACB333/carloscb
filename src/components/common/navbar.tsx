@@ -23,7 +23,6 @@ import { useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { ThemeSwitch } from "./theme-switch";
 import { Icon } from "./icon";
-import { useAuthor } from "@/hooks";
 import { useCmdkStore } from "./cmdk";
 import { Route } from "@/interfaces";
 import { FiLogIn } from "react-icons/fi";
@@ -33,30 +32,18 @@ export interface NavbarProps {
   routes: Route[];
   mobileRoutes: Route[];
   children?: ReactNode;
+  authorGithub: string;
+  authorLinkedin: string;
+  NavItems: () => JSX.Element;
 }
 
-export const Navbar: FC<NavbarProps> = ({
-  children,
-  routes,
-  mobileRoutes = [],
-}) => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false);
+const SearchButton = ({ onClick }: { onClick: () => void }) => {
   const [commandKey, setCommandKey] = useState<"ctrl" | "command">("command");
-  const { author } = useAuthor();
-  const pathname = usePathname();
-  const cmdkStore = useCmdkStore();
-  const { userId } = useAuth();
-
-  const isAuth = !!userId;
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
   useEffect(() => {
     setCommandKey(isAppleDevice() ? "command" : "ctrl");
   }, []);
 
-  const searchButton = (
+  return (
     <Button
       aria-label="Buscar"
       className="text-sm font-normal"
@@ -72,16 +59,24 @@ export const Navbar: FC<NavbarProps> = ({
           strokeWidth={2}
         />
       }
-      onPress={() => cmdkStore.onOpen()}
+      onPress={onClick}
     >
       Buscar...
     </Button>
-  );
+  )
+};
 
-  const navLinkClasses = clsx(
-    link({ color: "foreground" }),
-    "data-[active=true]:text-primary"
-  );
+const Navbar: FC<NavbarProps> = ({ authorGithub, authorLinkedin, children, routes, mobileRoutes = [], NavItems, }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false);
+
+  const pathname = usePathname();
+  const cmdkStore = useCmdkStore();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  const navLinkClasses = clsx(link({ color: "foreground" }), "data-[active=true]:text-primary");
 
   return (
     <NextUINavbar
@@ -121,30 +116,29 @@ export const Navbar: FC<NavbarProps> = ({
       </NavbarContent>
 
       <NavbarContent className="flex w-full gap-2" justify="end">
-        {author.github && (
-          <NavbarItem className="flex h-full items-center">
-            <Link
-              isExternal
-              aria-label="Github"
-              className="p-1"
-              href={author.github}
-            >
-              <Icon name="git" className="text-foreground" />
-            </Link>
-          </NavbarItem>
-        )}
-        {author.linkedin && (
-          <NavbarItem className="flex h-full items-center">
-            <Link
-              isExternal
-              aria-label="Linkedin"
-              className="p-1"
-              href={author.linkedin}
-            >
-              <Icon name="linkedin" className="text-foreground" />
-            </Link>
-          </NavbarItem>
-        )}
+
+        <NavbarItem className="flex h-full items-center">
+          <Link
+            isExternal
+            aria-label="Github"
+            className="p-1"
+            href={"https://github.com/" + authorGithub}
+          >
+            <Icon name="git" className="text-foreground" />
+          </Link>
+        </NavbarItem>
+
+        <NavbarItem className="flex h-full items-center">
+          <Link
+            isExternal
+            aria-label="Linkedin"
+            className="p-1"
+            href={"https://www.linkedin.com/in/" + authorLinkedin}
+          >
+            <Icon name="linkedin" className="text-foreground" />
+          </Link>
+        </NavbarItem>
+
         <NavbarItem className="flex h-full items-center">
           <ThemeSwitch />
         </NavbarItem>
@@ -160,20 +154,10 @@ export const Navbar: FC<NavbarProps> = ({
           </Button>
         </NavbarItem>
 
-        <NavbarItem className="hidden sm:flex">{searchButton}</NavbarItem>
-        {!isAuth && (
-          <Button
-            endContent={<FiLogIn />}
-            color="primary"
-            className="hidden sm:flex"
-            href="/auth/sign-in/"
-            as={NextLink}
-            aria-label="botón de login"
-          >
-            Login
-          </Button>
-        )}
-        <UserButton userProfileUrl="/me" />
+        <NavbarItem className="hidden sm:flex">
+          <SearchButton onClick={() => cmdkStore.onOpen()} />
+        </NavbarItem>
+        <NavItems />
         <NavbarItem className="w-10 h-full sm:hidden">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -205,3 +189,57 @@ export const Navbar: FC<NavbarProps> = ({
     </NextUINavbar>
   );
 };
+
+
+interface Props {
+  routes: Route[];
+  mobileRoutes: Route[];
+  children?: ReactNode;
+  authorGithub: string;
+  authorLinkedin: string;
+}
+
+
+const LoginButton = () => (<Button
+  color="primary"
+  aria-label="Login"
+  as={NextLink}
+  href="/auth/sign-in"
+>
+  Login
+  <FiLogIn className="mt-px text-foreground" size={20} />
+</Button>
+)
+
+export const NavbarPublic = (props: Props) => {
+  return (
+    <Navbar
+      {...props}
+      NavItems={() => (
+        <NavbarItem className="flex h-full items-center">
+          <LoginButton />
+        </NavbarItem>
+      )}
+    />
+  );
+}
+
+export const NavbarPrivate = (props: Props) => {
+  const { userId } = useAuth();
+  const isAuth = !!userId;
+  return (
+    <Navbar
+      {...props}
+      NavItems={() => (
+        <NavbarItem className="flex h-full items-center">
+          {isAuth ? (
+            <UserButton userProfileUrl="/me" />
+          ) : (
+            <LoginButton />
+          )
+          }
+        </NavbarItem>
+      )}
+    />
+  );
+}

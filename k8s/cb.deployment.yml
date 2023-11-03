@@ -6,7 +6,7 @@ metadata:
     app: cb
     service: front
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: cb
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: cb
-          image: carloscb8080/carloscb-front:0.0.4-prerelease0
+          image: carloscb8080/carloscb-front:0.0.0-prerelease-test
           ports:
             - containerPort: 3000
           envFrom:

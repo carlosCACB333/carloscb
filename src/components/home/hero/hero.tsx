@@ -1,29 +1,21 @@
-"use client";
 
 import NextLink from "next/link";
 import { Button, Link } from "@nextui-org/react";
-import dynamic from "next/dynamic";
 import { FloatingComponents } from "./floating-components";
 import { title, subtitle } from "@/components";
-import { useAuthor } from "@/hooks";
 import { AiOutlineHeart, AiOutlinePaperClip } from "react-icons/ai";
-import { Feature, FeaturesGrid } from "@/components/common/features-grid";
+import { Feature, FeaturesGrid, } from "@/components/common/features-grid";
 import { FC } from "react";
+import { AuthorFragment } from "@/generated/graphql";
+import { BgLooperDynamic } from "./bg-looper";
 
-const BgLooper = dynamic(
-  () => import("./bg-looper").then((mod) => mod.BgLooper),
-  {
-    ssr: false,
-  }
-);
 
 interface Props {
   features: Feature[];
+  author: AuthorFragment;
 }
 
-export const Hero: FC<Props> = ({ features }) => {
-  const { author } = useAuthor();
-
+export const Hero: FC<Props> = ({ features, author }) => {
   const [
     firstWord = "",
     secondWord = "",
@@ -31,6 +23,7 @@ export const Hero: FC<Props> = ({ features }) => {
     fourthWord = "",
     fifthWord = "",
   ] = author.profession!.split(" ");
+
   return (
     <>
       <section className="relative w-full flex flex-col gap-4 justify-evenly min-h-[calc(100vh-4rem)]">
@@ -92,9 +85,9 @@ export const Hero: FC<Props> = ({ features }) => {
               </Button>
             </div>
           </div>
-          <FloatingComponents />
+          <FloatingComponents author={author} />
         </div>
-        <BgLooper />
+        <BgLooperDynamic />
         <FeaturesGrid features={features} />
       </section>
     </>

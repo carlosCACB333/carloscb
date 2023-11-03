@@ -20,7 +20,9 @@ const config: CodegenConfig = {
         "typescript-operations",
         "typescript-graphql-request",
       ],
-      config: {},
+      config: {
+
+      },
     },
     "src/generated/graphql.schema.json": {
       plugins: ["introspection"],

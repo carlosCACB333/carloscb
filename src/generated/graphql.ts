@@ -8613,8 +8613,6 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type AuthorFieldFragment = { __typename?: 'Author', id: string, bio?: string | null, birth: any, email: string, firstName: string, lastName: string, phone: string, profession?: string | null, university: string, cycle?: string | null, detail: string, facebook?: string | null, linkedin?: string | null, github?: string | null, keywords: Array<string>, address: string, cv?: { __typename?: 'Asset', url: string } | null, photos: Array<{ __typename?: 'Asset', url: string }> };
-
 export type GetAuthorQueryVariables = Exact<{
   email: Scalars['String']['input'];
   locales: Array<Locale> | Locale;
@@ -8626,7 +8624,7 @@ export type GetAuthorQuery = { __typename?: 'Query', author?: { __typename?: 'Au
 
 export type PostsFieldFragment = { __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string, height?: number | null, width?: number | null }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null };
 
-export type CategoryFieldFragment = { __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> };
+export type CategoryPostFieldFragment = { __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> };
 
 export type BlogsLayoutQueryVariables = Exact<{
   stage: Stage;
@@ -8665,10 +8663,24 @@ export type SearchPostsQueryVariables = Exact<{
 
 export type SearchPostsQuery = { __typename?: 'Query', postsConnection: { __typename?: 'PostConnection', edges: Array<{ __typename?: 'PostEdge', node: { __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string, height?: number | null, width?: number | null }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, pageSize?: number | null } } };
 
+export type SkillFragment = { __typename?: 'Skill', id: string, name: string, detail: string, icon?: string | null, updatedAt: any };
+
+export type CategoryFragment = { __typename?: 'Category', id: string, name: string, detail: string, icon?: string | null, slug: string, skills: Array<{ __typename?: 'Skill', id: string, name: string, detail: string, icon?: string | null, updatedAt: any }> };
+
 export type GetCategoriesSlugQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCategoriesSlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string }> };
+
+export type GetAllCatergoriesQueryVariables = Exact<{
+  locales: Array<Locale> | Locale;
+  stage: Stage;
+}>;
+
+
+export type GetAllCatergoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, name: string, detail: string, icon?: string | null, slug: string, skills: Array<{ __typename?: 'Skill', id: string, name: string, detail: string, icon?: string | null, updatedAt: any }> }> };
+
+export type CertificationFragment = { __typename?: 'Certification', id: string, name: string, picture: { __typename?: 'Asset', url: string } };
 
 export type GetCertificationsQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -8689,15 +8701,17 @@ export type SearchCertificationsQueryVariables = Exact<{
 
 export type SearchCertificationsQuery = { __typename?: 'Query', certificationsConnection: { __typename?: 'CertificationConnection', edges: Array<{ __typename?: 'CertificationEdge', cursor: string, node: { __typename?: 'Certification', id: string, name: string, picture: { __typename?: 'Asset', url: string } } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null, pageSize?: number | null } } };
 
-export type ProjectFieldsFragment = { __typename?: 'Project', id: string, slug: string, title: string, abstract: string, gitHub?: string | null, webSide?: string | null, pictures: Array<{ __typename?: 'Asset', id: string, url: string, width?: number | null, height?: number | null }>, skills: Array<{ __typename?: 'Skill', id: string, name: string, icon?: string | null }> };
+export type AuthorFragment = { __typename?: 'Author', id: string, bio?: string | null, birth: any, email: string, firstName: string, lastName: string, phone: string, profession?: string | null, university: string, cycle?: string | null, detail: string, facebook?: string | null, linkedin?: string | null, github?: string | null, keywords: Array<string>, address: string, cv?: { __typename?: 'Asset', url: string } | null, photos: Array<{ __typename?: 'Asset', url: string }> };
 
 export type GetHomeDataQueryVariables = Exact<{
-  locales: Array<Locale> | Locale;
   stage: Stage;
+  email: Scalars['String']['input'];
 }>;
 
 
-export type GetHomeDataQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', icon?: string | null, id: string, name: string, detail: string, skills: Array<{ __typename?: 'Skill', id: string, name: string, detail: string, icon?: string | null, updatedAt: any }> }>, projects: Array<{ __typename?: 'Project', id: string, slug: string, title: string, abstract: string, gitHub?: string | null, webSide?: string | null, pictures: Array<{ __typename?: 'Asset', id: string, url: string, width?: number | null, height?: number | null }>, skills: Array<{ __typename?: 'Skill', id: string, name: string, icon?: string | null }> }>, certifications: Array<{ __typename?: 'Certification', id: string, name: string, picture: { __typename?: 'Asset', url: string } }>, certificationsConnection: { __typename?: 'CertificationConnection', aggregate: { __typename?: 'Aggregate', count: number } }, projectsConnection: { __typename?: 'ProjectConnection', aggregate: { __typename?: 'Aggregate', count: number } }, postsConnection: { __typename?: 'PostConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
+export type GetHomeDataQuery = { __typename?: 'Query', author?: { __typename?: 'Author', id: string, bio?: string | null, birth: any, email: string, firstName: string, lastName: string, phone: string, profession?: string | null, university: string, cycle?: string | null, detail: string, facebook?: string | null, linkedin?: string | null, github?: string | null, keywords: Array<string>, address: string, cv?: { __typename?: 'Asset', url: string } | null, photos: Array<{ __typename?: 'Asset', url: string }> } | null, certificationsConnection: { __typename?: 'CertificationConnection', aggregate: { __typename?: 'Aggregate', count: number } }, projectsConnection: { __typename?: 'ProjectConnection', aggregate: { __typename?: 'Aggregate', count: number } }, postsConnection: { __typename?: 'PostConnection', aggregate: { __typename?: 'Aggregate', count: number } } };
+
+export type ProjectFragment = { __typename?: 'Project', id: string, slug: string, title: string, abstract: string, gitHub?: string | null, webSide?: string | null, pictures: Array<{ __typename?: 'Asset', id: string, url: string, width?: number | null, height?: number | null }>, skills: Array<{ __typename?: 'Skill', id: string, name: string, icon?: string | null }> };
 
 export type ProjectBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -8722,37 +8736,18 @@ export type SearchProjectsQueryVariables = Exact<{
 
 export type SearchProjectsQuery = { __typename?: 'Query', projectsConnection: { __typename?: 'ProjectConnection', edges: Array<{ __typename?: 'ProjectEdge', node: { __typename?: 'Project', id: string, slug: string, title: string, abstract: string, gitHub?: string | null, webSide?: string | null, pictures: Array<{ __typename?: 'Asset', id: string, url: string, width?: number | null, height?: number | null }>, skills: Array<{ __typename?: 'Skill', id: string, name: string, icon?: string | null }> } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, pageSize?: number | null } } };
 
+export type GetFirstProjectsQueryVariables = Exact<{
+  stage: Stage;
+}>;
+
+
+export type GetFirstProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, title: string, abstract: string, gitHub?: string | null, webSide?: string | null, pictures: Array<{ __typename?: 'Asset', id: string, url: string, width?: number | null, height?: number | null }>, skills: Array<{ __typename?: 'Skill', id: string, name: string, icon?: string | null }> }> };
+
 export type GetSearchMetaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetSearchMetaQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', id: string, slug: string, title: string, abstract: string }>, posts: Array<{ __typename?: 'Post', id: string, title: string, slug: string, summary: string }> };
 
-export const AuthorFieldFragmentDoc = gql`
-    fragment AuthorField on Author {
-  id
-  bio
-  birth
-  email
-  firstName
-  lastName
-  phone
-  profession
-  university
-  cycle
-  detail
-  facebook
-  linkedin
-  github
-  keywords
-  address
-  cv {
-    url
-  }
-  photos {
-    url
-  }
-}
-    `;
 export const PostsFieldFragmentDoc = gql`
     fragment PostsField on Post {
   id
@@ -8784,8 +8779,8 @@ export const PostsFieldFragmentDoc = gql`
   content
 }
     `;
-export const CategoryFieldFragmentDoc = gql`
-    fragment CategoryField on Category {
+export const CategoryPostFieldFragmentDoc = gql`
+    fragment CategoryPostField on Category {
   id
   slug
   name
@@ -8798,8 +8793,64 @@ export const CategoryFieldFragmentDoc = gql`
   }
 }
     `;
-export const ProjectFieldsFragmentDoc = gql`
-    fragment ProjectFields on Project {
+export const SkillFragmentDoc = gql`
+    fragment Skill on Skill {
+  id
+  name
+  detail
+  icon
+  updatedAt
+}
+    `;
+export const CategoryFragmentDoc = gql`
+    fragment Category on Category {
+  id
+  name
+  detail
+  icon
+  slug
+  skills {
+    ...Skill
+  }
+}
+    ${SkillFragmentDoc}`;
+export const CertificationFragmentDoc = gql`
+    fragment Certification on Certification {
+  id
+  name
+  picture {
+    url
+  }
+}
+    `;
+export const AuthorFragmentDoc = gql`
+    fragment Author on Author {
+  id
+  bio
+  birth
+  email
+  firstName
+  lastName
+  phone
+  profession
+  university
+  cycle
+  detail
+  facebook
+  linkedin
+  github
+  keywords
+  address
+  cv {
+    url
+  }
+  photos {
+    url
+  }
+}
+    `;
+export const ProjectFragmentDoc = gql`
+    fragment Project on Project {
   id
   slug
   title
@@ -8822,17 +8873,38 @@ export const ProjectFieldsFragmentDoc = gql`
 export const GetAuthorDocument = gql`
     query getAuthor($email: String!, $locales: [Locale!]!, $stage: Stage!) {
   author(where: {email: $email}, locales: $locales, stage: $stage) {
-    ...AuthorField
+    id
+    bio
+    birth
+    email
+    firstName
+    lastName
+    phone
+    profession
+    university
+    cycle
+    detail
+    facebook
+    linkedin
+    github
+    keywords
+    address
+    cv {
+      url
+    }
+    photos {
+      url
+    }
   }
 }
-    ${AuthorFieldFragmentDoc}`;
+    `;
 export const BlogsLayoutDocument = gql`
     query blogsLayout($stage: Stage!) {
   firstPosts: posts(orderBy: updatedAt_DESC, first: 4, stage: $stage) {
     ...PostsField
   }
   categories {
-    ...CategoryField
+    ...CategoryPostField
   }
   skills {
     id
@@ -8840,18 +8912,18 @@ export const BlogsLayoutDocument = gql`
   }
 }
     ${PostsFieldFragmentDoc}
-${CategoryFieldFragmentDoc}`;
+${CategoryPostFieldFragmentDoc}`;
 export const BlogsPageDocument = gql`
     query blogsPage($stage: Stage!) {
   firstPosts: posts(orderBy: updatedAt_DESC, first: 5, stage: $stage) {
     ...PostsField
   }
   categories {
-    ...CategoryField
+    ...CategoryPostField
   }
 }
     ${PostsFieldFragmentDoc}
-${CategoryFieldFragmentDoc}`;
+${CategoryPostFieldFragmentDoc}`;
 export const PostsSlugDocument = gql`
     query postsSlug {
   posts(first: 1000) {
@@ -8895,6 +8967,13 @@ export const GetCategoriesSlugDocument = gql`
   }
 }
     `;
+export const GetAllCatergoriesDocument = gql`
+    query getAllCatergories($locales: [Locale!]!, $stage: Stage!) {
+  categories(locales: $locales, stage: $stage) {
+    ...Category
+  }
+}
+    ${CategoryFragmentDoc}`;
 export const GetCertificationsDocument = gql`
     query getCertifications($first: Int!, $skip: Int!, $stage: Stage!) {
   certifications(
@@ -8903,14 +8982,10 @@ export const GetCertificationsDocument = gql`
     skip: $skip
     stage: $stage
   ) {
-    id
-    name
-    picture {
-      url
-    }
+    ...Certification
   }
 }
-    `;
+    ${CertificationFragmentDoc}`;
 export const SearchCertificationsDocument = gql`
     query searchCertifications($search: String!, $first: Int!, $skip: Int!, $stage: Stage!) {
   certificationsConnection(
@@ -8922,11 +8997,7 @@ export const SearchCertificationsDocument = gql`
   ) {
     edges {
       node {
-        id
-        name
-        picture {
-          url
-        }
+        ...Certification
       }
       cursor
     }
@@ -8939,33 +9010,11 @@ export const SearchCertificationsDocument = gql`
     }
   }
 }
-    `;
+    ${CertificationFragmentDoc}`;
 export const GetHomeDataDocument = gql`
-    query getHomeData($locales: [Locale!]!, $stage: Stage!) {
-  categories(locales: $locales, stage: $stage) {
-    icon
-    id
-    name
-    detail
-    skills(locales: $locales, first: 1000) {
-      ... on Skill {
-        id
-        name
-        detail
-        icon
-        updatedAt
-      }
-    }
-  }
-  projects(orderBy: priority_DESC, first: 6, stage: $stage) {
-    ...ProjectFields
-  }
-  certifications(orderBy: priority_DESC, first: 6, stage: $stage) {
-    id
-    name
-    picture {
-      url
-    }
+    query getHomeData($stage: Stage!, $email: String!) {
+  author(where: {email: $email}, stage: $stage) {
+    ...Author
   }
   certificationsConnection(stage: $stage) {
     aggregate {
@@ -8983,15 +9032,15 @@ export const GetHomeDataDocument = gql`
     }
   }
 }
-    ${ProjectFieldsFragmentDoc}`;
+    ${AuthorFragmentDoc}`;
 export const ProjectBySlugDocument = gql`
     query projectBySlug($slug: String!, $stage: Stage!) {
   project(where: {slug: $slug}, stage: $stage) {
-    ...ProjectFields
+    ...Project
     detail
   }
 }
-    ${ProjectFieldsFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 export const ProjectsSlugDocument = gql`
     query ProjectsSlug {
   projects(first: 1000) {
@@ -9010,7 +9059,7 @@ export const SearchProjectsDocument = gql`
   ) {
     edges {
       node {
-        ...ProjectFields
+        ...Project
       }
     }
     pageInfo {
@@ -9020,7 +9069,14 @@ export const SearchProjectsDocument = gql`
     }
   }
 }
-    ${ProjectFieldsFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
+export const GetFirstProjectsDocument = gql`
+    query getFirstProjects($stage: Stage!) {
+  projects(orderBy: priority_DESC, first: 6, stage: $stage) {
+    ...Project
+  }
+}
+    ${ProjectFragmentDoc}`;
 export const GetSearchMetaDocument = gql`
     query getSearchMeta {
   projects(first: 1000) {
@@ -9066,6 +9122,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     getCategoriesSlug(variables?: GetCategoriesSlugQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetCategoriesSlugQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCategoriesSlugQuery>(GetCategoriesSlugDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoriesSlug', 'query');
     },
+    getAllCatergories(variables: GetAllCatergoriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetAllCatergoriesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCatergoriesQuery>(GetAllCatergoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCatergories', 'query');
+    },
     getCertifications(variables: GetCertificationsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetCertificationsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCertificationsQuery>(GetCertificationsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCertifications', 'query');
     },
@@ -9083,6 +9142,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     searchProjects(variables: SearchProjectsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SearchProjectsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SearchProjectsQuery>(SearchProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'searchProjects', 'query');
+    },
+    getFirstProjects(variables: GetFirstProjectsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetFirstProjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetFirstProjectsQuery>(GetFirstProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFirstProjects', 'query');
     },
     getSearchMeta(variables?: GetSearchMetaQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetSearchMetaQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetSearchMetaQuery>(GetSearchMetaDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSearchMeta', 'query');

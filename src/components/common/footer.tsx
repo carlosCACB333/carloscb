@@ -1,8 +1,8 @@
-"use client";
-import { useAuthor } from "@/hooks";
+"use server";
+
+import { AUTHOR_EMAIL } from "@/utils";
 
 export const Footer = () => {
-  const { author } = useAuthor();
 
   return (
     <footer className="container mx-auto max-w-7xl px-12">
@@ -10,7 +10,7 @@ export const Footer = () => {
         <p className="text-sm ">
           Creado&nbsp;por&nbsp;
           <span className="text-primary">
-            {author.firstName} {author.lastName}
+            {AUTHOR_EMAIL}
           </span>
         </p>
         <p className="text-sm">

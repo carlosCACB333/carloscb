@@ -1,10 +1,9 @@
-"use client";
 import React from "react";
 import notfound from "@/assets/img/not-found.svg";
 import Image from "next/image";
 import { Button, Link } from "@nextui-org/react";
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] w-full">
       <Image src={notfound} alt="not found" />

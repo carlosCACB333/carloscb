@@ -1,32 +1,37 @@
 import { FC } from "react";
 import {
-  Card,
-  CardHeader,
   Avatar,
-  CardBody,
-  CardFooter,
   Link,
 } from "@nextui-org/react";
 import { clsx } from "@nextui-org/shared-utils";
 import NextImage from "next/image";
-import { useAuthor } from "@/hooks";
 
-interface UserTwitterCardProps {
+interface Props {
   className?: string;
+  fullName: string;
+  username?: string | null;
+  detail: string
+  footer: string
+  avatar: string
 }
 
-export const UserGitHubCard: FC<UserTwitterCardProps> = ({ className }) => {
-  const { author } = useAuthor();
+export const UserGitHubCard: FC<Props> = ({
+  fullName,
+  username,
+  detail,
+  footer,
+  avatar,
+  className }) => {
 
   return (
-    <Card className={clsx("max-w-[300px]", className)}>
-      <CardHeader className="justify-between">
+    <div className={clsx("bg-content1 p-4 rounded-lg shadow-lg max-w-[300px]", className)}>
+      <div className="flex justify-between">
         <div className="flex gap-5">
           <Avatar
             className="object-top"
             isBordered
             ImgComponent={NextImage}
-            alt={author.firstName + " " + author.lastName}
+            alt={fullName}
             style={{
               objectPosition: "top",
             }}
@@ -36,37 +41,32 @@ export const UserGitHubCard: FC<UserTwitterCardProps> = ({ className }) => {
             }}
             radius="full"
             size="md"
-            src={author.photos![0].url}
+            src={avatar}
           />
           <div className="flex flex-col items-start justify-center">
             <h4 className="text-sm font-semibold leading-none ">
-              {author.firstName} {author.lastName}
+              {fullName}
             </h4>
             <Link
               className="text-sm"
-              href={author.github?.toString()!}
+              href={username!}
               target="_blank"
               aria-label="Github"
             >
-              @carloscb333
+              @{username?.split("/").at(-1)}
             </Link>
           </div>
         </div>
-      </CardHeader>
-      <CardBody className="px-3 py-0">
-        <p className="text-sm pl-px ">
-          Desarrollador Full-stack &nbsp;
+      </div>
+      <div className="mt-2">
+        <p>
+          {detail} &nbsp;
           <span aria-label="confetti" role="img">
             🎉
           </span>
         </p>
-      </CardBody>
-      <CardFooter className="gap-3">
-        <div className="flex gap-1">
-          <p className="font-semibold text-xs">45</p>
-          <p className="text-xs">Respositorios</p>
-        </div>
-      </CardFooter>
-    </Card>
+        <p className="text-sm">{footer}</p>
+      </div>
+    </div>
   );
 };

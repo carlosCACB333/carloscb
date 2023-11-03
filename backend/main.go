@@ -8,7 +8,6 @@ import (
 
 	"github.com/carlosCACB333/cb-grpc/libs"
 	mdw "github.com/carlosCACB333/cb-grpc/middlewares"
-	model "github.com/carlosCACB333/cb-grpc/models"
 	"github.com/carlosCACB333/cb-grpc/pb"
 	"github.com/carlosCACB333/cb-grpc/servers"
 	"github.com/carlosCACB333/cb-grpc/utils"
@@ -40,7 +39,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	model.Migrate(db)
+	// model.Migrate(db)
 	redisOpts := asynq.RedisClientOpt{
 		Addr: cfg.RedisAddr,
 	}

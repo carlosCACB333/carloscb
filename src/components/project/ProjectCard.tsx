@@ -1,5 +1,5 @@
 'use client';
-import { Project } from "@/generated/graphql";
+import { ProjectFragment } from "@/generated/graphql";
 import { Button, Card, CardFooter, CardHeader, Link } from "@nextui-org/react";
 import React from "react";
 import { Icon } from "../common/icon";
@@ -8,7 +8,7 @@ import { IMG } from "../common/IMG";
 import { sizes as c } from "@/assets";
 
 interface Props {
-  project: Project;
+  project: ProjectFragment;
   sizes?: string;
 }
 

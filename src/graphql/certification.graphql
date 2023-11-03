@@ -1,3 +1,11 @@
+fragment Certification on Certification {
+  id
+  name
+  picture {
+    url
+  }
+}
+
 query getCertifications($first: Int!, $skip: Int!, $stage: Stage!) {
   certifications(
     orderBy: priority_DESC
@@ -5,11 +13,7 @@ query getCertifications($first: Int!, $skip: Int!, $stage: Stage!) {
     skip: $skip
     stage: $stage
   ) {
-    id
-    name
-    picture {
-      url
-    }
+    ...Certification
   }
 }
 
@@ -28,11 +32,7 @@ query searchCertifications(
   ) {
     edges {
       node {
-        id
-        name
-        picture {
-          url
-        }
+        ...Certification
       }
       cursor
     }

@@ -3,6 +3,7 @@
 import { clsx } from "@nextui-org/shared-utils";
 
 import { useIsMounted } from "@/hooks/use-is-mounted";
+import dynamic from "next/dynamic";
 
 export const BgLooper = () => {
   const isMounted = useIsMounted();
@@ -18,3 +19,8 @@ export const BgLooper = () => {
     />
   );
 };
+
+
+export const BgLooperDynamic = dynamic(() => Promise.resolve(BgLooper), {
+  ssr: false,
+});

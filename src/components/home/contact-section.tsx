@@ -11,7 +11,6 @@ import {
 } from "@nextui-org/react";
 
 import { title, subtitle, titleWrapper, sectionWrapper } from "@/components";
-import { useAuthor } from "@/hooks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Contact } from "@/interfaces";
@@ -23,15 +22,17 @@ import { MdAlternateEmail } from "react-icons/md";
 import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
 import { sendEmailContact } from "@/grpc/utils";
 import { STATUS } from "@/utils";
+import { AuthorFragment } from "@/generated/graphql";
+interface Props {
+  author: AuthorFragment
+}
+export const ContactSection = ({ author }: Props) => {
 
-export const ContactSection = () => {
-  const { author } = useAuthor();
   const { register, handleSubmit, reset, formState } = useForm<Contact>({
     mode: "onChange",
     resolver: zodResolver(ContacSchema),
   });
   const { errors, isValid, isSubmitting } = formState;
-
 
   const onSubmit = async (data: Contact) => {
 

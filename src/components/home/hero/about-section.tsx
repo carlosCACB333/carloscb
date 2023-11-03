@@ -1,23 +1,19 @@
-"use client";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHeader,
-  TableColumn,
-} from "@nextui-org/react";
+
 
 import { title, subtitle, sectionWrapper } from "@/components";
-import { useAuthor } from "@/hooks";
 import { MDXContent } from "@/components/md/MDXContent";
 import { AiFillHeart } from "react-icons/ai";
 import { IMG } from "@/components/common/IMG";
 import { sizes } from "@/assets";
+import { AuthorFragment } from "@/generated/graphql";
 
-export const AboutSection = () => {
-  const { author } = useAuthor();
+interface Props {
+  author: AuthorFragment
+}
+
+export const AboutSection = ({ author }: Props) => {
+
   const fullName = `${author.firstName} ${author.lastName}`;
   const age = new Date().getFullYear() - new Date(author.birth).getFullYear();
   const photo = author.photos.at(-1)!;
@@ -48,50 +44,44 @@ export const AboutSection = () => {
             </div>
           </div>
           <div className={subtitle({ fullWidth: true })}>
-            <MDXContent>{author.bio?.toString()}</MDXContent>
+            <MDXContent>{author.bio || ''}</MDXContent>
           </div>
-          <Table
-            hideHeader
-            removeWrapper
-            isCompact
+          <table
             aria-label="Tabla de información personal"
+            className="table-auto w-full text-left mt-4"
+            cellPadding={2}
           >
-            <TableHeader>
-              <TableColumn> </TableColumn>
-              <TableColumn> </TableColumn>
-            </TableHeader>
-
-            <TableBody>
-              <TableRow key={1}>
-                <TableCell>Nombre</TableCell>
-                <TableCell>{fullName}</TableCell>
-              </TableRow>
-              <TableRow key={2}>
-                <TableCell>Correo</TableCell>
-                <TableCell>{author.email}</TableCell>
-              </TableRow>
-              <TableRow key={3}>
-                <TableCell>Edad</TableCell>
-                <TableCell>{age}</TableCell>
-              </TableRow>
-              <TableRow key={5}>
-                <TableCell>Profesión</TableCell>
-                <TableCell>{author.profession?.toString()}</TableCell>
-              </TableRow>
-              <TableRow key={6}>
-                <TableCell>Universidad</TableCell>
-                <TableCell>{author.university}</TableCell>
-              </TableRow>
-              <TableRow key={7}>
-                <TableCell>Ciclo</TableCell>
-                <TableCell>{author.cycle?.toString()}</TableCell>
-              </TableRow>
-              <TableRow key={8}>
-                <TableCell>Dirección</TableCell>
-                <TableCell>{author.address}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+            <tbody >
+              <tr >
+                <td>Nombre</td>
+                <td>{fullName}</td>
+              </tr>
+              <tr>
+                <td>Correo</td>
+                <td>{author.email}</td>
+              </tr>
+              <tr>
+                <td>Edad</td>
+                <td>{age}</td>
+              </tr>
+              <tr>
+                <td>Profesión</td>
+                <td>{author.profession?.toString()}</td>
+              </tr>
+              <tr>
+                <td>Universidad</td>
+                <td>{author.university}</td>
+              </tr>
+              <tr>
+                <td>Ciclo</td>
+                <td>{author.cycle?.toString()}</td>
+              </tr>
+              <tr>
+                <td>Dirección</td>
+                <td>{author.address}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

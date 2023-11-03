@@ -1,4 +1,4 @@
-fragment ProjectFields on Project {
+fragment Project on Project {
   id
   slug
   title
@@ -20,7 +20,7 @@ fragment ProjectFields on Project {
 
 query projectBySlug($slug: String!, $stage: Stage!) {
   project(where: { slug: $slug }, stage: $stage) {
-    ...ProjectFields
+    ...Project
     detail
   }
 }
@@ -52,7 +52,7 @@ query searchProjects(
   ) {
     edges {
       node {
-        ...ProjectFields
+        ...Project
       }
     }
     pageInfo {
@@ -60,5 +60,12 @@ query searchProjects(
       hasPreviousPage
       pageSize
     }
+  }
+}
+
+
+query getFirstProjects( $stage: Stage!) {
+  projects(orderBy: priority_DESC, first: 6, stage: $stage) {
+    ...Project
   }
 }

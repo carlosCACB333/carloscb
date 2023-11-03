@@ -1,14 +1,20 @@
-import { Card, CardBody, CardFooter, colors } from "@nextui-org/react";
+import { colors } from "@nextui-org/react";
 import { UserGitHubCard } from "./user-github-card";
-import { FaAws, FaDocker, FaGithub, FaPython, FaReact } from "react-icons/fa";
+import { FaAws, FaDocker, FaGithub, FaReact } from "react-icons/fa";
 import { IconCard } from "./Icon-card";
 import { SiIbmwatson } from "react-icons/si";
 import { BiLogoKubernetes } from "react-icons/bi";
-import { GopherIcon, Icon } from "@/components/common/icon";
+import { GopherIcon } from "@/components/common/icon";
 import python from "@/assets/img/python.png";
 import Image from "next/image";
+import clsx from "clsx";
+import { AuthorFragment } from "@/generated/graphql";
 
-export const FloatingComponents: React.FC<{}> = () => {
+interface Props {
+  author: AuthorFragment;
+}
+
+export const FloatingComponents = ({ author }: Props) => {
   return (
     <div className="hidden md:flex flex-col relative z-20 w-1/2">
       <>
@@ -25,14 +31,16 @@ export const FloatingComponents: React.FC<{}> = () => {
           <span className="font-extrabold">TS</span>
         </IconCard>
 
-        <Card
-          isFooterBlurred
-          className="absolute -top-[260px] right-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit"
+        <div
+          className={
+            clsx(
+              "absolute -top-[260px] right-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
+              "bg-content1 p-4 rounded-lg  shadow-lg"
+            )
+          }
         >
-          <CardBody>
-            <Image src={python} alt="Python" />
-          </CardBody>
-        </Card>
+          <Image src={python} alt="Python" />
+        </div>
 
         <IconCard
           className="absolute left-[170px] -top-[160px] animate-[levitate_17s_ease_infinite_1s]"
@@ -42,7 +50,14 @@ export const FloatingComponents: React.FC<{}> = () => {
           <FaGithub size={30} />
         </IconCard>
 
-        <UserGitHubCard className="absolute left-[80px] -top-[50px] animate-[levitate_16s_ease_infinite] border-none" />
+        <UserGitHubCard
+          avatar={author.photos[0].url}
+          fullName={author.firstName + " " + author.lastName}
+          username={author.github}
+          detail="Desarrollador FullStack"
+          footer="47 Repositorios"
+          className="absolute left-[80px] -top-[50px] animate-[levitate_16s_ease_infinite] border-none"
+        />
 
         <div className="absolute right-[110px] -top-[60px] animate-[levitate_18s_ease_infinite] z-10 max-w-fit border-none">
           <GopherIcon height={100} width={100} />
@@ -64,14 +79,16 @@ export const FloatingComponents: React.FC<{}> = () => {
           <SiIbmwatson size={50} />
         </div>
 
-        <Card
-          isFooterBlurred
-          className="absolute right-[60px] top-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit"
+        <div
+          className={
+            clsx(
+              "absolute right-[60px] top-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
+              "bg-content1 p-4 rounded-lg shadow-lg"
+            )
+          }
         >
-          <CardBody>
-            <FaAws aria-label="aws" size={100} />
-          </CardBody>
-        </Card>
+          <FaAws aria-label="aws" size={100} />
+        </div>
       </>
     </div>
   );

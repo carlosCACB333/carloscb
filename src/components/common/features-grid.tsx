@@ -1,22 +1,18 @@
-"use client";
 
 import React, { ReactNode } from "react";
 import { tv } from "tailwind-variants";
 import {
-  Card,
-  CardHeader,
-  CardBody,
   LinkProps,
   SlotsToClasses,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import { LinkIcon } from "@nextui-org/shared-icons";
+import Link from "next/link";
 
 const styles = tv({
   slots: {
     base: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
-    card: "border-transparent bg-white/5 dark:bg-default-300/10 backdrop-blur-lg backdrop-saturate-[1.5]",
-    header: "gap-2 pb-0",
+    card: "p-4 rounded-lg shadow-lg  backdrop-blur-sm bg-content1/[0.1] border border-content1",
+    header: " flex items-center gap-2 pb-0",
     body: "",
     iconWrapper:
       "flex justify-center p-2 rounded-full items-center bg-primary text-primary-900",
@@ -43,34 +39,16 @@ export const FeaturesGrid: React.FC<FeaturesGridProps> = ({
   classNames,
   ...props
 }) => {
-  const router = useRouter();
-
   const slots = styles();
-
-  const handleClick = (feat: Feature) => {
-    if (!feat.href) {
-      return;
-    }
-
-    if (feat.isExternal) {
-      window.open(feat.href, "_blank");
-      return;
-    }
-
-    router.push(feat.href);
-  };
-
   return (
     <div className={slots.base({ class: classNames?.base })} {...props}>
       {features.map((feat: Feature, index: number) => (
-        <Card
+        <Link
           key={`${feat.title}_${index}`}
-          isBlurred
           className={slots.card({ class: classNames?.card })}
-          isPressable={!!feat.href}
-          onPress={() => handleClick(feat)}
+          href={feat.href!}
         >
-          <CardHeader className={slots.header({ class: classNames?.header })}>
+          <div className={slots.header({ class: classNames?.header })}>
             <div
               className={slots.iconWrapper({ class: classNames?.iconWrapper })}
             >
@@ -82,9 +60,9 @@ export const FeaturesGrid: React.FC<FeaturesGridProps> = ({
             {feat.isExternal && (
               <LinkIcon className="text-white" height={18} width={18} />
             )}
-          </CardHeader>
+          </div>
           {feat.description ? (
-            <CardBody className={slots.body({ class: classNames?.body })}>
+            <div className={slots.body({ class: classNames?.body })}>
               <p
                 className={slots.description({
                   class: classNames?.description,
@@ -92,9 +70,9 @@ export const FeaturesGrid: React.FC<FeaturesGridProps> = ({
               >
                 {feat.description}
               </p>
-            </CardBody>
+            </div>
           ) : null}
-        </Card>
+        </Link>
       ))}
     </div>
   );

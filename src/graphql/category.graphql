@@ -1,5 +1,33 @@
+
+fragment Skill on Skill {
+  id
+  name
+  detail
+  icon
+  updatedAt
+}
+
+
+fragment Category on  Category {
+  id
+  name
+  detail
+  icon
+  slug
+  skills {
+    ...Skill
+  }
+}
+
 query getCategoriesSlug {
   categories {
     slug
+  }
+}
+
+
+query getAllCatergories($locales: [Locale!]!, $stage: Stage!) {
+  categories(locales: $locales, stage: $stage) {
+    ...Category
   }
 }
