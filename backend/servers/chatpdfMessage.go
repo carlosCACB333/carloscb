@@ -35,7 +35,7 @@ func (s *ChatpdfMessageServer) GetLastChatpdfMessage(req *pb.GenericReq, stream 
 		return status.Errorf(codes.NotFound, "Chat no encontrado")
 	}
 
-	if err := db.Where("chatpdf_id = ?", chat.ID).Order("created_at desc").Limit(6).Find(&messages).Error; err != nil {
+	if err := db.Where("chatpdf_id = ?", chat.ID).Limit(6).Find(&messages).Error; err != nil {
 		return status.Errorf(codes.NotFound, "No se encontraron los mensajes")
 
 	}
@@ -91,22 +91,24 @@ func (s *ChatpdfMessageServer) CreateChatpdfMessage(ctx context.Context, req *pb
 
 }
 
-func (s *ChatpdfMessageServer) DelteChatpdfMessage(ctx context.Context, req *pb.GenericReq) (*pb.GenericRes, error) {
-	msgId := req.GetId()
+func (s *ChatpdfMessageServer) ClearChatpdfMessage(ctx context.Context, req *pb.GenericReq) (*pb.GenericRes, error) {
+	chatID := req.GetId()
 	db := s.DB
 
-	var message model.ChatpdfMessage
-	if err := db.Where("id = ?", msgId).First(&message).Error; err != nil {
-		return nil, status.Errorf(codes.NotFound, "Mensaje no encontrado")
+	uid := ctx.Value(utils.UID).(string)
+	chat := model.Chatpdf{}
+
+	if err := db.Where("id = ? AND user_id = ?", chatID, uid).First(&chat).Error; err != nil {
+		return nil, status.Errorf(codes.NotFound, "Chat no encontrado")
 	}
 
-	if err := db.Delete(&message).Error; err != nil {
-		return nil, status.Errorf(codes.Internal, "Error al eliminar el mensaje")
+	if err := db.Where("chatpdf_id = ?", chat.ID).Delete(&model.ChatpdfMessage{}).Error; err != nil {
+		return nil, status.Errorf(codes.Internal, "Error al eliminar los mensajes")
 	}
 
 	return &pb.GenericRes{
 		Status:  pb.Status_OK,
-		Message: "Mensaje eliminado",
+		Message: "Mensajes eliminados",
 	}, nil
 
 }

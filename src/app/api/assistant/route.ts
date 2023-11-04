@@ -1,7 +1,7 @@
 import { OpenAI } from 'openai'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { ASSISTANT_CHAT_ID, OPENAI_API_KEY, STATUS } from '@/utils';
-import { getContextWithoutAuth } from '@/grpc/chatpdf';
+import { grpcGetContextWithoutAuth } from '@/grpc/chatpdf';
 import { NextResponse } from 'next/server';
 
 
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     const userMsg = messages.at(-1).content as string
-    const res = await getContextWithoutAuth(ASSISTANT_CHAT_ID, userMsg)
+    const res = await grpcGetContextWithoutAuth(ASSISTANT_CHAT_ID, userMsg)
     if (res.status !== STATUS.OK) {
       return NextResponse.json({ ...res }, { status: res.status })
     }

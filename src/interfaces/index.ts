@@ -2,6 +2,7 @@ export * from "./contact";
 export * from "./chatpdf";
 
 import { Locale } from "@/generated/graphql";
+import { STATUS } from "@/utils";
 
 export interface PageProps {
   params: {
@@ -46,8 +47,18 @@ export interface Route {
 export interface Response<T> {
   data?: T;
   status: number;
-  message: string
-  [key: string]: any
+  message: string;
+  [key: string]: any;
 }
 
-export type GPTRole = "function" | "system" | "user" | "assistant"
+export type GPTRole = "function" | "system" | "user" | "assistant";
+
+export interface FormState<T> {
+  status: STATUS;
+  message: string;
+  errors:
+    | {
+        [key in keyof T]?: string[] | undefined;
+      }
+    | null;
+}

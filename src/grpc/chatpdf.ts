@@ -6,7 +6,7 @@ import { Chatpdf, CreateChatpdfReq, GetContextReq, GetContextRes } from "@/pb/ch
 import { EmptyReq, GenericReq, GenericRes } from "@/pb/common_pb"
 import { STATUS } from "@/utils"
 
-export const getContextWithoutAuth = async (chatId: string, query: string): Promise<Response<GetContextRes.AsObject>> => {
+export const grpcGetContextWithoutAuth = async (chatId: string, query: string): Promise<Response<GetContextRes.AsObject>> => {
     const request = new GetContextReq()
     request.setChatid(chatId)
     request.setQuery(query)
@@ -27,7 +27,7 @@ export const getContextWithoutAuth = async (chatId: string, query: string): Prom
         })
     })
 }
-export const getContext = async (chatId: string, query: string): Promise<Response<GetContextRes.AsObject>> => {
+export const grpcGetContext = async (chatId: string, query: string): Promise<Response<GetContextRes.AsObject>> => {
     const request = new GetContextReq()
     request.setChatid(chatId)
     request.setQuery(query)
@@ -51,7 +51,7 @@ export const getContext = async (chatId: string, query: string): Promise<Respons
 
 
 
-export const createChatpdf = async (file: File): Promise<Response<GenericRes.AsObject>> => {
+export const grpcCreateChatpdf = async (file: File): Promise<Response<GenericRes.AsObject>> => {
     const chunk = new Uint8Array(await file.arrayBuffer())
     const req = new CreateChatpdfReq()
     req.setContenttype(file.type)
@@ -76,7 +76,7 @@ export const createChatpdf = async (file: File): Promise<Response<GenericRes.AsO
 }
 
 
-export const getAllChatpdfs = async (): Promise<Response<Chatpdf.AsObject[]>> => {
+export const getpGetAllChatpdfs = async (): Promise<Response<Chatpdf.AsObject[]>> => {
     return new Promise((resolve, reject) => {
         const req = new EmptyReq()
         const stream = chatpdfService.getChatpdfs(req)
@@ -102,7 +102,7 @@ export const getAllChatpdfs = async (): Promise<Response<Chatpdf.AsObject[]>> =>
     })
 }
 
-export const deleteChatpdf = async (id: string): Promise<Response<GenericRes.AsObject>> => {
+export const grpcDeleteChatpdf = async (id: string): Promise<Response<GenericRes.AsObject>> => {
     return new Promise((resolve, reject) => {
         const req = new GenericReq()
         req.setId(id)
@@ -123,7 +123,7 @@ export const deleteChatpdf = async (id: string): Promise<Response<GenericRes.AsO
     })
 }
 
-export const getFileUrl = async (id: string): Promise<Response<string>> => {
+export const grpcGetFileUrl = async (id: string): Promise<Response<string>> => {
     return new Promise((resolve, reject) => {
         const req = new GenericReq()
         req.setId(id)

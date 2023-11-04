@@ -21,7 +21,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	ChatpdfMessageService_GetLastChatpdfMessage_FullMethodName = "/pb.ChatpdfMessageService/GetLastChatpdfMessage"
 	ChatpdfMessageService_CreateChatpdfMessage_FullMethodName  = "/pb.ChatpdfMessageService/CreateChatpdfMessage"
-	ChatpdfMessageService_DelteChatpdfMessage_FullMethodName   = "/pb.ChatpdfMessageService/DelteChatpdfMessage"
+	ChatpdfMessageService_ClearChatpdfMessage_FullMethodName   = "/pb.ChatpdfMessageService/ClearChatpdfMessage"
 )
 
 // ChatpdfMessageServiceClient is the client API for ChatpdfMessageService service.
@@ -30,7 +30,7 @@ const (
 type ChatpdfMessageServiceClient interface {
 	GetLastChatpdfMessage(ctx context.Context, in *GenericReq, opts ...grpc.CallOption) (ChatpdfMessageService_GetLastChatpdfMessageClient, error)
 	CreateChatpdfMessage(ctx context.Context, in *CreateChatpdfMessageReq, opts ...grpc.CallOption) (*GenericRes, error)
-	DelteChatpdfMessage(ctx context.Context, in *GenericReq, opts ...grpc.CallOption) (*GenericRes, error)
+	ClearChatpdfMessage(ctx context.Context, in *GenericReq, opts ...grpc.CallOption) (*GenericRes, error)
 }
 
 type chatpdfMessageServiceClient struct {
@@ -82,9 +82,9 @@ func (c *chatpdfMessageServiceClient) CreateChatpdfMessage(ctx context.Context, 
 	return out, nil
 }
 
-func (c *chatpdfMessageServiceClient) DelteChatpdfMessage(ctx context.Context, in *GenericReq, opts ...grpc.CallOption) (*GenericRes, error) {
+func (c *chatpdfMessageServiceClient) ClearChatpdfMessage(ctx context.Context, in *GenericReq, opts ...grpc.CallOption) (*GenericRes, error) {
 	out := new(GenericRes)
-	err := c.cc.Invoke(ctx, ChatpdfMessageService_DelteChatpdfMessage_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ChatpdfMessageService_ClearChatpdfMessage_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func (c *chatpdfMessageServiceClient) DelteChatpdfMessage(ctx context.Context, i
 type ChatpdfMessageServiceServer interface {
 	GetLastChatpdfMessage(*GenericReq, ChatpdfMessageService_GetLastChatpdfMessageServer) error
 	CreateChatpdfMessage(context.Context, *CreateChatpdfMessageReq) (*GenericRes, error)
-	DelteChatpdfMessage(context.Context, *GenericReq) (*GenericRes, error)
+	ClearChatpdfMessage(context.Context, *GenericReq) (*GenericRes, error)
 	mustEmbedUnimplementedChatpdfMessageServiceServer()
 }
 
@@ -111,8 +111,8 @@ func (UnimplementedChatpdfMessageServiceServer) GetLastChatpdfMessage(*GenericRe
 func (UnimplementedChatpdfMessageServiceServer) CreateChatpdfMessage(context.Context, *CreateChatpdfMessageReq) (*GenericRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateChatpdfMessage not implemented")
 }
-func (UnimplementedChatpdfMessageServiceServer) DelteChatpdfMessage(context.Context, *GenericReq) (*GenericRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DelteChatpdfMessage not implemented")
+func (UnimplementedChatpdfMessageServiceServer) ClearChatpdfMessage(context.Context, *GenericReq) (*GenericRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClearChatpdfMessage not implemented")
 }
 func (UnimplementedChatpdfMessageServiceServer) mustEmbedUnimplementedChatpdfMessageServiceServer() {}
 
@@ -166,20 +166,20 @@ func _ChatpdfMessageService_CreateChatpdfMessage_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ChatpdfMessageService_DelteChatpdfMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ChatpdfMessageService_ClearChatpdfMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenericReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ChatpdfMessageServiceServer).DelteChatpdfMessage(ctx, in)
+		return srv.(ChatpdfMessageServiceServer).ClearChatpdfMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ChatpdfMessageService_DelteChatpdfMessage_FullMethodName,
+		FullMethod: ChatpdfMessageService_ClearChatpdfMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatpdfMessageServiceServer).DelteChatpdfMessage(ctx, req.(*GenericReq))
+		return srv.(ChatpdfMessageServiceServer).ClearChatpdfMessage(ctx, req.(*GenericReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -196,8 +196,8 @@ var ChatpdfMessageService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ChatpdfMessageService_CreateChatpdfMessage_Handler,
 		},
 		{
-			MethodName: "DelteChatpdfMessage",
-			Handler:    _ChatpdfMessageService_DelteChatpdfMessage_Handler,
+			MethodName: "ClearChatpdfMessage",
+			Handler:    _ChatpdfMessageService_ClearChatpdfMessage_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

@@ -13,7 +13,7 @@ const SearcherComponent = ({ ...rest }: Props) => {
   const searchParams = useSearchParams();
   const [value, setValue] = useState(searchParams.get('search') || "");
   const pathName = usePathname();
-  const { push } = useRouter();
+  const {  replace } = useRouter();
   const search = useDebounce(value);
   const fistRender = useRef(true);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,8 +27,12 @@ const SearcherComponent = ({ ...rest }: Props) => {
       fistRender.current = false;
       return;
     }
-    push(`${pathName}?search=${search}`);
-  }, [push, pathName, search]);
+    if (search === "") {
+      replace(`${pathName}`);
+    }else{
+      replace(`${pathName}?search=${search}`);
+    }
+  }, [replace, pathName, search]);
 
   return (
     <Input

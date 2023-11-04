@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { WEBHOOK_SECRET } from '@/utils'
 import { createOrUpdateUserReq } from '@/pb/user_pb'
-import { createOrUpdateUserWithoutAuth, deleteUserWithoutAuth } from '@/grpc/user'
+import { grpcCreateOrUpdateUserWithoutAuth, grpcDeleteUserWithoutAuth } from '@/grpc/user'
 
 export async function POST(req: Request) {
 
@@ -58,10 +58,10 @@ export async function POST(req: Request) {
         req.setPhoto(evt.data.image_url)
         req.setUsername(evt.data.username || "")
         req.setGender(evt.data.gender)
-        const res = await createOrUpdateUserWithoutAuth(req)
+        const res = await grpcCreateOrUpdateUserWithoutAuth(req)
         console.log(res)
     } else if (evt.type === 'user.deleted') {
-        const res = await deleteUserWithoutAuth(evt.data.id!)
+        const res = await grpcDeleteUserWithoutAuth(evt.data.id!)
         console.log(res)
     }
 

@@ -74,8 +74,8 @@ var ChatpdfMessageServiceService = exports.ChatpdfMessageServiceService = {
     responseSerialize: serialize_pb_GenericRes,
     responseDeserialize: deserialize_pb_GenericRes,
   },
-  delteChatpdfMessage: {
-    path: '/pb.ChatpdfMessageService/DelteChatpdfMessage',
+  clearChatpdfMessage: {
+    path: '/pb.ChatpdfMessageService/ClearChatpdfMessage',
     requestStream: false,
     responseStream: false,
     requestType: common_pb.GenericReq,

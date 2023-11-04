@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { STATUS, X_API_KEY, } from "@/utils";
-import { createChatpdf } from "@/grpc/chatpdf";
+import { grpcCreateChatpdf } from "@/grpc/chatpdf";
 import * as grpc from "@grpc/grpc-js";
 
 export async function POST(req: NextRequest) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    const res = await createChatpdf(file);
+    const res = await grpcCreateChatpdf(file);
     return NextResponse.json({
       ...res,
     });

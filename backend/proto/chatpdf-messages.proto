@@ -27,5 +27,5 @@ message CreateChatpdfMessageReq{
 service ChatpdfMessageService{
     rpc GetLastChatpdfMessage(GenericReq) returns (stream ChatpdfMessage);
     rpc CreateChatpdfMessage(CreateChatpdfMessageReq) returns (GenericRes);
-    rpc DelteChatpdfMessage(GenericReq) returns (GenericRes);
+    rpc ClearChatpdfMessage(GenericReq) returns (GenericRes);
 }

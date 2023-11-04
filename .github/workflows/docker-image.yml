@@ -29,8 +29,6 @@ jobs:
           echo "STAGE=production" >> .env
           echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=/auth/sign-in" >> .env
           echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up" >> .env
 
           echo "SITE_URL=${{ secrets.SITE_URL }}" >> .env
           echo "AUTHOR_EMAIL=${{ secrets.EMAIL_USER }}" >> .env

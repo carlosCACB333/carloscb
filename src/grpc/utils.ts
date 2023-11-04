@@ -3,9 +3,9 @@
 import { Response } from "@/interfaces"
 import { utilService } from "@/libs/grpc-client"
 import { SendEmailReq } from "@/pb/util_pb"
-import { AUTHOR_EMAIL, STATUS } from "@/utils"
+import {  STATUS } from "@/utils"
 
-export const sendEmails = async (emails: string[], subject: string, body: string): Promise<Response<string>> => {
+export const grpcSendEmails = async (emails: string[], subject: string, body: string): Promise<Response<string>> => {
     const request = new SendEmailReq()
     request.setSubject(subject)
     request.setBody(body)
@@ -30,6 +30,3 @@ export const sendEmails = async (emails: string[], subject: string, body: string
     })
 }
 
-export const sendEmailContact = (subject: string, body: string) => {
-    return sendEmails([AUTHOR_EMAIL], subject, body)
-}

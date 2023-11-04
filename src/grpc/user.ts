@@ -5,7 +5,7 @@ import { userService } from "@/libs/grpc-client"
 import { GenericReq, GenericRes } from "@/pb/common_pb"
 import { createOrUpdateUserReq } from "@/pb/user_pb"
 
-export const createOrUpdateUserWithoutAuth = async (req: createOrUpdateUserReq): Promise<Response<GenericRes.AsObject>> => {
+export const grpcCreateOrUpdateUserWithoutAuth = async (req: createOrUpdateUserReq): Promise<Response<GenericRes.AsObject>> => {
 
     return new Promise((resolve, reject) => {
         userService.createOrUpdateUserWithoutAuth(req, (err, res) => {
@@ -26,7 +26,7 @@ export const createOrUpdateUserWithoutAuth = async (req: createOrUpdateUserReq):
 }
 
 
-export const deleteUserWithoutAuth = async (id: string): Promise<Response<GenericRes.AsObject>> => {
+export const grpcDeleteUserWithoutAuth = async (id: string): Promise<Response<GenericRes.AsObject>> => {
 
     return new Promise((resolve, reject) => {
         const req = new GenericReq()

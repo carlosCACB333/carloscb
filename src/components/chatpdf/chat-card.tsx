@@ -1,68 +1,43 @@
 "use client";
-
-import { deleteChatpdf } from "@/grpc/chatpdf";
+import { deleteChatpdf } from "@/action/chatpdf";
 import { Chatpdf } from "@/pb/chatpdf_pb";
-import { STATUS, formatDateFromObject } from "@/utils";
-import { Button, Card, CardBody, CircularProgress } from "@nextui-org/react";
+import { FORM_INIT, formatDateFromObject } from "@/utils";
+import { Button } from "@nextui-org/react";
 import clsx from "clsx";
-import { usePathname, useRouter } from "next/navigation";
-import React, { FC, useState } from "react";
+import { includes } from "lodash";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useFormState } from "react-dom";
+import { SubmitButton } from "../common/submit-button";
 import { MdClose } from "react-icons/md";
-import { toast } from "react-toastify";
-import { util } from "zod";
 
 interface Props {
   chat: Chatpdf.AsObject;
 }
-export const ChatCard: FC<Props> = ({ chat }) => {
+export const ChatCard = ({ chat }: Props) => {
+  const deleteChatpdfWithId = deleteChatpdf.bind(null, chat.id);
+  const [state, dispatch] = useFormState(deleteChatpdfWithId, FORM_INIT);
   const pathname = usePathname();
-  const id = pathname.split("/").pop();
-  const { push, refresh, replace, } = useRouter();
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const handleDelete = async () => {
-    setIsDeleting(true);
-    const res = await deleteChatpdf(chat.id);
-    setIsDeleting(false);
-    if (res.status !== STATUS.OK) {
-      toast.error(res.message);
-      return;
-    }
-    toast.success(res.message);
-    refresh();
-    if (id === chat.id) {
-      replace(`/ia/chat-pdf`, {});
-    }
-  };
-
 
   return (
-    <Card
-      key={chat.id}
-      className={clsx("hover:opacity-80 cursor-pointer", {
-        "bg-primary-900 dark:bg-primary-200": id === chat.id,
-      })}
+    <Link
+      data-active={includes(pathname, chat.id)}
+      className={clsx(
+        "rounded-lg p-4 bg-content1 flex justify-between items-center",
+        "hover:opacity-80 cursor-pointer data-[active=true]:text-primary"
+      )}
+      href={`/ia/chat-pdf/${chat.id}`}
     >
-      <CardBody
-        className="relative"
-        onClick={() => {
-          push(`/ia/chat-pdf/${chat.id}`);
-        }}
-      >
+      <div>
         <h3 className="font-bold">{chat.name}</h3>
         <p className="text-tiny">{formatDateFromObject(chat.createdat)}</p>
+      </div>
 
-        <Button
-          className="absolute top-0 right-0"
-          isIconOnly
-          variant="light"
-          onClick={handleDelete}
-          disabled={isDeleting}
-          aria-label="Eliminar"
-        >
-          {isDeleting ? <CircularProgress size="sm" /> : <MdClose />}
-        </Button>
-      </CardBody>
-    </Card>
+      <form action={dispatch}>
+        <SubmitButton size="sm" isIconOnly>
+          <MdClose />
+        </SubmitButton>
+      </form>
+    </Link>
   );
 };

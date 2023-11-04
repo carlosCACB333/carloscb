@@ -11,60 +11,49 @@ import {
 } from "@nextui-org/react";
 
 import { title, subtitle, titleWrapper, sectionWrapper } from "@/components";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Contact } from "@/interfaces";
-import { ContacSchema } from "@/schemas";
 import { toast } from "react-toastify";
 import { Icon } from "../common/icon";
 import { FaUser } from "react-icons/fa";
-import { MdAlternateEmail } from "react-icons/md";
 import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
-import { sendEmailContact } from "@/grpc/utils";
-import { STATUS } from "@/utils";
+import { FORM_INIT, STATUS } from "@/utils";
 import { AuthorFragment } from "@/generated/graphql";
+import { sendEmailContact } from "@/action";
+import { useFormState, useFormStatus } from "react-dom";
+import { MdAlternateEmail } from "react-icons/md";
+import { SubmitButton } from "../common/submit-button";
+
 interface Props {
-  author: AuthorFragment
+  author: AuthorFragment;
 }
 export const ContactSection = ({ author }: Props) => {
+  const [state, dispatch] = useFormState(sendEmailContact, FORM_INIT);
 
-  const { register, handleSubmit, reset, formState } = useForm<Contact>({
-    mode: "onChange",
-    resolver: zodResolver(ContacSchema),
-  });
-  const { errors, isValid, isSubmitting } = formState;
+  const { errors, status, message } = state;
 
-  const onSubmit = async (data: Contact) => {
+  if (status === STATUS.OK) {
+    toast.success(message);
+  }
 
-    try {
-      const message = `Nombre: ${data.name}\nEmail: ${data.email}\nTeléfono: ${data.phone}\nMensaje: ${data.message}`;
-      const res = await sendEmailContact(data.affair, message);
-      if (res.status === STATUS.OK) {
-        reset();
-        toast.success("Gracias por contactarte conmigo. Me pondré en contacto contigo lo más pronto posible");
-        return;
-      }
-      toast.error("Ocurrió un error al enviar el mensaje");
-    } catch (error) {
-      toast.error("Ocurrió un error al enviar el mensaje");
-    }
-  };
+  if (status !== STATUS.INITIAL && status !== STATUS.OK) {
+    toast.error(message);
+  }
 
-  const getAttrs = (name: keyof Contact) => {
-    const attrs = register(name);
+  const getAttrs = (name: keyof Contact): InputProps => {
     return {
-      ...attrs,
+      name,
       variant: "bordered",
       className: "mb-2",
-      color: errors[name]?.message ? "danger" : "default",
-      errorMessage: errors[name]?.message,
-    } as InputProps;
+      color: errors?.[name] ? "danger" : "default",
+      errorMessage: errors?.[name]?.join(", "),
+    };
   };
+
   return (
     <>
       <section
         className={sectionWrapper({
-          class: "z-20 mt-16 lg:mt-44 max-w-4xl",
+          class: "z-20 mt-16 lg:mt-44 max-w-4xl mx-auto",
         })}
       >
         <div className="flex flex-col gap-8">
@@ -167,7 +156,7 @@ export const ContactSection = ({ author }: Props) => {
                   </div>
                   <div className="absolute bottom-0 right-0 h-1/2 w-1/2 bg-white rounded-full opacity-10 transform translate-x-10 translate-y-10"></div>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} method="POST">
+                <form action={dispatch}>
                   <Input
                     {...getAttrs("name")}
                     label="Nombres"
@@ -215,16 +204,13 @@ export const ContactSection = ({ author }: Props) => {
                     placeholder="Escribe tu mensaje"
                     aria-label="Mensaje"
                   />
-                  <Button
-                    type="submit"
+                  <SubmitButton
                     className="w-full"
                     color="primary"
-                    isDisabled={!isValid}
-                    isLoading={isSubmitting}
                     aria-label="Enviar mensaje"
                   >
                     Enviar mensaje
-                  </Button>
+                  </SubmitButton>
                 </form>
               </div>
             </CardBody>

@@ -4,13 +4,13 @@ import { Footer } from "@/components/common/footer";
 import { LayoutProps } from "@/interfaces";
 import clsx from "clsx";
 import React from "react";
-import { getAllChatpdfs } from "@/grpc/chatpdf";
+import { getpGetAllChatpdfs } from "@/grpc/chatpdf";
 import { ChatCard } from "@/components/chatpdf/chat-card";
 
 
 const IALayout = async ({ children, }: LayoutProps) => {
 
-  const data = await getAllChatpdfs();
+  const data = await getpGetAllChatpdfs();
 
   return (
     <main className="lg:h-[calc(100vh-4rem)] flex flex-col gap-2 lg:flex-row">

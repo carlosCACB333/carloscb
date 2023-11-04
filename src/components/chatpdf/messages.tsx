@@ -2,23 +2,28 @@
 
 import React, { useEffect } from "react";
 import { Message, useChat } from "ai/react";
-import { Input } from "@nextui-org/react";
+import { CircularProgress, Input } from "@nextui-org/react";
 import { MessageItem } from "./message-item";
+import { SubmitButton } from "../common/submit-button";
+import { clearChatpdfMessage } from "@/action/chatpdf";
 
 interface Props {
   chatId: string;
   initialMessages: Message[];
 }
 export const Messages = ({ chatId, initialMessages }: Props) => {
-  const { input, handleInputChange, handleSubmit, messages } = useChat({
-    initialMessages,
-    api: "/api/boot",
-    body: {
-      chatId,
-    },
-  });
-
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const clearChatpdfMessageWithId = clearChatpdfMessage.bind(null, chatId);
+
+  const { input, handleInputChange, handleSubmit, messages, isLoading } =
+    useChat({
+      initialMessages,
+      api: "/api/boot",
+      body: {
+        chatId,
+      },
+    });
+
   useEffect(() => {
     containerRef.current?.scrollTo({
       top: containerRef.current.scrollHeight,
@@ -39,6 +44,21 @@ export const Messages = ({ chatId, initialMessages }: Props) => {
         {messages?.map((message) => {
           return <MessageItem key={message.id} message={message} />;
         })}
+        {isLoading && (
+          <div className="flex justify-center">
+            <CircularProgress size="sm" />
+          </div>
+        )}
+        {messages?.length > 0 && (
+          <form
+            className="mt-4 flex justify-center"
+            action={clearChatpdfMessageWithId}
+          >
+            <SubmitButton variant="flat" color="danger">
+              Limpiar chat
+            </SubmitButton>
+          </form>
+        )}
       </main>
 
       <footer className="sticky bottom-0 bg-background">
