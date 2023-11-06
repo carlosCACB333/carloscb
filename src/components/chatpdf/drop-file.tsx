@@ -1,7 +1,6 @@
 "use client";
 
 import { STATUS, X_API_KEY } from "@/utils";
-import { useAuth } from "@clerk/nextjs";
 import { CircularProgress } from "@nextui-org/react";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
@@ -13,7 +12,6 @@ import { toast } from "react-toastify";
 export const DropFile = () => {
   const { refresh } = useRouter();
   const [loading, setLoading] = useState(false);
-  const { getToken } = useAuth();
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       try {
@@ -25,7 +23,7 @@ export const DropFile = () => {
         const res = await fetch("/api/chatpdf", {
           method: "POST",
           headers: {
-            "x-api-key": X_API_KEY
+            "x-api-key": X_API_KEY,
           },
           body: form,
         });

@@ -1,25 +1,24 @@
+
+apiVersion: storage.k8s.io/v1 
+kind: StorageClass
+metadata:
+  name: manual
+provisioner: k8s.io/minikube-hostpath
+parameters:
+  type: directory
+
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: front-pvc
+  name: front-volume
 spec:
-  storageClassName: default-class
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
+
 ---
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: front-pv
-spec:
-  storageClassName: default-class
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /mnt/data
-    
+

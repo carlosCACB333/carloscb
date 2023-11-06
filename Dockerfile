@@ -28,5 +28,6 @@ COPY --from=build /app/next.config.js ./
 COPY --from=build /app/next-sitemap.config.js ./
 COPY --from=build /app/LICENSE ./
 COPY --from=build /app/README.md ./
+RUN rm .env
 EXPOSE 3000
 CMD ["yarn", "start"]

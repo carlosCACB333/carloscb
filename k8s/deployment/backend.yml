@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: back
-          image: carloscb8080/carloscb-back:0.0.2-prerelease-test
+          image: carloscb8080/carloscb-back:0.0.3-prerelease-test
           ports:
             - containerPort: 8081
           envFrom:
