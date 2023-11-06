@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Button,
   Card,
   CardBody,
   Link,
@@ -12,14 +11,13 @@ import {
 
 import { title, subtitle, titleWrapper, sectionWrapper } from "@/components";
 import { Contact } from "@/interfaces";
-import { toast } from "react-toastify";
 import { Icon } from "../common/icon";
 import { FaUser } from "react-icons/fa";
 import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
-import { FORM_INIT, STATUS } from "@/utils";
+import { FORM_INIT } from "@/utils";
 import { AuthorFragment } from "@/generated/graphql";
 import { sendEmailContact } from "@/action";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { MdAlternateEmail } from "react-icons/md";
 import { SubmitButton } from "../common/submit-button";
 
@@ -29,15 +27,7 @@ interface Props {
 export const ContactSection = ({ author }: Props) => {
   const [state, dispatch] = useFormState(sendEmailContact, FORM_INIT);
 
-  const { errors, status, message } = state;
-
-  if (status === STATUS.OK) {
-    toast.success(message);
-  }
-
-  if (status !== STATUS.INITIAL && status !== STATUS.OK) {
-    toast.error(message);
-  }
+  const { errors } = state;
 
   const getAttrs = (name: keyof Contact): InputProps => {
     return {

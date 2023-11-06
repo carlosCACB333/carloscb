@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: redis-deployment
   labels:
-    app: cb
+    app: carloscb
     service: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cb
+      app: carloscb
       service: redis
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: cb
+        app: carloscb
         service: redis
     spec:
       containers:
@@ -26,11 +26,11 @@ spec:
             - containerPort: 6379
           resources:
             limits:
-              cpu: 500m
-              memory: 400Mi
+              cpu: 100m
+              memory: 100Mi
             requests:
-              cpu: 500m
-              memory: 400Mi
+              cpu: 82m
+              memory: 80Mi
 
 ---
 apiVersion: v1
@@ -39,7 +39,7 @@ metadata:
   name: redis-service
 spec:
   selector:
-    app: cb
+    app: carloscb
     service: redis
   type: ClusterIP
   ports:

@@ -1,4 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs";
+import { __PROD__ } from "./utils";
 
 export default authMiddleware({
   publicRoutes: [
@@ -11,8 +12,8 @@ export default authMiddleware({
     "/certificate(/.*)?",
     "/auth(/.*)?",
     "/ia",
-  ]
-
+  ],
+  debug: !__PROD__,
 });
 
 export const config = {

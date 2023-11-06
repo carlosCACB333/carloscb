@@ -6,7 +6,6 @@ import { execSync } from "child_process";
 import { revalidatePath } from "next/cache";
 import { X_API_KEY, formatDate } from "@/utils";
 
-
 const defaultSearchResult: SearchResultItem[] = [
   {
     content: "Lista de blogs",
@@ -59,10 +58,13 @@ export async function POST(req: NextRequest) {
   const apiKey = req.headers.get("x-api-key");
   if (apiKey != X_API_KEY) {
     // 401 Unauthorized
-    return NextResponse.json({
-      ok: false,
-      error: "Unauthorized",
-    }, { status: 401 });
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Unauthorized",
+      },
+      { status: 401 }
+    );
   }
 
   const { posts, projects } = await getSdk().getSearchMeta({});
@@ -94,7 +96,7 @@ export async function POST(req: NextRequest) {
   fs.writeFileSync("./public/search-meta.json", JSON.stringify(searchResult));
 
   //  Rebuild sitemap.xml
-  execSync("yarn run postbuild");
+  // execSync("yarn run postbuild");
 
   // Revalidate all pages
   revalidatePath("/");

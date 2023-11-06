@@ -37,5 +37,5 @@ next-env.d.ts
 compose.prod.yml
 
 backend/tmp/*
-k8s/*.config.yml
-k8s/*.secret.yml
+k8s/configmap/*
+k8s/secret/*

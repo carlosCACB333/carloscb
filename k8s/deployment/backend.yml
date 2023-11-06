@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   name: back-deployment
   labels:
-    app: cb
+    app: carloscb
     service: back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cb
+      app: carloscb
       service: back
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: cb
+        app: carloscb
         service: back
     spec:
       containers:
         - name: back
-          image: carloscb8080/carloscb-back:0.0.0-prerelease-test
+          image: carloscb8080/carloscb-back:0.0.2-prerelease-test
           ports:
             - containerPort: 8081
           envFrom:
@@ -29,11 +29,11 @@ spec:
                 name: back-config
           resources:
             limits:
-              cpu: 500m
-              memory: 400Mi
+              cpu: 150m
+              memory: 150Mi
             requests:
-              cpu: 500m
-              memory: 400Mi
+              cpu: 100m
+              memory: 100Mi
 
 ---
 apiVersion: v1
@@ -42,7 +42,7 @@ metadata:
   name: back-service
 spec:
   selector:
-    app: cb
+    app: carloscb
     service: back
   type: NodePort
   ports:
