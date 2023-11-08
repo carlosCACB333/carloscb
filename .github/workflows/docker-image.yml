@@ -27,6 +27,7 @@ jobs:
       - name: set env variables
         run: |
           echo "STAGE=production" >> .env
+          echo "NODE_ENV=production" >> .env
           echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=/auth/sign-in" >> .env
           echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=/auth/sign-up" >> .env
 

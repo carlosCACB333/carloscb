@@ -95,9 +95,6 @@ export async function POST(req: NextRequest) {
 
   fs.writeFileSync("./public/search-meta.json", JSON.stringify(searchResult));
 
-  //  Rebuild sitemap.xml
-  // execSync("yarn run postbuild");
-
   // Revalidate all pages
   revalidatePath("/");
 

@@ -7,11 +7,18 @@ RUN yarn install --frozen-lockfile
 CMD ["yarn", "dev"]
 
 
-FROM base as build
+
+FROM base as deps
 WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package.json yarn.lock ./
+RUN yarn --frozen-lockfile
+
+
+FROM base as builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN rm -rf backend/
-RUN yarn install --frozen-lockfile
 RUN yarn build
 
 
@@ -19,15 +26,16 @@ FROM base as production
 WORKDIR /app
 ENV NODE_ENV=production
 ENV STAGE=production
-COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/yarn.lock ./yarn.lock
-COPY --from=build /app/.next/standalone ./
-COPY --from=build /app/.next/static ./.next/static
-COPY --from=build /app/public ./public
-COPY --from=build /app/next.config.js ./
-COPY --from=build /app/next-sitemap.config.js ./
-COPY --from=build /app/LICENSE ./
-COPY --from=build /app/README.md ./
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/LICENSE ./
 RUN rm .env
+USER nextjs
+ENV HOSTNAME "0.0.0.0"
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["node", "server.js"]

@@ -23,8 +23,8 @@ services:
 
   back:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
       target: ${STAGE}
     image: ${BACK_IMAGE}
     hostname: ${BACK_HOST}
