@@ -6,7 +6,7 @@ WORKDIR /app
 ENV STAGE=development
 RUN curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 
-COPY go.mod go.sum ./
+COPY ./go.mod ./.sum ./
 
 #PROTOBUF COMPILER
 RUN apt-get update && apt-get install -y protobuf-compiler
@@ -34,7 +34,7 @@ CMD [ "air"]
 
 FROM base as builder
 WORKDIR /app
-COPY go.mod go.sum ./
+COPY ./go.mod ./go.sum ./
 RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
