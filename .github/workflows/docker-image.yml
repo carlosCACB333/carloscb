@@ -61,8 +61,8 @@ jobs:
       - name: Build and push back image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./backend/Dockerfile
+          context: ./backend
+          file: Dockerfile
           push: true
           tags: ${{ env.BACK_IMAGE }}
           target: production
