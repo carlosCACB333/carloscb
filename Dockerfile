@@ -11,7 +11,7 @@ CMD ["yarn", "dev"]
 FROM base as deps
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
-COPY ./package.json ./yarn.lock ./
+COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
 
 

@@ -62,7 +62,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./backend
-          file: ./Dockerfile
+          file: ./backend/Dockerfile
           push: true
           tags: ${{ env.BACK_IMAGE }}
           target: production
