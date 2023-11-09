@@ -1,4 +1,5 @@
 import { LayoutProps } from "@/interfaces";
+import { Metadata } from "next";
 import React from "react";
 
 const IALayout = ({ children }: LayoutProps) => {
@@ -6,3 +7,36 @@ const IALayout = ({ children }: LayoutProps) => {
 };
 
 export default IALayout;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: {
+      default: "IA",
+      template: `IA | %s`,
+    },
+    keywords: [
+      "ia",
+      "inteligencia artificial",
+      "chat",
+      "pdf",
+      "chat-pdf",
+      "openai",
+      "gpt-3",
+    ],
+    openGraph: {
+      type: "website",
+      title: "IA",
+      description: "Aquí encontrarás la inteligencia artificial que necesitas",
+      locale: "es_PE",
+      siteName: "carloscb",
+      images: [
+        {
+          url: "/ia.webp",
+          width: 464,
+          height: 488,
+          alt: "IA",
+        },
+      ],
+    },
+  };
+}

@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 export default async function IAPage() {
   return (
     <section className="flex-1 flex justify-center items-center">

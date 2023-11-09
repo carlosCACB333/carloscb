@@ -1,4 +1,3 @@
-
 import { DropFile } from "@/components/chatpdf/drop-file";
 import { Footer } from "@/components/common/footer";
 import { LayoutProps } from "@/interfaces";
@@ -6,10 +5,9 @@ import clsx from "clsx";
 import React from "react";
 import { getpGetAllChatpdfs } from "@/grpc/chatpdf";
 import { ChatCard } from "@/components/chatpdf/chat-card";
+import { Metadata, ResolvingMetadata } from "next";
 
-
-const IALayout = async ({ children, }: LayoutProps) => {
-
+const IALayout = async ({ children }: LayoutProps) => {
   const data = await getpGetAllChatpdfs();
 
   return (
@@ -42,3 +40,26 @@ const IALayout = async ({ children, }: LayoutProps) => {
 };
 
 export default IALayout;
+
+export async function generateMetadata(
+  {},
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentMeta = await parent;
+  const { openGraph } = parentMeta;
+  return {
+    title: {
+      default: "Chat-pdf",
+      template: "Chat-pdf | %s",
+    },
+    description:
+      "Chatea directamente con una inteligencia artificial sobre tus pdfs",
+    openGraph: {
+      title: "chat-pdf",
+      description:
+        "Chatea directamente con una inteligencia artificial sobre tus pdfs",
+      images: openGraph?.images,
+      type: "website",
+    },
+  };
+}

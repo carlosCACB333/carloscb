@@ -1,18 +1,19 @@
 FROM node:20-alpine as base
 
-FROM base as development
-WORKDIR /app
-COPY . .
-RUN yarn install --frozen-lockfile
-CMD ["yarn", "dev"]
-
-
-
 FROM base as deps
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
+
+
+FROM base as development
+WORKDIR /app
+ENV NODE_ENV=development
+ENV STAGE=development
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+CMD [ "yarn", "dev"]
 
 
 FROM base as builder

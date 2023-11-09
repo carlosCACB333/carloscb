@@ -1,5 +1,6 @@
 import { title } from "@/components";
 import { Footer } from "@/components/common/footer";
+import { Metadata } from "next";
 import Link from "next/link";
 import { FaRobot } from "react-icons/fa";
 
@@ -42,4 +43,10 @@ export default async function IAPage() {
       <Footer />
     </div>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    description: "Aquí encontrarás la inteligencia artificial que necesitas",
+  };
 }

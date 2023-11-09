@@ -11,8 +11,8 @@ export const SubmitButton = ({ children, isIconOnly, ...props }: Props) => {
       type="submit"
       isLoading={pending}
       isDisabled={pending}
-      {...props}
       isIconOnly={isIconOnly}
+      {...props}
     >
       {isIconOnly && pending ? null : children}
     </Button>

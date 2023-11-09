@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 export const deleteChatpdf = async (id: string): Promise<FormState<null>> => {
   const res = await grpcDeleteChatpdf(id);
-  revalidatePath("/ia/chat-pdf");
+  revalidatePath("/ia/chat-pdf", "layout");
   return {
     status: res.status,
     message: res.message,
@@ -17,7 +17,5 @@ export const deleteChatpdf = async (id: string): Promise<FormState<null>> => {
 };
 
 export const clearChatpdfMessage = async (id: string) => {
-  const res = await grpcClearChatpdfMessage(id);
-  revalidatePath("/ia/chat-pdf");
-  redirect("/ia/chat-pdf/" + id);
+  return grpcClearChatpdfMessage(id);
 };

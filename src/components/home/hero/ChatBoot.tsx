@@ -1,5 +1,5 @@
 "use client";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Progress } from "@nextui-org/react";
 import { Message } from "ai";
 import { useChat } from "ai/react";
 import clsx from "clsx";
@@ -9,14 +9,21 @@ import { MdMessage } from "react-icons/md";
 
 import { motion } from "framer-motion";
 import { FaRobot } from "react-icons/fa";
+import { BootMessageItem } from "@/components/chatpdf/boot-message-item";
 
 export const ChatBoot = () => {
   const [isOpenTooltip, setIsopenTooltip] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { input, handleInputChange, handleSubmit, messages, isLoading } =
-    useChat({
-      api: "/api/assistant",
-    });
+  const {
+    input,
+    handleInputChange,
+    handleSubmit,
+    messages,
+    isLoading,
+    setMessages,
+  } = useChat({
+    api: "/api/assistant",
+  });
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -88,7 +95,7 @@ export const ChatBoot = () => {
             className="p-4 scroll overflow-y-auto w-[90vw] sm:w-96 h-[60vh] sm:h-[34rem]"
             ref={containerRef}
           >
-            <MessageItem
+            <BootMessageItem
               message={{
                 content:
                   "Hola, soy el asistente virtual de Carlos, ¿en qué puedo ayudarte?",
@@ -97,12 +104,27 @@ export const ChatBoot = () => {
               }}
             />
             {messages.map((m, i) => (
-              <MessageItem
+              <BootMessageItem
                 key={m.id}
                 message={m}
                 isTyping={isLoading && i === messages.length - 1}
               />
             ))}
+
+            <div className="my-8 px-6 ">
+              {messages?.length > 0 && (
+                <Button
+                  fullWidth
+                  variant="light"
+                  color="danger"
+                  onClick={() => {
+                    setMessages([]);
+                  }}
+                >
+                  Limpiar chat
+                </Button>
+              )}
+            </div>
           </div>
           <footer>
             <form className="m-4" onSubmit={handleSubmit}>
@@ -123,6 +145,8 @@ export const ChatBoot = () => {
                     size="sm"
                     type="submit"
                     aria-label="Enviar mensaje"
+                    disabled={input === "" || isLoading}
+                    isLoading={isLoading}
                   >
                     <BiSend />
                   </Button>
@@ -133,49 +157,5 @@ export const ChatBoot = () => {
         </motion.div>
       </div>
     </aside>
-  );
-};
-
-const MessageItem = ({
-  message,
-  isTyping = false,
-}: {
-  message: Message;
-  isTyping?: boolean;
-}) => {
-  return (
-    <div
-      key={message.id}
-      className={clsx(
-        "flex gap-1 items-end justify-end my-2",
-        { "flex-row ml-6": message.role === "user" },
-        { "flex-row-reverse mr-6": message.role !== "user" }
-      )}
-    >
-      <span
-        className={clsx("px-4 py-3 rounded-xl inline-block ", {
-          "rounded-br-none bg-primary": message.role === "user",
-          "rounded-bl-none bg-primary-900 dark:bg-primary-100":
-            message.role !== "user",
-        })}
-        style={{
-          overflowWrap: "anywhere",
-        }}
-      >
-        {message.content}
-      </span>
-
-      <div className="text-2xl">
-        {message.role === "user" ? (
-          <BiUser className="text-primary-500" />
-        ) : (
-          <FaRobot
-            className={clsx("text-primary-500", {
-              "animate-bounce": isTyping,
-            })}
-          />
-        )}
-      </div>
-    </div>
   );
 };
