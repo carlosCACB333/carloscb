@@ -1,21 +1,20 @@
-import { ColorScale, nextui } from '@nextui-org/react';
-import type { Config } from 'tailwindcss'
+import { ColorScale, nextui } from "@nextui-org/react";
+import type { Config } from "tailwindcss";
 
 const text = {
   title: "#d4ddfb",
   body: "#bdc8f0",
 };
 
-
 const primary: ColorScale = {
   DEFAULT: "#7390f4",
-  foreground: "white",
+  foreground: "black",
   50: "#0f121a",
   100: "#232a3c",
   200: "#374156",
   300: "#4b578f",
   400: "#588aef",
-  500: "#6b9aec",
+  500: "#7390f4",
   600: "#7ca6e9",
   700: "#8da2e6",
   800: "#9eaee3",
@@ -95,14 +94,11 @@ const config: Config = {
           "100%": {
             transform: "translateY(0)",
           },
-        }
-
-
+        },
       },
       animation: {
         heartbeat: "heartbeat 1s ease-in-out infinite",
         levitate: "levitate 5s ease infinite",
-
       },
     },
   },
@@ -155,5 +151,5 @@ const config: Config = {
       },
     }),
   ],
-}
-export default config
+};
+export default config;

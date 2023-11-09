@@ -21,7 +21,8 @@ export const BootMessageItem = ({
     >
       <span
         className={clsx("px-4 py-3 rounded-xl inline-block ", {
-          "rounded-br-none bg-primary": message.role === "user",
+          "rounded-br-none bg-primary text-primary-foreground":
+            message.role === "user",
           "rounded-bl-none bg-primary-900 dark:bg-primary-100":
             message.role !== "user",
         })}

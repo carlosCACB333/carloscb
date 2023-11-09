@@ -1,14 +1,11 @@
 "use client";
-import { Button, Input, Progress } from "@nextui-org/react";
-import { Message } from "ai";
+import { Button, Input } from "@nextui-org/react";
 import { useChat } from "ai/react";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
-import { BiSend, BiUser } from "react-icons/bi";
+import { BiSend } from "react-icons/bi";
 import { MdMessage } from "react-icons/md";
-
 import { motion } from "framer-motion";
-import { FaRobot } from "react-icons/fa";
 import { BootMessageItem } from "@/components/chatpdf/boot-message-item";
 
 export const ChatBoot = () => {
@@ -43,7 +40,7 @@ export const ChatBoot = () => {
     <aside className="fixed bottom-[1rem] right-[1rem] z-40 ">
       <div className="relative">
         <Button
-          className="z-50 shadow-2xl"
+          className="z-50 shadow-2xl text-foreground"
           isIconOnly
           color="primary"
           radius="full"
@@ -59,7 +56,7 @@ export const ChatBoot = () => {
         {isOpenTooltip && (
           <div
             className={clsx(
-              "absolute top-0.5 right-full mr-3 bg-primary rounded-lg p-2 whitespace-nowrap animate-levitate",
+              "absolute top-0.5 right-full mr-3 bg-primary text-primary-foreground rounded-lg p-2 whitespace-nowrap animate-levitate",
               "before:content-[''] before:absolute before:bottom-[0.8rem] before:left-[calc(100%-0.5rem)] before:bg-primary before:w-3 before:h-3 before:rotate-45"
             )}
           >

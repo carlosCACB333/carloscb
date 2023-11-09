@@ -9,6 +9,7 @@ import python from "@/assets/img/python.png";
 import Image from "next/image";
 import clsx from "clsx";
 import { AuthorFragment } from "@/generated/graphql";
+import { TbBrandTypescript } from "react-icons/tb";
 
 interface Props {
   author: AuthorFragment;
@@ -28,16 +29,14 @@ export const FloatingComponents = ({ author }: Props) => {
           color={colors.blue[500]}
           aria-label="ts"
         >
-          <span className="font-extrabold">TS</span>
+          <TbBrandTypescript size={30} />
         </IconCard>
 
         <div
-          className={
-            clsx(
-              "absolute -top-[260px] right-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
-              "bg-content1 p-4 rounded-lg  shadow-lg"
-            )
-          }
+          className={clsx(
+            "absolute -top-[260px] right-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
+            "bg-content1 p-4 rounded-lg  shadow-lg"
+          )}
         >
           <Image src={python} alt="Python" />
         </div>
@@ -80,12 +79,10 @@ export const FloatingComponents = ({ author }: Props) => {
         </div>
 
         <div
-          className={
-            clsx(
-              "absolute right-[60px] top-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
-              "bg-content1 p-4 rounded-lg shadow-lg"
-            )
-          }
+          className={clsx(
+            "absolute right-[60px] top-[100px] animate-[levitate_12s_ease_infinite_1s] z-0 max-w-fit",
+            "bg-content1 p-4 rounded-lg shadow-lg"
+          )}
         >
           <FaAws aria-label="aws" size={100} />
         </div>

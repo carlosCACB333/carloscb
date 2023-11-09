@@ -1,8 +1,5 @@
 import { FC } from "react";
-import {
-  Avatar,
-  Link,
-} from "@nextui-org/react";
+import { Avatar, Link } from "@nextui-org/react";
 import { clsx } from "@nextui-org/shared-utils";
 import NextImage from "next/image";
 
@@ -10,9 +7,9 @@ interface Props {
   className?: string;
   fullName: string;
   username?: string | null;
-  detail: string
-  footer: string
-  avatar: string
+  detail: string;
+  footer: string;
+  avatar: string;
 }
 
 export const UserGitHubCard: FC<Props> = ({
@@ -21,10 +18,15 @@ export const UserGitHubCard: FC<Props> = ({
   detail,
   footer,
   avatar,
-  className }) => {
-
+  className,
+}) => {
   return (
-    <div className={clsx("bg-content1 p-4 rounded-lg shadow-lg max-w-[300px]", className)}>
+    <div
+      className={clsx(
+        "bg-content1 p-4 rounded-lg shadow-lg max-w-[300px]",
+        className
+      )}
+    >
       <div className="flex justify-between">
         <div className="flex gap-5">
           <Avatar
@@ -44,14 +46,12 @@ export const UserGitHubCard: FC<Props> = ({
             src={avatar}
           />
           <div className="flex flex-col items-start justify-center">
-            <h4 className="text-sm font-semibold leading-none ">
-              {fullName}
-            </h4>
+            <p className="text-sm font-semibold leading-none ">{fullName}</p>
             <Link
               className="text-sm"
               href={username!}
               target="_blank"
-              aria-label="Github"
+              aria-label={"@+" + username?.split("/").at(-1)}
             >
               @{username?.split("/").at(-1)}
             </Link>

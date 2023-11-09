@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Message, useChat } from "ai/react";
-import { Button, Input, Progress } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import { clearChatpdfMessage } from "@/action/chatpdf";
 import { STATUS } from "@/utils";
 import { BootMessageItem } from "./boot-message-item";

@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import "katex/dist/katex.min.css";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { clsx } from "clsx";
 import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
@@ -10,10 +10,7 @@ import { Cmdk } from "@/components/common/cmdk";
 import { getAuthor } from "@/action";
 import { LayoutProps } from "@/interfaces";
 
-export default async function RootLayout({
-  children,
-}: LayoutProps) {
-
+export default async function RootLayout({ children }: LayoutProps) {
   return (
     <html suppressHydrationWarning dir="ltr" lang="es">
       <head />
@@ -23,9 +20,7 @@ export default async function RootLayout({
           fontRoboto.className
         )}
       >
-        <Providers
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
-        >
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           {children}
           <Cmdk />
         </Providers>
@@ -76,3 +71,14 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7fbff" },
+    { media: "(prefers-color-scheme: dark)", color: "#07090e" },
+  ],
+};

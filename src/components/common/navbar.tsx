@@ -63,10 +63,17 @@ const SearchButton = ({ onClick }: { onClick: () => void }) => {
     >
       Buscar...
     </Button>
-  )
+  );
 };
 
-const Navbar: FC<NavbarProps> = ({ authorGithub, authorLinkedin, children, routes, mobileRoutes = [], NavItems, }) => {
+const Navbar: FC<NavbarProps> = ({
+  authorGithub,
+  authorLinkedin,
+  children,
+  routes,
+  mobileRoutes = [],
+  NavItems,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false);
 
   const pathname = usePathname();
@@ -76,7 +83,10 @@ const Navbar: FC<NavbarProps> = ({ authorGithub, authorLinkedin, children, route
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const navLinkClasses = clsx(link({ color: "foreground" }), "data-[active=true]:text-primary");
+  const navLinkClasses = clsx(
+    link({ color: "foreground" }),
+    "data-[active=true]:text-primary"
+  );
 
   return (
     <NextUINavbar
@@ -88,35 +98,35 @@ const Navbar: FC<NavbarProps> = ({ authorGithub, authorLinkedin, children, route
       position="sticky"
       onMenuOpenChange={setIsMenuOpen}
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink
-            aria-label="Home"
-            className="flex justify-start items-center gap-2 tap-highlight-transparent transition-opacity active:opacity-50"
-            href="/"
-          >
-            <Icon name="logo" className="fill-primary" height={40} width={40} />
-          </NextLink>
-        </NavbarBrand>
-        <ol className="hidden sm:flex gap-4 justify-start items-center">
-          {routes.map((route) => (
-            <NavbarItem key={route.key}>
-              <NextLink
-                className={navLinkClasses}
-                color="foreground"
-                data-active={includes(pathname, route.path)}
-                href={route.path}
-                aria-label={route.title}
-              >
-                {route.title}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ol>
+      <NavbarBrand className="gap-3 max-w-fit">
+        <NextLink
+          aria-label="Home"
+          className="flex justify-start items-center gap-2 tap-highlight-transparent transition-opacity active:opacity-50"
+          href="/"
+        >
+          <Icon name="logo" className="fill-primary" height={40} width={40} />
+        </NextLink>
+      </NavbarBrand>
+      <NavbarContent
+        className=" hidden sm:flex basis-1/5 sm:basis-full"
+        justify="start"
+      >
+        {routes.map((route) => (
+          <NavbarItem key={route.key}>
+            <NextLink
+              className={navLinkClasses}
+              color="foreground"
+              data-active={includes(pathname, route.path)}
+              href={route.path}
+              aria-label={route.title}
+            >
+              {route.title}
+            </NextLink>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent className="flex w-full gap-2" justify="end">
-
         <NavbarItem className="flex h-full items-center">
           <Link
             isExternal
@@ -190,7 +200,6 @@ const Navbar: FC<NavbarProps> = ({ authorGithub, authorLinkedin, children, route
   );
 };
 
-
 interface Props {
   routes: Route[];
   mobileRoutes: Route[];
@@ -199,17 +208,12 @@ interface Props {
   authorLinkedin: string;
 }
 
-
-const LoginButton = () => (<Button
-  color="primary"
-  aria-label="Login"
-  as={NextLink}
-  href="/auth/sign-in"
->
-  Login
-  <FiLogIn className="mt-px text-foreground" size={20} />
-</Button>
-)
+const LoginButton = () => (
+  <Button color="primary" aria-label="Login" as={NextLink} href="/auth/sign-in">
+    Login
+    <FiLogIn className="mt-px text-primary-foreground" size={20} />
+  </Button>
+);
 
 export const NavbarPublic = (props: Props) => {
   return (
@@ -222,7 +226,7 @@ export const NavbarPublic = (props: Props) => {
       )}
     />
   );
-}
+};
 
 export const NavbarPrivate = (props: Props) => {
   const { userId } = useAuth();
@@ -232,14 +236,9 @@ export const NavbarPrivate = (props: Props) => {
       {...props}
       NavItems={() => (
         <NavbarItem className="flex h-full items-center">
-          {isAuth ? (
-            <UserButton userProfileUrl="/me" />
-          ) : (
-            <LoginButton />
-          )
-          }
+          {isAuth ? <UserButton userProfileUrl="/me" /> : <LoginButton />}
         </NavbarItem>
       )}
     />
   );
-}
+};

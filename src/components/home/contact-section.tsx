@@ -93,7 +93,7 @@ export const ContactSection = ({ author }: Props) => {
                         <Icon
                           name="linkedin"
                           className="mr-2 "
-                          aria-label="linkedin"
+                          aria-label="Linkedin"
                         />
                         Linkedin
                       </Link>
@@ -108,7 +108,7 @@ export const ContactSection = ({ author }: Props) => {
                         <Icon
                           name="whatsapp"
                           className="mr-2 "
-                          aria-label="Whatsapp"
+                          aria-label="WhatsApp"
                         />
                         WhatsApp
                       </Link>
@@ -123,7 +123,7 @@ export const ContactSection = ({ author }: Props) => {
                         <Icon
                           name="email"
                           className="mr-2 "
-                          aria-label="email"
+                          aria-label="Email"
                         />
                         Email
                       </Link>
@@ -138,7 +138,7 @@ export const ContactSection = ({ author }: Props) => {
                         <Icon
                           name="git"
                           className="mr-2 "
-                          aria-label="github"
+                          aria-label="GitHub"
                         />
                         GitHub
                       </Link>
@@ -189,7 +189,7 @@ export const ContactSection = ({ author }: Props) => {
                     aria-label="asunto"
                   />
                   <Textarea
-                    {...getAttrs("message")}
+                    {...(getAttrs("message") as any)}
                     label="Mensaje"
                     placeholder="Escribe tu mensaje"
                     aria-label="Mensaje"
