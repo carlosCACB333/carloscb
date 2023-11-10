@@ -1,7 +1,7 @@
 "use server";
 
 import { Locale, Stage } from "@/generated/graphql";
-import { AUTHOR_EMAIL, } from "@/utils";
+import { AUTHOR_EMAIL } from "@/utils";
 import { getSdk } from "@/utils/sdk";
 
 export const getAuthor = async (locale: Locale) => {

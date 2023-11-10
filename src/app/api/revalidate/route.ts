@@ -1,10 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
 import { SearchResultItem } from "@/interfaces";
-import { getSdk } from "@/utils/sdk";
-import { execSync } from "child_process";
-import { revalidatePath } from "next/cache";
 import { X_API_KEY, formatDate } from "@/utils";
+import { getSdk } from "@/utils/sdk";
+import fs from "fs";
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
 
 const defaultSearchResult: SearchResultItem[] = [
   {

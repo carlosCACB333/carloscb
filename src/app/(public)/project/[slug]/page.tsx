@@ -1,12 +1,11 @@
+import { MDXContent } from "@/components/md/MDXContent";
+import { ProjectCarrousel } from "@/components/project/ProjectCarrousel";
 import { Project, Stage } from "@/generated/graphql";
 import { PageProps } from "@/interfaces";
-import { REVALIDATE, } from "@/utils";
+import { REVALIDATE } from "@/utils";
+import { getSdk } from "@/utils/sdk";
 import { Metadata, ResolvedMetadata } from "next";
 import { notFound } from "next/navigation";
-import React from "react";
-import { ProjectCarrousel } from "@/components/project/ProjectCarrousel";
-import { getSdk } from "@/utils/sdk";
-import { MDXContent } from "@/components/md/MDXContent";
 
 const ProjectPage = async ({ params, searchParams }: PageProps) => {
   const { project } = await getSdk().projectBySlug({
@@ -40,7 +39,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = REVALIDATE
+export const revalidate = REVALIDATE;
 
 export async function generateMetadata(
   { params }: PageProps,

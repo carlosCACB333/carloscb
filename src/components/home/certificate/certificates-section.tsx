@@ -1,11 +1,11 @@
-import "swiper/css/pagination";
-import { Button } from "@nextui-org/react";
+import { sectionWrapper, subtitle, title } from "@/components";
+import { Stage } from "@/generated/graphql";
+import { getSdk } from "@/utils/sdk";
+import { Button } from "@nextui-org/button";
 import { ArrowRightIcon } from "@nextui-org/shared-icons";
 import NextLink from "next/link";
-import { Stage } from "@/generated/graphql";
 import { AiFillSafetyCertificate } from "react-icons/ai";
-import { getSdk } from "@/utils/sdk";
-import { sectionWrapper, subtitle, title } from "@/components";
+import "swiper/css/pagination";
 import { CertificateCarrousel } from "./certificates-carrousel";
 
 export const CertificateSection = async () => {

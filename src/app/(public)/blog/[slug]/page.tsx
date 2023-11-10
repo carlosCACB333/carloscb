@@ -10,7 +10,6 @@ import { Button } from "@nextui-org/button";
 import { Metadata, ResolvedMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
 const BlogPage = async ({ params }: PageProps) => {
@@ -58,7 +57,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = REVALIDATE
+export const revalidate = REVALIDATE;
 
 export async function generateMetadata(
   { params }: PageProps,

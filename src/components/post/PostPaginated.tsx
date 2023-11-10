@@ -1,11 +1,12 @@
 "use client";
-import { useDebounce, usePagination } from "@/hooks";
 import { searchPosts } from "@/action";
-import { PostCard } from "./PostCard";
-import { Button, Input } from "@nextui-org/react";
-import { Icon } from "../common/icon";
+import { useDebounce, usePagination } from "@/hooks";
+import { Button } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
 import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Icon } from "../common/icon";
+import { PostCard } from "./PostCard";
 
 interface SearchProps {
   onSearch: (search: string) => void;

@@ -8,7 +8,6 @@ import { getSdk } from "@/utils/sdk";
 import { Link } from "@nextui-org/link";
 import { Metadata } from "next";
 import NextLink from "next/link";
-import React from "react";
 
 const Layout = async ({ children }: LayoutProps) => {
   const { firstPosts, categories, skills } = await getSdk().blogsLayout({

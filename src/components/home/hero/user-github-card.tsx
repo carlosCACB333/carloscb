@@ -1,7 +1,8 @@
-import { FC } from "react";
-import { Avatar, Link } from "@nextui-org/react";
+import { Avatar } from "@nextui-org/avatar";
+import { Link } from "@nextui-org/link";
 import { clsx } from "@nextui-org/shared-utils";
 import NextImage from "next/image";
+import { FC } from "react";
 
 interface Props {
   className?: string;

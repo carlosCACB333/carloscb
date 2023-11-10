@@ -1,4 +1,3 @@
-import React from "react";
 import { NotFounComponent } from "@/components/common/not-found";
 
 const NotFound = () => {

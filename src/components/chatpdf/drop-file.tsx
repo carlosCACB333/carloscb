@@ -1,13 +1,13 @@
 "use client";
 
 import { STATUS, X_API_KEY } from "@/utils";
-import { CircularProgress } from "@nextui-org/react";
+import { CircularProgress } from "@nextui-org/progress";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "react-hot-toast";
 import { FaFilePdf, FaRegFilePdf } from "react-icons/fa";
-import { toast } from "react-toastify";
 
 export const DropFile = () => {
   const { refresh } = useRouter();
@@ -30,19 +30,13 @@ export const DropFile = () => {
 
         const data = await res.json();
         if (data.status === STATUS.OK) {
-          toast(data.message || "Archivo subido correctamente", {
-            type: "success",
-          });
+          toast.success(data.message || "Archivo subido correctamente", {});
           refresh();
         } else {
-          toast(data.message || "Error al subir el archivo", {
-            type: "error",
-          });
+          toast.error(data.message || "Error al subir el archivo", {});
         }
       } catch (error) {
-        toast("Error al subir el archivo", {
-          type: "error",
-        });
+        toast.error("Error al subir el archivo", {});
       } finally {
         setLoading(false);
       }
@@ -58,42 +52,44 @@ export const DropFile = () => {
   });
 
   return (
-    <div
-      {...getRootProps({
-        className: clsx(
-          "flex justify-center items-center flex-col w-full",
-          "p-4 border-dashed border-2 border-gray-300 rounded-lg",
-          "hover:border-primary hover:text-primary cursor-pointer",
-          {
-            "border-primary text-primary": isDragActive,
-          }
-        ),
-      })}
-    >
-      <form>
-        <input
-          {...getInputProps()}
-          disabled={loading}
-          aria-label="input drop file"
-        />
-      </form>
+    <>
+      <div
+        {...getRootProps({
+          className: clsx(
+            "flex justify-center items-center flex-col w-full",
+            "p-4 border-dashed border-2 border-gray-300 rounded-lg",
+            "hover:border-primary hover:text-primary cursor-pointer",
+            {
+              "border-primary text-primary": isDragActive,
+            }
+          ),
+        })}
+      >
+        <form>
+          <input
+            {...getInputProps()}
+            disabled={loading}
+            aria-label="input drop file"
+          />
+        </form>
 
-      {loading ? (
-        <>
-          Espere un momento...
-          <CircularProgress size="sm" />
-        </>
-      ) : isDragActive ? (
-        <>
-          Suelta el archivo aquí
-          <FaFilePdf className="text-4xl" />
-        </>
-      ) : (
-        <>
-          Arrastra un archivo aquí
-          <FaRegFilePdf className="text-4xl" />
-        </>
-      )}
-    </div>
+        {loading ? (
+          <>
+            Espere un momento...
+            <CircularProgress size="sm" />
+          </>
+        ) : isDragActive ? (
+          <>
+            Suelta el archivo aquí
+            <FaFilePdf className="text-4xl" />
+          </>
+        ) : (
+          <>
+            Arrastra un archivo aquí
+            <FaRegFilePdf className="text-4xl" />
+          </>
+        )}
+      </div>
+    </>
   );
 };

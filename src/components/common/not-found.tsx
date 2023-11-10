@@ -1,8 +1,7 @@
-import { Button } from "@nextui-org/react";
+import notfound from "@/assets/img/not-found.svg";
+import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import notfound from "@/assets/img/not-found.svg";
 
 interface Props {
   title?: string;

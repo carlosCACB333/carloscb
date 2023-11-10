@@ -1,13 +1,13 @@
 "use client";
 
-import { FC } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@nextui-org/switch";
-import { useTheme } from "next-themes";
-import { useIsSSR } from "@react-aria/ssr";
-import clsx from "clsx";
-import { Icon } from "./icon";
 import { setCookie } from "@/action";
+import { SwitchProps, useSwitch } from "@nextui-org/switch";
+import { useIsSSR } from "@react-aria/ssr";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import clsx from "clsx";
+import { useTheme } from "next-themes";
+import { FC } from "react";
+import { Icon } from "./icon";
 
 export interface ThemeSwitchProps {
   className?: string;

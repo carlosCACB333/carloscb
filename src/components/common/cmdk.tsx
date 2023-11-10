@@ -2,35 +2,32 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 "use client";
 
-import { Command } from "cmdk";
-import { useEffect, useState, FC, useMemo, useCallback, useRef } from "react";
-import { matchSorter } from "match-sorter";
-import {
-  Button,
-  ButtonProps,
-  Kbd,
-  Modal,
-  ModalContent,
-} from "@nextui-org/react";
-import { tv } from "tailwind-variants";
-import { usePathname, useRouter } from "next/navigation";
-import MultiRef from "react-multi-ref";
-import { clsx } from "clsx";
-import scrollIntoView from "scroll-into-view-if-needed";
-import { isAppleDevice, isWebKit } from "@react-aria/utils";
-import { create } from "zustand";
-import { intersectionBy, isEmpty } from "lodash";
-import { writeStorage, useLocalStorage } from "@rehooks/local-storage";
 import { useUpdateEffect } from "@/hooks";
+import { SearchResultItem } from "@/interfaces";
+import { Button, ButtonProps } from "@nextui-org/button";
+import { Kbd } from "@nextui-org/kbd";
+import { Modal, ModalContent } from "@nextui-org/modal";
+import { isAppleDevice, isWebKit } from "@react-aria/utils";
+import { useLocalStorage, writeStorage } from "@rehooks/local-storage";
+import { clsx } from "clsx";
+import { Command } from "cmdk";
+import { intersectionBy, isEmpty } from "lodash";
+import { matchSorter } from "match-sorter";
+import { usePathname, useRouter } from "next/navigation";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   AiFillAlert,
   AiFillRightCircle,
   AiOutlineClose,
   AiOutlineSearch,
 } from "react-icons/ai";
-import { SearchResultItem } from "@/interfaces";
 import { BsPostcardFill } from "react-icons/bs";
-const hideOnPaths = ["examples"];
+import MultiRef from "react-multi-ref";
+import scrollIntoView from "scroll-into-view-if-needed";
+import { tv } from "tailwind-variants";
+import { create } from "zustand";
+
+const hideOnPaths = [""];
 
 export interface CmdkStore {
   isOpen: boolean;

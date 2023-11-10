@@ -1,15 +1,15 @@
-import { colors } from "@nextui-org/react";
-import { UserGitHubCard } from "./user-github-card";
-import { FaAws, FaDocker, FaGithub, FaReact } from "react-icons/fa";
-import { IconCard } from "./Icon-card";
-import { SiIbmwatson } from "react-icons/si";
-import { BiLogoKubernetes } from "react-icons/bi";
-import { GopherIcon } from "@/components/common/icon";
 import python from "@/assets/img/python.png";
-import Image from "next/image";
-import clsx from "clsx";
+import { GopherIcon } from "@/components/common/icon";
 import { AuthorFragment } from "@/generated/graphql";
+import { colors } from "@nextui-org/theme";
+import clsx from "clsx";
+import Image from "next/image";
+import { BiLogoKubernetes } from "react-icons/bi";
+import { FaAws, FaDocker, FaGithub, FaReact } from "react-icons/fa";
+import { SiIbmwatson } from "react-icons/si";
 import { TbBrandTypescript } from "react-icons/tb";
+import { IconCard } from "./Icon-card";
+import { UserGitHubCard } from "./user-github-card";
 
 interface Props {
   author: AuthorFragment;

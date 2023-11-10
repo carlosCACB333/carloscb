@@ -1,17 +1,17 @@
 "use client";
-import "swiper/css";
-import { Project } from "@/generated/graphql";
-import React, { FC } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCreative } from "swiper/modules";
 import { sizes } from "@/assets";
+import { Project } from "@/generated/graphql";
 import { Button } from "@nextui-org/button";
-import { FaArrowLeft } from "react-icons/fa";
-import { useRouter } from "next/navigation";
-import { IMG } from "../common/IMG";
-import { Link } from "@nextui-org/react";
-import { Icon } from "../common/icon";
+import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import "swiper/css";
+import { Autoplay, EffectCreative } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { IMG } from "../common/IMG";
+import { Icon } from "../common/icon";
 
 interface Props {
   project: Project;

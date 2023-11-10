@@ -1,32 +1,31 @@
 "use client";
 
-import { useState, FC, ReactNode } from "react";
+import { Route } from "@/interfaces";
+import { UserButton, useAuth } from "@clerk/nextjs";
+import { Button } from "@nextui-org/button";
+import { Kbd } from "@nextui-org/kbd";
+import { Link } from "@nextui-org/link";
 import {
-  link,
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
   NavbarBrand,
+  NavbarContent,
   NavbarItem,
-  Link,
-  Button,
-  Kbd,
+  NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react";
-import { isAppleDevice } from "@react-aria/utils";
+  NavbarMenuToggle,
+  Navbar as NextUINavbar,
+} from "@nextui-org/navbar";
 import { clsx } from "@nextui-org/shared-utils";
+import { link } from "@nextui-org/theme";
+import { isAppleDevice } from "@react-aria/utils";
+import { includes } from "lodash";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { includes } from "lodash";
-import { useEffect } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { ThemeSwitch } from "./theme-switch";
-import { Icon } from "./icon";
-import { useCmdkStore } from "./cmdk";
-import { Route } from "@/interfaces";
 import { FiLogIn } from "react-icons/fi";
-import { UserButton, useAuth } from "@clerk/nextjs";
+import { useCmdkStore } from "./cmdk";
+import { Icon } from "./icon";
+import { ThemeSwitch } from "./theme-switch";
 
 export interface NavbarProps {
   routes: Route[];

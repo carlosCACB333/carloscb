@@ -1,10 +1,10 @@
 "use client";
-import "react-toastify/dist/ReactToastify.css";
-import { NextUIProvider } from "@nextui-org/react";
+
+import { NextUIProvider } from "@nextui-org/system";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
-import { ToastContainer } from "react-toastify";
 import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 export interface ProvidersProps {
   children: ReactNode;
@@ -25,10 +25,14 @@ const ProvidersChild = ({ children }: { children: ReactNode }) => {
   const { theme } = useTheme();
   return (
     <>
-      <ToastContainer
-        theme={theme as any}
-        toastStyle={{
-          background: theme === "dark" ? "#0f121a" : "#eaf5ff",
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: theme === "dark" ? "#0f121a" : "#eaf5ff",
+            color: theme === "dark" ? "#d4ddfb" : "#000001",
+          },
+          duration: 5000,
         }}
       />
       {children}

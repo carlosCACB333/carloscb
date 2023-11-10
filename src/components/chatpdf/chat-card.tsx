@@ -7,8 +7,8 @@ import { includes } from "lodash";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useFormState } from "react-dom";
-import { SubmitButton } from "../common/submit-button";
 import { MdClose } from "react-icons/md";
+import { SubmitButton } from "../common/submit-button";
 
 interface Props {
   chat: Chatpdf.AsObject;

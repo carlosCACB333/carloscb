@@ -1,11 +1,8 @@
-
-import { title, subtitle, sectionWrapper } from "@/components";
+import { sectionWrapper, subtitle, title } from "@/components";
 import { Locale, Stage } from "@/generated/graphql";
-import { SiIbmwatson } from "react-icons/si";
 import { getSdk } from "@/utils/sdk";
+import { SiIbmwatson } from "react-icons/si";
 import { SkillContent } from ".";
-
-
 
 export const SkillSection = async () => {
   const { categories } = await getSdk().getAllCatergories(

@@ -1,19 +1,15 @@
-
-
-
-import { title, subtitle, sectionWrapper } from "@/components";
-import { MDXContent } from "@/components/md/MDXContent";
-import { AiFillHeart } from "react-icons/ai";
-import { IMG } from "@/components/common/IMG";
 import { sizes } from "@/assets";
+import { sectionWrapper, subtitle, title } from "@/components";
+import { IMG } from "@/components/common/IMG";
+import { MDXContent } from "@/components/md/MDXContent";
 import { AuthorFragment } from "@/generated/graphql";
+import { AiFillHeart } from "react-icons/ai";
 
 interface Props {
-  author: AuthorFragment
+  author: AuthorFragment;
 }
 
 export const AboutSection = ({ author }: Props) => {
-
   const fullName = `${author.firstName} ${author.lastName}`;
   const age = new Date().getFullYear() - new Date(author.birth).getFullYear();
   const photo = author.photos.at(-1)!;
@@ -44,15 +40,15 @@ export const AboutSection = ({ author }: Props) => {
             </div>
           </div>
           <div className={subtitle({ fullWidth: true })}>
-            <MDXContent>{author.bio || ''}</MDXContent>
+            <MDXContent>{author.bio || ""}</MDXContent>
           </div>
           <table
             aria-label="Tabla de información personal"
             className="table-auto w-full text-left mt-4"
             cellPadding={2}
           >
-            <tbody >
-              <tr >
+            <tbody>
+              <tr>
                 <td>Nombre</td>
                 <td>{fullName}</td>
               </tr>

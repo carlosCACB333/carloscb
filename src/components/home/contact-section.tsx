@@ -1,24 +1,18 @@
 "use client";
 
-import {
-  Card,
-  CardBody,
-  Link,
-  Input,
-  InputProps,
-  Textarea,
-} from "@nextui-org/react";
-
-import { title, subtitle, titleWrapper, sectionWrapper } from "@/components";
-import { Contact } from "@/interfaces";
-import { Icon } from "../common/icon";
-import { FaUser } from "react-icons/fa";
-import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
-import { FORM_INIT } from "@/utils";
-import { AuthorFragment } from "@/generated/graphql";
 import { sendEmailContact } from "@/action";
+import { sectionWrapper, subtitle, title, titleWrapper } from "@/components";
+import { AuthorFragment } from "@/generated/graphql";
+import { Contact } from "@/interfaces";
+import { FORM_INIT } from "@/utils";
+import { Card, CardBody } from "@nextui-org/card";
+import { Input, InputProps, Textarea } from "@nextui-org/input";
+import { Link } from "@nextui-org/link";
 import { useFormState } from "react-dom";
+import { AiFillPhone, AiFillQuestionCircle } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
+import { Icon } from "../common/icon";
 import { SubmitButton } from "../common/submit-button";
 
 interface Props {

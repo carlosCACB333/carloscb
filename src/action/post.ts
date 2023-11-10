@@ -1,8 +1,8 @@
 "use server";
 
 import { PostConnection, Stage } from "@/generated/graphql";
-import { SearchFunction } from "./types";
 import { getSdk } from "@/utils/sdk";
+import { SearchFunction } from "./types";
 
 export const searchPosts: SearchFunction<PostConnection> = async (
   keyword: string,

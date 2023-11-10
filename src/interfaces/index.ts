@@ -1,5 +1,5 @@
-export * from "./contact";
 export * from "./chatpdf";
+export * from "./contact";
 
 import { Locale } from "@/generated/graphql";
 import { STATUS } from "@/utils";

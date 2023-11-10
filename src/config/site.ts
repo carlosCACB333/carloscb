@@ -1,4 +1,4 @@
-import { AUTHOR_EMAIL, SITE_URL, } from "@/utils";
+import { AUTHOR_EMAIL, SITE_URL } from "@/utils";
 
 export type SiteConfig = typeof siteConfig;
 

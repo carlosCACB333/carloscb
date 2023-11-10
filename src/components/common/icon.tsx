@@ -1,29 +1,29 @@
 import * as React from "react";
-import { MdOutlineDns, MdOutlinePanToolAlt } from "react-icons/md";
 import {
   BsBookmarkPlus,
   BsDatabase,
-  BsPhone,
-  BsWindowSidebar,
-  BsLinkedin,
-  BsFacebook,
-  BsWhatsapp,
   BsEnvelope,
-  BsFillSunFill,
+  BsFacebook,
   BsFillMoonStarsFill,
+  BsFillSunFill,
+  BsLinkedin,
+  BsPhone,
+  BsWhatsapp,
+  BsWindowSidebar,
 } from "react-icons/bs";
 import {
-  FaHtml5,
-  FaJs,
+  FaArrowRight,
+  FaBitcoin,
+  FaChartLine,
+  FaCode,
   FaCss3,
   FaGithub,
-  FaBitcoin,
-  FaCode,
-  FaChartLine,
   FaGlobeAmericas,
-  FaArrowRight,
+  FaHtml5,
+  FaJs,
   FaSearch,
 } from "react-icons/fa";
+import { MdOutlineDns, MdOutlinePanToolAlt } from "react-icons/md";
 import { SiIbmwatson } from "react-icons/si";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {}

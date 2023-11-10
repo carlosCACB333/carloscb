@@ -2,7 +2,7 @@
 import { GRAPHCMS_MEDIA } from "@/utils";
 import clsx from "clsx";
 import Image, { ImageLoaderProps, ImageProps } from "next/image";
-import React, { FC } from "react";
+import { FC } from "react";
 
 type Fit = "clip" | "crop" | "scale" | "max";
 export interface ImgProps extends ImageProps {

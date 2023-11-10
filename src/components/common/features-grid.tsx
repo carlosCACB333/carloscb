@@ -1,12 +1,9 @@
-
+import { LinkProps } from "@nextui-org/link";
+import { LinkIcon } from "@nextui-org/shared-icons";
+import { SlotsToClasses } from "@nextui-org/theme";
+import Link from "next/link";
 import React, { ReactNode } from "react";
 import { tv } from "tailwind-variants";
-import {
-  LinkProps,
-  SlotsToClasses,
-} from "@nextui-org/react";
-import { LinkIcon } from "@nextui-org/shared-icons";
-import Link from "next/link";
 
 const styles = tv({
   slots: {

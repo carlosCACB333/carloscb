@@ -1,12 +1,13 @@
 "use client";
-import { Button, Input } from "@nextui-org/react";
+import { BootMessageItem } from "@/components/chatpdf/boot-message-item";
+import { Button } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
 import { useChat } from "ai/react";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { MdMessage } from "react-icons/md";
-import { motion } from "framer-motion";
-import { BootMessageItem } from "@/components/chatpdf/boot-message-item";
 
 export const ChatBoot = () => {
   const [isOpenTooltip, setIsopenTooltip] = useState(false);

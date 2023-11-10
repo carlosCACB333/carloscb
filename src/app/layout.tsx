@@ -1,14 +1,14 @@
+import { getAuthor } from "@/action";
+import { Cmdk } from "@/components/common/cmdk";
+import { fontRoboto } from "@/config/fonts";
+import { siteConfig } from "@/config/site";
+import { Locale } from "@/generated/graphql";
+import { LayoutProps } from "@/interfaces";
 import "@/styles/globals.css";
+import { clsx } from "clsx";
 import "katex/dist/katex.min.css";
 import { Metadata, Viewport } from "next";
-import { clsx } from "clsx";
 import { Providers } from "./providers";
-import { siteConfig } from "@/config/site";
-import { fontRoboto } from "@/config/fonts";
-import { Locale } from "@/generated/graphql";
-import { Cmdk } from "@/components/common/cmdk";
-import { getAuthor } from "@/action";
-import { LayoutProps } from "@/interfaces";
 
 export default async function RootLayout({ children }: LayoutProps) {
   return (

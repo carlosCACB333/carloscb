@@ -1,8 +1,8 @@
 "use server";
 
 import { ProjectConnection, Stage } from "@/generated/graphql";
-import { SearchFunction } from "./types";
 import { getSdk } from "@/utils/sdk";
+import { SearchFunction } from "./types";
 
 export const searchProjects: SearchFunction<ProjectConnection> = async (
   keyword: string,

@@ -1,6 +1,5 @@
-
 import { Post } from "@/generated/graphql";
-import React, { FC } from "react";
+import { FC } from "react";
 import { PostCard } from "./PostCard";
 interface Props {
   posts: Post[];

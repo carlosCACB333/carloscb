@@ -1,18 +1,17 @@
-
-import { Button, Spacer } from "@nextui-org/react";
-import NextLink from "next/link";
-import { sectionWrapper, titleWrapper, title, subtitle } from "..";
-import { FaProjectDiagram } from "react-icons/fa";
-import { ProjectCard } from "../project/ProjectCard";
-import { Icon } from "../common/icon";
 import { Stage } from "@/generated/graphql";
 import { getSdk } from "@/utils/sdk";
-
+import { Button } from "@nextui-org/button";
+import { Spacer } from "@nextui-org/spacer";
+import NextLink from "next/link";
+import { FaProjectDiagram } from "react-icons/fa";
+import { sectionWrapper, subtitle, title, titleWrapper } from "..";
+import { Icon } from "../common/icon";
+import { ProjectCard } from "../project/ProjectCard";
 
 export const ProjectSection = async () => {
-  const { projects } = await getSdk().getFirstProjects(
-    { stage: Stage.Published },
-  )
+  const { projects } = await getSdk().getFirstProjects({
+    stage: Stage.Published,
+  });
   return (
     <section
       className={sectionWrapper({

@@ -1,1 +1,1 @@
-export * from './certificates-section'
+export * from "./certificates-section";

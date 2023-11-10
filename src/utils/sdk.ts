@@ -1,6 +1,6 @@
 "use server";
-import { GraphQLClient } from "graphql-request";
 import { getSdk as sdk } from "@/generated/graphql";
+import { GraphQLClient } from "graphql-request";
 import { GRAPHCMS_TOKEN, GRAPHCMS_URL } from ".";
 
 export const getSdk = () => {

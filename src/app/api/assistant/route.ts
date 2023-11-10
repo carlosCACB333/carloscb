@@ -1,27 +1,24 @@
-import { OpenAI } from 'openai'
-import { OpenAIStream, StreamingTextResponse } from 'ai'
-import { ASSISTANT_CHAT_ID, OPENAI_API_KEY, STATUS } from '@/utils';
-import { grpcGetContextWithoutAuth } from '@/grpc/chatpdf';
-import { NextResponse } from 'next/server';
-
+import { grpcGetContextWithoutAuth } from "@/grpc/chatpdf";
+import { ASSISTANT_CHAT_ID, OPENAI_API_KEY, STATUS } from "@/utils";
+import { OpenAIStream, StreamingTextResponse } from "ai";
+import { NextResponse } from "next/server";
+import { OpenAI } from "openai";
 
 const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY
+  apiKey: OPENAI_API_KEY,
 });
 
-
 export async function POST(req: Request) {
-
   try {
     const { messages } = await req.json();
-    const userMsg = messages.at(-1).content as string
-    const res = await grpcGetContextWithoutAuth(ASSISTANT_CHAT_ID, userMsg)
+    const userMsg = messages.at(-1).content as string;
+    const res = await grpcGetContextWithoutAuth(ASSISTANT_CHAT_ID, userMsg);
     if (res.status !== STATUS.OK) {
-      return NextResponse.json({ ...res }, { status: res.status })
+      return NextResponse.json({ ...res }, { status: res.status });
     }
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: "gpt-3.5-turbo",
       stream: true,
       messages: [
         {
@@ -32,20 +29,19 @@ export async function POST(req: Request) {
           ${res.data?.context}
           END OF CONTEXT BLOCK
           Ten en cuenta el CONTEXT BLOCK que se te proporcione en una conversación. Si el contexto no proporciona la respuesta a la pregunta responde: "Lo siento, pero  no puedo enocntrar información para tu pregunta". No inventes nada que no se extraigas directamente del contexto
-          `
+          `,
         },
-        ...messages
-
+        ...messages,
       ],
       max_tokens: 200,
       temperature: 0.2,
       top_p: 1,
       frequency_penalty: 1,
       presence_penalty: 1,
-    })
+    });
 
     const stream = OpenAIStream(response, {});
-    return new StreamingTextResponse(stream)
+    return new StreamingTextResponse(stream);
   } catch (error: any) {
     if (error instanceof OpenAI.APIError) {
       const { name, status, headers, message } = error;
@@ -53,5 +49,4 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ error: error?.message }, { status: 500 });
   }
-
 }

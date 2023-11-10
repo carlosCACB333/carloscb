@@ -1,4 +1,4 @@
-import { ColorScale, nextui } from "@nextui-org/react";
+import { ColorScale, nextui } from "@nextui-org/theme";
 import type { Config } from "tailwindcss";
 
 const text = {

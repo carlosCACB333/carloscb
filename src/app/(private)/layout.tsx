@@ -1,11 +1,10 @@
 import { NavbarPrivate } from "@/components/common/navbar";
+import routes from "@/config/routes.json";
 import { LayoutProps } from "@/interfaces";
 import { AUTHOR_GITHUB, AUTHOR_LINKEDIN } from "@/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { cookies } from "next/headers";
-import React from "react";
-import routes from "@/config/routes.json";
 
 export const dynamic = "force-dynamic";
 

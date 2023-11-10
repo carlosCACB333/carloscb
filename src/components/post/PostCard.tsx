@@ -1,13 +1,12 @@
 "use client";
-import { formatDate } from "@/utils";
-import { Card, CardHeader, CardFooter } from "@nextui-org/react";
-import clsx from "clsx";
-import React from "react";
-import { Post } from "@/generated/graphql";
-import Link from "next/link";
-import { Icon } from "../common/icon";
-import { IMG } from "../common/IMG";
 import { sizes } from "@/assets";
+import { Post } from "@/generated/graphql";
+import { formatDate } from "@/utils";
+import { Card, CardFooter, CardHeader } from "@nextui-org/card";
+import clsx from "clsx";
+import Link from "next/link";
+import { IMG } from "../common/IMG";
+import { Icon } from "../common/icon";
 interface Props {
   post: Post;
   idx?: number;

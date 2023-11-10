@@ -1,4 +1,5 @@
-import React, { HTMLAttributes, memo } from "react";
+import { HTMLAttributes, memo } from "react";
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
   color: string;
 }

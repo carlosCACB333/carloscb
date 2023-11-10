@@ -1,6 +1,6 @@
-import React, { forwardRef } from "react";
 import { clsx, getUniqueID } from "@nextui-org/shared-utils";
-import { Language, PrismTheme, Highlight } from "prism-react-renderer";
+import { Highlight, Language, PrismTheme } from "prism-react-renderer";
+import React, { forwardRef } from "react";
 
 import defaultTheme from "@/libs/prism-theme";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, HTMLAttributes } from "react";
-import { tv, VariantProps } from "tailwind-variants";
+import { VariantProps, tv } from "tailwind-variants";
 
 const blockquoteStyles = tv({
   base: "border px-4 bg-default-50 my-6 py-3 rounded-xl [&>p]:m-0",

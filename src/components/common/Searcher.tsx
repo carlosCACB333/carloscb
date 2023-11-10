@@ -1,10 +1,10 @@
 "use client";
 
 import { useDebounce } from "@/hooks";
-import { Input, InputProps } from "@nextui-org/react";
-import { useState, useEffect, memo, useRef } from "react";
-import { Icon } from "./icon";
+import { Input, InputProps } from "@nextui-org/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { memo, useEffect, useRef, useState } from "react";
+import { Icon } from "./icon";
 
 interface Props extends InputProps {}
 const SearcherComponent = ({ ...rest }: Props) => {

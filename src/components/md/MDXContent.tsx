@@ -1,18 +1,20 @@
 "use client";
+import { Code } from "@nextui-org/code";
+import { Link } from "@nextui-org/link";
 import { clsx } from "@nextui-org/shared-utils";
-import * as Components from "@nextui-org/react";
+import { Snippet } from "@nextui-org/snippet";
 import { Language } from "prism-react-renderer";
-import Codeblock from "../common/codeblock";
-import { Blockquote } from "../common/blockquote";
-import { FC, HTMLAttributes, Key } from "react";
-import { VirtualAnchor, virtualAnchorEncode } from "../common/virtual-anchor";
+import { FC, HTMLAttributes } from "react";
 import Markdown from "react-markdown";
-import rehypeSlug from "rehype-slug";
-import remarkUnwrapImages from "remark-unwrap-images";
-import remarkMath from "remark-math";
-import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
 import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkUnwrapImages from "remark-unwrap-images";
+import { Blockquote } from "../common/blockquote";
+import Codeblock from "../common/codeblock";
+import { VirtualAnchor, virtualAnchorEncode } from "../common/virtual-anchor";
 
 export interface LinkedHeadingProps extends HTMLAttributes<HTMLHeadElement> {
   as: keyof JSX.IntrinsicElements;
@@ -63,13 +65,13 @@ const LinkedHeading: React.FC<LinkedHeadingProps> = ({
 
 const InlineCode = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <Components.Code color="primary" size="sm">
+    <Code color="primary" size="sm">
       {children}
-    </Components.Code>
+    </Code>
   );
 };
 
-const Code = ({
+const CodeComponent = ({
   className,
   children,
   meta,
@@ -87,7 +89,7 @@ const Code = ({
   }
 
   return (
-    <Components.Snippet
+    <Snippet
       disableTooltip
       fullWidth
       hideSymbol
@@ -109,11 +111,11 @@ const Code = ({
         language={language}
         metastring={meta}
       />
-    </Components.Snippet>
+    </Snippet>
   );
 };
 
-const Link = ({
+const LinkComponent = ({
   href,
   children,
 }: {
@@ -123,13 +125,9 @@ const Link = ({
   const isExternal = href?.startsWith("http");
 
   return (
-    <Components.Link
-      href={href}
-      isExternal={isExternal}
-      showAnchorIcon={isExternal}
-    >
+    <Link href={href} isExternal={isExternal} showAnchorIcon={isExternal}>
       {children}
-    </Components.Link>
+    </Link>
   );
 };
 
@@ -191,7 +189,7 @@ export const MDXContent: FC<{ children?: string }> = ({ children }) => {
         ),
 
         code: ({ children, className }) => (
-          <Code className={className}>{children}</Code>
+          <CodeComponent className={className}>{children}</CodeComponent>
         ),
         ul: ({ className, ...props }) => (
           <ul
@@ -218,7 +216,7 @@ export const MDXContent: FC<{ children?: string }> = ({ children }) => {
             {...props}
           />
         ),
-        a: ({ ...props }) => <Link {...props} />,
+        a: ({ ...props }) => <LinkComponent {...props} />,
         blockquote: ({ ...props }) => (
           <Blockquote color={"primary" as any} {...props} />
         ),

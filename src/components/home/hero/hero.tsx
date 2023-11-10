@@ -1,12 +1,13 @@
-import NextLink from "next/link";
-import { Button, Link } from "@nextui-org/react";
-import { FloatingComponents } from "./floating-components";
-import { title, subtitle } from "@/components";
-import { AiOutlineHeart, AiOutlinePaperClip } from "react-icons/ai";
+import { subtitle, title } from "@/components";
 import { Feature, FeaturesGrid } from "@/components/common/features-grid";
-import { FC } from "react";
 import { AuthorFragment } from "@/generated/graphql";
+import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
+import NextLink from "next/link";
+import { FC } from "react";
+import { AiOutlineHeart, AiOutlinePaperClip } from "react-icons/ai";
 import { BgLooperDynamic } from "./bg-looper";
+import { FloatingComponents } from "./floating-components";
 
 interface Props {
   features: Feature[];

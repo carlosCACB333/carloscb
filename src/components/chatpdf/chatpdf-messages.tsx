@@ -1,7 +1,7 @@
 import { grpcGetLastChatpdfMessages } from "@/grpc/chatpdf-messages";
-import { Messages } from "./messages";
 import { Message } from "ai/react";
 import { notFound } from "next/navigation";
+import { Messages } from "./messages";
 
 interface Props {
   id: string;

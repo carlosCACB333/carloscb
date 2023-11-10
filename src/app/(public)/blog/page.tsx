@@ -1,9 +1,7 @@
-
 import { CategoryList, PostList, PostPaginated } from "@/components/post";
 import { Stage } from "@/generated/graphql";
 import { REVALIDATE } from "@/utils";
 import { getSdk } from "@/utils/sdk";
-import React from "react";
 
 const BlogsHome = async () => {
   const { firstPosts, categories } = await getSdk().blogsPage({
@@ -25,4 +23,4 @@ const BlogsHome = async () => {
 
 export default BlogsHome;
 
-export const revalidate = REVALIDATE
+export const revalidate = REVALIDATE;

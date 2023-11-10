@@ -1,10 +1,9 @@
+import { ChatCard } from "@/components/chatpdf/chat-card";
 import { DropFile } from "@/components/chatpdf/drop-file";
 import { Footer } from "@/components/common/footer";
+import { getpGetAllChatpdfs } from "@/grpc/chatpdf";
 import { LayoutProps } from "@/interfaces";
 import clsx from "clsx";
-import React from "react";
-import { getpGetAllChatpdfs } from "@/grpc/chatpdf";
-import { ChatCard } from "@/components/chatpdf/chat-card";
 import { Metadata, ResolvingMetadata } from "next";
 
 const IALayout = async ({ children }: LayoutProps) => {

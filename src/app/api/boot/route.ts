@@ -1,8 +1,8 @@
-import { OpenAI } from "openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { OPENAI_API_KEY } from "@/utils";
-import { grpcCreateChatpdfMessage } from "@/grpc/chatpdf-messages";
 import { grpcGetContext } from "@/grpc/chatpdf";
+import { grpcCreateChatpdfMessage } from "@/grpc/chatpdf-messages";
+import { OPENAI_API_KEY } from "@/utils";
+import { OpenAIStream, StreamingTextResponse } from "ai";
+import { OpenAI } from "openai";
 
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,

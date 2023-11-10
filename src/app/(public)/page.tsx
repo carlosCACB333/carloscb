@@ -1,21 +1,21 @@
+import { Footer } from "@/components/common/footer";
+import { CertificateSection } from "@/components/home/certificate";
+import { ContactSection } from "@/components/home/contact-section";
 import { Hero } from "@/components/home/hero";
+import { ChatBoot } from "@/components/home/hero/ChatBoot";
 import { AboutSection } from "@/components/home/hero/about-section";
+import { ProjectSection } from "@/components/home/project-section";
+import { SkillSection } from "@/components/home/skill";
+import { Stage } from "@/generated/graphql";
+import { AUTHOR_EMAIL, REVALIDATE } from "@/utils";
+import { getSdk } from "@/utils/sdk";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import {
   AiFillSafetyCertificate,
   AiOutlineFundProjectionScreen,
 } from "react-icons/ai";
 import { BsFillPostcardFill } from "react-icons/bs";
-import { ProjectSection } from "@/components/home/project-section";
-import { ContactSection } from "@/components/home/contact-section";
-import { Stage } from "@/generated/graphql";
-import { getSdk } from "@/utils/sdk";
-import { Footer } from "@/components/common/footer";
-import { ChatBoot } from "@/components/home/hero/ChatBoot";
-import { AUTHOR_EMAIL, REVALIDATE } from "@/utils";
-import { SkillSection } from "@/components/home/skill";
-import { CertificateSection } from "@/components/home/certificate";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import Loading from "../loading";
 
 export default async function Home() {

@@ -7,12 +7,14 @@ export const formatDate = (date: string | Date) => {
   });
 };
 
-
-export const formatDateFromObject = (date: { seconds: number, nanos: number }) => {
+export const formatDateFromObject = (date: {
+  seconds: number;
+  nanos: number;
+}) => {
   return new Date(date.seconds * 1000).toLocaleDateString("es-PE", {
     weekday: "long",
     year: "numeric",
     month: "short",
     day: "numeric",
   });
-}
+};

@@ -8,7 +8,7 @@ export const usePagination = <T>(search: SearchFunction<T>, pageSize = 12) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const skip = useRef(0);
-  const keyword = useRef('');
+  const keyword = useRef("");
 
   const fetchData = useCallback(async () => {
     try {

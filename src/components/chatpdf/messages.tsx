@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Message, useChat } from "ai/react";
-import { Button, Input } from "@nextui-org/react";
 import { clearChatpdfMessage } from "@/action/chatpdf";
 import { STATUS } from "@/utils";
-import { BootMessageItem } from "./boot-message-item";
+import { Button } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
+import { Message, useChat } from "ai/react";
+import React, { useEffect, useState } from "react";
 import { BiSend } from "react-icons/bi";
+import { BootMessageItem } from "./boot-message-item";
 
 interface Props {
   chatId: string;

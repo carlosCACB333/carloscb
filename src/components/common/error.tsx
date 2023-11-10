@@ -1,5 +1,6 @@
-import { Button } from "@nextui-org/react";
-import React, { useEffect } from "react";
+import { Button } from "@nextui-org/button";
+import { useEffect } from "react";
+
 interface Props {
   error: Error & { digest?: string };
   reset: () => void;

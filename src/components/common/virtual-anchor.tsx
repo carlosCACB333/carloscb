@@ -1,6 +1,6 @@
 "use client";
+import { Link } from "@nextui-org/link";
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "@nextui-org/react";
 import { FaHashtag } from "react-icons/fa";
 
 export interface Props {
