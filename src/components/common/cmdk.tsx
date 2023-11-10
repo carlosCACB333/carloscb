@@ -27,7 +27,7 @@ import scrollIntoView from "scroll-into-view-if-needed";
 import { tv } from "tailwind-variants";
 import { create } from "zustand";
 
-const hideOnPaths = [""];
+const hideOnPaths: string[] = [];
 
 export interface CmdkStore {
   isOpen: boolean;

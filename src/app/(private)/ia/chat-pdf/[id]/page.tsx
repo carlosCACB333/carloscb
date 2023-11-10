@@ -7,7 +7,7 @@ import { Suspense } from "react";
 export default async function ChatpdfDetail({ params }: PageProps) {
   return (
     <section className="flex-1 h-full lg:flex">
-      <div className="h-full flex-1">
+      <div className="h-full flex-1 px-4 min-h-[60vh]">
         <Suspense fallback={<Loading />}>
           <ChatpdfViewer id={params.id} />
         </Suspense>

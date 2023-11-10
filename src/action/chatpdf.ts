@@ -16,5 +16,6 @@ export const deleteChatpdf = async (id: string): Promise<FormState<null>> => {
 };
 
 export const clearChatpdfMessage = async (id: string) => {
+  revalidatePath("/ia/chat-pdf/" + id, "page");
   return grpcClearChatpdfMessage(id);
 };
