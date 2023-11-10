@@ -209,10 +209,29 @@ interface Props {
 }
 
 const LoginButton = () => (
-  <Button color="primary" aria-label="Login" as={NextLink} href="/auth/sign-in">
-    Login
-    <FiLogIn className="mt-px text-primary-foreground" size={20} />
-  </Button>
+  <>
+    <Button
+      color="primary"
+      aria-label="Login"
+      as={NextLink}
+      href="/auth/sign-in"
+      className="hidden sm:flex"
+    >
+      Login
+      <FiLogIn className="mt-px text-primary-foreground" size={20} />
+    </Button>
+    <Button
+      aria-label="Login"
+      as={NextLink}
+      href="/auth/sign-in"
+      className="flex sm:hidden"
+      isIconOnly
+      size="sm"
+      variant="light"
+    >
+      <FiLogIn size={20} />
+    </Button>
+  </>
 );
 
 export const NavbarPublic = (props: Props) => {

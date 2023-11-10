@@ -1,5 +1,3 @@
-
-
 import "swiper/css/pagination";
 import { Button } from "@nextui-org/react";
 import { ArrowRightIcon } from "@nextui-org/shared-icons";
@@ -11,18 +9,20 @@ import { sectionWrapper, subtitle, title } from "@/components";
 import { CertificateCarrousel } from "./certificates-carrousel";
 
 export const CertificateSection = async () => {
-
-  const { certifications } = await getSdk().getCertifications({ stage: Stage.Published, first: 6, skip: 0 })
+  const { certifications } = await getSdk().getCertifications({
+    stage: Stage.Published,
+    first: 6,
+    skip: 0,
+  });
   return (
     <section
       className={sectionWrapper({
         isBlurred: true,
-        class:
-          "border-t border-b border-divider px-8 flex justify-center items-center mt-16 lg:mt-44",
+        class: "border-t border-b border-divider mt-24 lg:mt-56 px-6",
       })}
       id="home-certifications"
     >
-      <div className="w-full mx-8 py-10 grid grid-cols-12 gap-6 md:gap-0 z-20 items-center">
+      <div className="w-full grid grid-cols-12 gap-6 items-center container m-auto">
         <div className="flex flex-col gap-2 col-span-12 md:col-span-5">
           <div className="text-center lg:text-start">
             <h1 className={title({ size: "lg" })}>Mis &nbsp;</h1>

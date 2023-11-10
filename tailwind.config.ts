@@ -122,7 +122,9 @@ const config: Config = {
               DEFAULT: "#0f121a",
             },
             default: {
-              DEFAULT: "#0F121A",
+              DEFAULT: "#0f121a6e",
+              "100": "#0f121a", // default color for input
+              "200": "#1b202e", // default color for input on hover
             },
             primary,
           },
@@ -143,7 +145,9 @@ const config: Config = {
               DEFAULT: "#0f121a",
             },
             default: {
-              DEFAULT: "#eaf5ff",
+              DEFAULT: "#eaf5ff7d",
+              "100": "#eaf5ff", // default color for input
+              "200": "#e2f1ff", // default color for input on hover
             },
             primary,
           },

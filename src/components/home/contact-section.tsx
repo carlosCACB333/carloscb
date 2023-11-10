@@ -75,11 +75,7 @@ export const ContactSection = ({ author }: Props) => {
                         color="foreground"
                         aria-label="Facebook"
                       >
-                        <Icon
-                          name="facebook"
-                          className="mr-2 "
-                          aria-label="Facebook"
-                        />
+                        <Icon name="facebook" className="mr-2 " />
                         Facebook
                       </Link>
                     )}
@@ -90,27 +86,8 @@ export const ContactSection = ({ author }: Props) => {
                         color="foreground"
                         aria-label="Linkedin"
                       >
-                        <Icon
-                          name="linkedin"
-                          className="mr-2 "
-                          aria-label="Linkedin"
-                        />
+                        <Icon name="linkedin" className="mr-2 " />
                         Linkedin
-                      </Link>
-                    )}
-                    {author.phone && (
-                      <Link
-                        href={`https://wa.me/${author.phone}`}
-                        target="_blank"
-                        color="foreground"
-                        aria-label="WhatsApp"
-                      >
-                        <Icon
-                          name="whatsapp"
-                          className="mr-2 "
-                          aria-label="WhatsApp"
-                        />
-                        WhatsApp
                       </Link>
                     )}
                     {author.email && (
@@ -120,11 +97,7 @@ export const ContactSection = ({ author }: Props) => {
                         color="foreground"
                         aria-label="Email"
                       >
-                        <Icon
-                          name="email"
-                          className="mr-2 "
-                          aria-label="Email"
-                        />
+                        <Icon name="email" className="mr-2 " />
                         Email
                       </Link>
                     )}
@@ -135,11 +108,7 @@ export const ContactSection = ({ author }: Props) => {
                         color="foreground"
                         aria-label="GitHub"
                       >
-                        <Icon
-                          name="git"
-                          className="mr-2 "
-                          aria-label="GitHub"
-                        />
+                        <Icon name="git" className="mr-2 " />
                         GitHub
                       </Link>
                     )}

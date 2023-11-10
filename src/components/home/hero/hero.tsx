@@ -1,14 +1,12 @@
-
 import NextLink from "next/link";
 import { Button, Link } from "@nextui-org/react";
 import { FloatingComponents } from "./floating-components";
 import { title, subtitle } from "@/components";
 import { AiOutlineHeart, AiOutlinePaperClip } from "react-icons/ai";
-import { Feature, FeaturesGrid, } from "@/components/common/features-grid";
+import { Feature, FeaturesGrid } from "@/components/common/features-grid";
 import { FC } from "react";
 import { AuthorFragment } from "@/generated/graphql";
 import { BgLooperDynamic } from "./bg-looper";
-
 
 interface Props {
   features: Feature[];
@@ -28,7 +26,7 @@ export const Hero: FC<Props> = ({ features, author }) => {
     <>
       <section className="relative w-full flex flex-col gap-4 justify-evenly min-h-[calc(100vh-4rem)]">
         <div className="flex flex-nowrap justify-between items-center h-full w-full">
-          <div className="flex relative z-20 flex-col gap-6 w-full md:w-1/2 xl:mt-10">
+          <div className="flex relative z-20 flex-col gap-6 w-full md:w-1/2 mt-10 ">
             <h1 className={title({ size: "lg" })}>
               {firstWord} {secondWord} &nbsp;
               <span className={title({ color: "blue", size: "lg" })}>

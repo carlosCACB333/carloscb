@@ -22,10 +22,7 @@ const ProjectPage = async ({ searchParams }: PageProps) => {
   return (
     <div className="container mx-auto mt-20 p-6">
       <div className="max-w-lg mx-auto ">
-        <Searcher
-          size="lg"
-          placeholder="Buscar proyectos..."
-        />
+        <Searcher placeholder="Buscar proyectos..." />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-8">
         {data?.edges.map(({ node }) => (

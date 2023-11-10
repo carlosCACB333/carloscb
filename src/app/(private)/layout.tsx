@@ -1,5 +1,3 @@
-"use server";
-
 import { NavbarPrivate } from "@/components/common/navbar";
 import { LayoutProps } from "@/interfaces";
 import { AUTHOR_GITHUB, AUTHOR_LINKEDIN } from "@/utils";
@@ -8,6 +6,8 @@ import { dark } from "@clerk/themes";
 import { cookies } from "next/headers";
 import React from "react";
 import routes from "@/config/routes.json";
+
+export const dynamic = "force-dynamic";
 
 export default async function privateLayout({ children }: LayoutProps) {
   const defaultTheme = cookies().get("theme")?.value || "dark";

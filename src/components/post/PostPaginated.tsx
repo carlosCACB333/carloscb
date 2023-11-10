@@ -17,7 +17,7 @@ const PostSearcher = ({ onSearch }: SearchProps) => {
 
   useEffect(() => {
     onSearch(search);
-  }, [onSearch, search])
+  }, [onSearch, search]);
 
   return (
     <Input
@@ -26,9 +26,9 @@ const PostSearcher = ({ onSearch }: SearchProps) => {
       value={value}
       aria-label="Buscar"
       placeholder="Buscar posts..."
-      size="lg"
+      color="default"
     />
-  )
+  );
 };
 
 export const PostPaginated = () => {
@@ -46,10 +46,20 @@ export const PostPaginated = () => {
       </div>
       {data?.pageInfo && (
         <div className="flex justify-end mt-4 gap-1">
-          <Button color='primary' onClick={() => onChangePage(false)} isIconOnly disabled={!data.pageInfo.hasPreviousPage}>
+          <Button
+            color="primary"
+            onClick={() => onChangePage(false)}
+            isIconOnly
+            disabled={!data.pageInfo.hasPreviousPage}
+          >
             <FaArrowLeft />
           </Button>
-          <Button color='primary' onClick={() => onChangePage(true)} isIconOnly disabled={!data.pageInfo.hasNextPage}>
+          <Button
+            color="primary"
+            onClick={() => onChangePage(true)}
+            isIconOnly
+            disabled={!data.pageInfo.hasNextPage}
+          >
             <FaArrowRight />
           </Button>
         </div>

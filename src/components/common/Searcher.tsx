@@ -6,14 +6,12 @@ import { useState, useEffect, memo, useRef } from "react";
 import { Icon } from "./icon";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-interface Props extends InputProps {
-
-}
+interface Props extends InputProps {}
 const SearcherComponent = ({ ...rest }: Props) => {
   const searchParams = useSearchParams();
-  const [value, setValue] = useState(searchParams.get('search') || "");
+  const [value, setValue] = useState(searchParams.get("search") || "");
   const pathName = usePathname();
-  const {  replace } = useRouter();
+  const { replace } = useRouter();
   const search = useDebounce(value);
   const fistRender = useRef(true);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -29,7 +27,7 @@ const SearcherComponent = ({ ...rest }: Props) => {
     }
     if (search === "") {
       replace(`${pathName}`);
-    }else{
+    } else {
       replace(`${pathName}?search=${search}`);
     }
   }, [replace, pathName, search]);

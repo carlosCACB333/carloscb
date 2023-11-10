@@ -13,21 +13,19 @@ const Certification = async ({ searchParams }: PageProps) => {
   const search = searchParams.search || "";
   const skip = parseInt(searchParams.skip || "0");
 
-  const { certificationsConnection: data } = await getSdk().searchCertifications({
-    first: PAGE_SIZE,
-    skip,
-    search,
-    stage: Stage.Published,
-  });
+  const { certificationsConnection: data } =
+    await getSdk().searchCertifications({
+      first: PAGE_SIZE,
+      skip,
+      search,
+      stage: Stage.Published,
+    });
 
   return (
     <>
       <div className="container mx-auto mt-20 p-6">
         <div className="max-w-lg mx-auto mb-8 ">
-          <Searcher
-            size="lg"
-            placeholder="Buscar certificados..."
-          />
+          <Searcher placeholder="Buscar certificados..." />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
           {data?.edges?.map(({ node }) => (
@@ -46,8 +44,8 @@ const Certification = async ({ searchParams }: PageProps) => {
           <Pagination
             hasNext={data.pageInfo.hasNextPage}
             hasPrevious={data.pageInfo.hasPreviousPage}
-            skip={skip} pageSize={PAGE_SIZE}
-
+            skip={skip}
+            pageSize={PAGE_SIZE}
           />
         )}
       </div>

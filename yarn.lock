@@ -1092,10 +1092,10 @@
     "@bufbuild/buf-win32-arm64" "1.27.2"
     "@bufbuild/buf-win32-x64" "1.27.2"
 
-"@clerk/backend@0.34.0":
-  version "0.34.0"
-  resolved "https://registry.yarnpkg.com/@clerk/backend/-/backend-0.34.0.tgz#70a5a7d8f3493ba1b1e103f99db1f1ca7d6d7dbb"
-  integrity sha512-hDjGwiT/tWNJ9UVCK2SwgAXKQ71X5Kx9wmvjVt4DQwgQKIFnES/Ao7bGjibf4KXSuLe6Z85UbQq1MEh6A+vwHQ==
+"@clerk/backend@0.34.1":
+  version "0.34.1"
+  resolved "https://registry.yarnpkg.com/@clerk/backend/-/backend-0.34.1.tgz#b0668f6354666a7e91b9ef5ff084de1680463e35"
+  integrity sha512-I6u7vb7XHA0kNek5Ez4VVqBDZKxLepR6wJXlYUy5lGwsTdaQiFwy5Q0nKP2GdQQYtlKpXSAryLu19Cq5zaaNYg==
   dependencies:
     "@clerk/shared" "1.1.0"
     "@clerk/types" "3.58.0"
@@ -1116,12 +1116,12 @@
     "@clerk/types" "3.58.0"
     tslib "2.4.1"
 
-"@clerk/clerk-sdk-node@4.12.20":
-  version "4.12.20"
-  resolved "https://registry.yarnpkg.com/@clerk/clerk-sdk-node/-/clerk-sdk-node-4.12.20.tgz#f6c2fec006851dd2841329829e3b618211f3bac4"
-  integrity sha512-SXeNLcAtzXiPmgsdkmtID2UVQ3O5l7hnVAUE/p+rsQ4iCDswXKq5pv6zQsSigQPwMEjP4F4kJnnBRxHUgSnekg==
+"@clerk/clerk-sdk-node@4.12.21":
+  version "4.12.21"
+  resolved "https://registry.yarnpkg.com/@clerk/clerk-sdk-node/-/clerk-sdk-node-4.12.21.tgz#6f80f2f5649285240309e9af1ec74c5e4bcb9684"
+  integrity sha512-43MdviLlAG3naNzRyxF/Io8YYQBnFEIQiqYFVHzKzZGEsbPST9lBfeFxJZKrCqSE8K7gMx3+3D87bveXq6a7cA==
   dependencies:
-    "@clerk/backend" "0.34.0"
+    "@clerk/backend" "0.34.1"
     "@clerk/shared" "1.1.0"
     "@clerk/types" "3.58.0"
     "@types/cookies" "0.7.7"
@@ -1131,14 +1131,14 @@
     snakecase-keys "3.2.1"
     tslib "2.4.1"
 
-"@clerk/nextjs@^4.27.0":
-  version "4.27.0"
-  resolved "https://registry.yarnpkg.com/@clerk/nextjs/-/nextjs-4.27.0.tgz#f4f1742fafa93471a7090ed1aa8ed62985f9425c"
-  integrity sha512-/sVoVhyYzu0koxiaVCE0PMUAqR6+slwPC/i1KlV0fNCmcgZA8Kl72eFSYJau6kNquf+cmKf94YBENpcExcrlyw==
+"@clerk/nextjs@^4.27.1":
+  version "4.27.1"
+  resolved "https://registry.yarnpkg.com/@clerk/nextjs/-/nextjs-4.27.1.tgz#e9825b7c4cfa277e91bd5cc04ef84709185d09bc"
+  integrity sha512-FsAwVqCNNOjTC3w9mHjc/T4uP/JzGni0WTXANNXjC4sfh2kDfBzUMLRPNfcgAou5TOsMqYJdRxQ5sx4eCGQIOA==
   dependencies:
-    "@clerk/backend" "0.34.0"
+    "@clerk/backend" "0.34.1"
     "@clerk/clerk-react" "4.28.0"
-    "@clerk/clerk-sdk-node" "4.12.20"
+    "@clerk/clerk-sdk-node" "4.12.21"
     "@clerk/shared" "1.1.0"
     "@clerk/types" "3.58.0"
     path-to-regexp "6.2.1"
@@ -8267,10 +8267,10 @@ openai-edge@^1.2.2:
   resolved "https://registry.yarnpkg.com/openai-edge/-/openai-edge-1.2.2.tgz#0b1cd5aec2c366bbd25cdeba05399aa6eef73230"
   integrity sha512-C3/Ao9Hkx5uBPv9YFBpX/x59XMPgPUU4dyGg/0J2sOJ7O9D98kD+lfdOc7v/60oYo5xzMGct80uFkYLH+X2qgw==
 
-openai@^4.17.1:
-  version "4.17.1"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-4.17.1.tgz#160fa9f0cdc778eda2c0a28bc72e64aba8ef462b"
-  integrity sha512-8IrjeT9B63/6rKA2NI/0LFnjRA37G+NvNwbRvcEH9+AjAahReSMtT8xs4J+ClhzdUL9d91GJymgbo9RJt+HQuQ==
+openai@^4.17.3:
+  version "4.17.3"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-4.17.3.tgz#c07948a4ffda2883643f31f769cabc77c26ec15f"
+  integrity sha512-Gx9wzl9HWX5pjagkgXVu6U2BTFEPkQFdkppNnAX2n2Rpjtn2zt152wXh7NnZ5eJuVxUGYzRe66JmayAEGjzqAg==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"
