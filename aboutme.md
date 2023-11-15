@@ -48,6 +48,7 @@ Mis gustos por las tecnologías de desarrollo de software son las siguientes:
 
 - Para el desarrollo de aplicaciones del lado del cliente he utilizado Reactjs, nextjs con typescript y un poco de astro lo cual me parece espectacular. Para el manejo del estado he utilizado redux y zustand. En cuanto a librerías de UI he probado material ui, chakra ui,next iu, tailwindcss y bootstrap; los cuales me parecen muy buenos y fáciles de utilizar. Mi stack favorita para hacer frontend es nextjs con typescript y next iu.
 
+
 - Por otra parte, también me he sumergido en el mundo de la ciencia de datos y he utilizado python con pandas, numpy, matplotlib, seaborn,plotly, scikit-learn, tensorflow y keras. He realizado proyectos de clasificación, regresión y sistemas de recomendación. tambien me he atrevido a implementar proyectos con api de openai y gpt-3 para hacer preguntas sobre pdfs y tambien la implementación de chatbots.
 
 - En cuanto a bases de datos he explorado distintos gestores de bases de datos ya sea relacionales o no relacionales. He utilizado postgresql, mysql, mongodb y sql server. En cuanto a orm he utilizado typeorm, mongoose y gorm.
@@ -80,7 +81,7 @@ Mi lengua nativa es el español y mi tengo inglés básico.
 
 - He cursado el Programa educativo de Oracle Next Education (ONE)(2023) con la especialización de programador backend de manera virtual.
 
-- de manera autodiacta he estudiado en Udemy(2020-actualidad) Online.
+- de manera autodiacta he estudiado en Udemy(2020-actualidad) de manera online Online.
 
 - de manera autodiacta he estudiado en Platzi(2020-actualidad) Online.
 

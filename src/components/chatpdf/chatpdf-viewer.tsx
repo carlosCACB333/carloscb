@@ -10,7 +10,7 @@ export const ChatpdfViewer: FC<Props> = async ({ id }) => {
 
   return (
     <iframe
-      className="h-full w-full"
+      className="h-full w-full min-h-[60vh]"
       title="Tu PDF"
       src={url}
       content="application/pdf"

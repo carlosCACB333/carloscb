@@ -207,31 +207,35 @@ interface Props {
   authorLinkedin: string;
 }
 
-const LoginButton = () => (
-  <>
-    <Button
-      color="primary"
-      aria-label="Login"
-      as={NextLink}
-      href="/auth/sign-in"
-      className="hidden sm:flex"
-    >
-      Login
-      <FiLogIn className="mt-px text-primary-foreground" size={20} />
-    </Button>
-    <Button
-      aria-label="Login"
-      as={NextLink}
-      href="/auth/sign-in"
-      className="flex sm:hidden"
-      isIconOnly
-      size="sm"
-      variant="light"
-    >
-      <FiLogIn size={20} />
-    </Button>
-  </>
-);
+const LoginButton = () => {
+  const pathName = usePathname();
+  const url = `/auth/sign-in?redirect_url=${pathName}`;
+  return (
+    <>
+      <Button
+        color="primary"
+        aria-label="Login"
+        as={NextLink}
+        href={url}
+        className="hidden sm:flex"
+      >
+        Login
+        <FiLogIn className="mt-px text-primary-foreground" size={20} />
+      </Button>
+      <Button
+        aria-label="Login"
+        as={NextLink}
+        href={url}
+        className="flex sm:hidden"
+        isIconOnly
+        size="sm"
+        variant="light"
+      >
+        <FiLogIn size={20} />
+      </Button>
+    </>
+  );
+};
 
 export const NavbarPublic = (props: Props) => {
   return (

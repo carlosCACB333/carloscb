@@ -9,7 +9,6 @@ RUN yarn --frozen-lockfile
 
 FROM base as development
 WORKDIR /app
-ENV NODE_ENV=development
 ENV STAGE=development
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -20,12 +19,12 @@ FROM base as builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN rm -rf backend
 RUN yarn build
 
 
 FROM base as production
 WORKDIR /app
-ENV NODE_ENV=production
 ENV STAGE=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs

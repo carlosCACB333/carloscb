@@ -46,6 +46,5 @@ WORKDIR /app
 ENV STAGE=production
 COPY --from=builder /app/main .
 COPY --from=builder /app/views ./views
-EXPOSE 8086
-EXPOSE 8087
+EXPOSE 8081 8082
 CMD ["./main"]

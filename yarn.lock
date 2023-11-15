@@ -1050,47 +1050,47 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@bufbuild/buf-darwin-arm64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-darwin-arm64/-/buf-darwin-arm64-1.27.2.tgz#23f4c1552d037541dfe5a62d2f5a56a9819769b0"
-  integrity sha512-ob1IAhFVsAVUr5o4EAwoeQ6FOGJdiS6eYGTGQiZzJEAYSs2dX/WQ9+Xz9EPQUb93n7PMjNs38DLDfwGQ3u3dsg==
+"@bufbuild/buf-darwin-arm64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-darwin-arm64/-/buf-darwin-arm64-1.28.0.tgz#2a891aed84a6220628e802f9f3feb11023877e32"
+  integrity sha512-trbnKKCINrRUXf0Rs88QmniZeQ4ODdsA9yISOj5JdeVDr9rQf1j/P2NUM+JimQpLm78I1CRR5qQPIX3Q8xR0NA==
 
-"@bufbuild/buf-darwin-x64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-darwin-x64/-/buf-darwin-x64-1.27.2.tgz#5a00b480d51d64a5f4d051d4ea8025369bd2a86d"
-  integrity sha512-Kp0HBvLjeOxJtZ/j3vOulX6G3u5pa9vksVmJ5HGjhL0BZJwavh8Bd9YgrBDrTzKtTQMHxmhTSaNEgNUWkjecfw==
+"@bufbuild/buf-darwin-x64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-darwin-x64/-/buf-darwin-x64-1.28.0.tgz#31c8037565a5ebee2cec09e9d2810bdc4e98550a"
+  integrity sha512-AVhGVJjaR26Qe0gNv+3AijeaQABJyFY8tlInEOOtTaQi2UGR8cgQoYBCziL3NQfH06wi7nEwTJm/ej2JUpAt2Q==
 
-"@bufbuild/buf-linux-aarch64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-linux-aarch64/-/buf-linux-aarch64-1.27.2.tgz#b3db57bc714bdf89c0e017a7a29e268c42232162"
-  integrity sha512-rq+bpT+FMR1iiUvcHno1SPS4e0Ydr+F7ArIzN5cO4DKL09sBJXcaVGa7fRRlBZvNJTt3XRVtlE8LNLGH7zjBOg==
+"@bufbuild/buf-linux-aarch64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-linux-aarch64/-/buf-linux-aarch64-1.28.0.tgz#6905429c44eb07bfbdd836f6c2d67648acea73ac"
+  integrity sha512-5qzLdO2MpXHPh2W5Rlf58oW8iH+wwOIjQs3vlgtgeI0nGu0FhRgpcrJ1E0lswTUE0NW19RMLI+q/QpjEl9W3aw==
 
-"@bufbuild/buf-linux-x64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-linux-x64/-/buf-linux-x64-1.27.2.tgz#2c090726f740ff85edd3b27718a2fa4b6c3f1209"
-  integrity sha512-t/lcJ06gELy+4hVROuoeX8Y+oXq9NrPX+UgT5WujGo21oOb8UAQETZLRefj2U4IRqYqXhTKicfOI2y8xI7CSlQ==
+"@bufbuild/buf-linux-x64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-linux-x64/-/buf-linux-x64-1.28.0.tgz#26e74ab66808c26f807d650e0608b29be8bfa3a1"
+  integrity sha512-gZm7vGjhcabb1Zqp+ARYiJYCNm2mtbXFqo9Cqy0hpaonWaKAn7lbjtT0tG7rVX++QIfOpE3CwnjUNHck5xKP6A==
 
-"@bufbuild/buf-win32-arm64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-win32-arm64/-/buf-win32-arm64-1.27.2.tgz#0741369f3854e4766d556b4b7bfd38d2ba6d1123"
-  integrity sha512-rJieGmtSw4tfteW6mhjdtDDTFBbl2HBan1FnfNAOZH4ZrTwfcOO5Vn3fUMl+jPtiCpTscyzVaYHI+LvYffSdvg==
+"@bufbuild/buf-win32-arm64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-win32-arm64/-/buf-win32-arm64-1.28.0.tgz#95eac3371f322f4df5291138bf87cf8474b39e26"
+  integrity sha512-ptIfiTYW2cMlPOcnkz3YF/aSR9ztAzeozycv460qDR0p0c0KYHKRTTFKD8TRahoyU7znmWEluYBdmKZAbbtwKg==
 
-"@bufbuild/buf-win32-x64@1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf-win32-x64/-/buf-win32-x64-1.27.2.tgz#ed7ba11bd336ae05849819a3a1873b6947da1f68"
-  integrity sha512-x9IKCHgj6GmDGH2xlTo80l2feNU3hUeoEwLFLH4I5Qs2L1gfYIDMZGp+0Bhm5eK9CIWYtkJqeqGRIJkrJA6CfQ==
+"@bufbuild/buf-win32-x64@1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf-win32-x64/-/buf-win32-x64-1.28.0.tgz#af811f625cced53dc52e0127489ae96f1a9ca56b"
+  integrity sha512-vwjMUfelrB8RD/xHdR6MVEl9XqIxvASvzj0szz70hvQmzmU4BEOEUTHtERMOnBJxiPE1a28YEfpUlxyvm+COCg==
 
-"@bufbuild/buf@^1.27.2":
-  version "1.27.2"
-  resolved "https://registry.yarnpkg.com/@bufbuild/buf/-/buf-1.27.2.tgz#95d9c715511a0507d8142fa1911a55a7704961ae"
-  integrity sha512-hwZYF0DCxvmTAZIAeT/q66HYtIxnSH9jn/CVElaJA/l+Clr9zhLdfKFd1yD2lMqHpNUEeXtA8T0ABXv29NVfYQ==
+"@bufbuild/buf@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@bufbuild/buf/-/buf-1.28.0.tgz#306fa54101597eec92e71d892a9f0a696624c546"
+  integrity sha512-QizjughxiWj53BTFijxQN5YDCcIriLAsCSYgxk+l9YzEC3hHAjCBen0hGJcSezWDLKWiGxAD6AMXiRIfAHKZjQ==
   optionalDependencies:
-    "@bufbuild/buf-darwin-arm64" "1.27.2"
-    "@bufbuild/buf-darwin-x64" "1.27.2"
-    "@bufbuild/buf-linux-aarch64" "1.27.2"
-    "@bufbuild/buf-linux-x64" "1.27.2"
-    "@bufbuild/buf-win32-arm64" "1.27.2"
-    "@bufbuild/buf-win32-x64" "1.27.2"
+    "@bufbuild/buf-darwin-arm64" "1.28.0"
+    "@bufbuild/buf-darwin-x64" "1.28.0"
+    "@bufbuild/buf-linux-aarch64" "1.28.0"
+    "@bufbuild/buf-linux-x64" "1.28.0"
+    "@bufbuild/buf-win32-arm64" "1.28.0"
+    "@bufbuild/buf-win32-x64" "1.28.0"
 
 "@clerk/backend@0.34.1":
   version "0.34.1"
@@ -1723,10 +1723,10 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
   integrity sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==
 
-"@grpc/grpc-js@^1.9.9":
-  version "1.9.9"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.9.9.tgz#ce3a05439b1c957ec64c2ecdc6f1e4f54e8af797"
-  integrity sha512-vQ1qwi/Kiyprt+uhb1+rHMpyk4CVRMTGNUGGPRGS7pLNfWkdCHrGEnT6T3/JyC2VZgoOX/X1KwdoU0WYQAeYcQ==
+"@grpc/grpc-js@^1.9.10":
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.9.10.tgz#d4eb0086662a3d05948312124a0212e71fc0cf0a"
+  integrity sha512-6W1NMW40R0fs4Tlv+Tx2+4J23IA/kV+ifnNaOcDAqDOBfbk3BTPuFmHVOxVQX0DEK9oD6KzKPyu2OiHW87tFpA==
   dependencies:
     "@grpc/proto-loader" "^0.7.8"
     "@types/node" ">=12.12.47"
@@ -3392,10 +3392,10 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-ai@^2.2.22:
-  version "2.2.22"
-  resolved "https://registry.yarnpkg.com/ai/-/ai-2.2.22.tgz#c40842d9a421d0d6d8a30d91b4e47e330874ad88"
-  integrity sha512-H1TXjX3uGYU4bb8/GUTaY7BJ6YiMJDpp8WpmqwdVLmAh0+HufB7r27vCX0R4XXzJhdRaYp0ex6s9QvqkfvVA2A==
+ai@^2.2.23:
+  version "2.2.23"
+  resolved "https://registry.yarnpkg.com/ai/-/ai-2.2.23.tgz#0e3741048439dbe095e1469bec2363f84253c006"
+  integrity sha512-pToIoSX7mXy7t8+D8xN6OjlEvtufbY5fPDzoSzf3zR/Z2ajw1rE6d9hOFyKSZ+ZTNdZ1xklabWf21qj2gP1REA==
   dependencies:
     eventsource-parser "1.0.0"
     nanoid "3.3.6"
@@ -5161,10 +5161,10 @@ fraction.js@^4.3.6:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.7.tgz#06ca0085157e42fda7f9e726e79fefc4068840f7"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
-framer-motion@^10.16.4:
-  version "10.16.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.16.4.tgz#30279ef5499b8d85db3a298ee25c83429933e9f8"
-  integrity sha512-p9V9nGomS3m6/CALXqv6nFGMuFOxbWsmaOrdmhyQimMIlLl3LC7h7l86wge/Js/8cRu5ktutS/zlzgR7eBOtFA==
+framer-motion@^10.16.5:
+  version "10.16.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.16.5.tgz#f1ad625adf213a8906f1ea52a31a4ef222f056d5"
+  integrity sha512-GEzVjOYP2MIpV9bT/GbhcsBNoImG3/2X3O/xVNWmktkv9MdJ7P/44zELm/7Fjb+O3v39SmKFnoDQB32giThzpg==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -7395,10 +7395,10 @@ openai-edge@^1.2.2:
   resolved "https://registry.yarnpkg.com/openai-edge/-/openai-edge-1.2.2.tgz#0b1cd5aec2c366bbd25cdeba05399aa6eef73230"
   integrity sha512-C3/Ao9Hkx5uBPv9YFBpX/x59XMPgPUU4dyGg/0J2sOJ7O9D98kD+lfdOc7v/60oYo5xzMGct80uFkYLH+X2qgw==
 
-openai@^4.17.3:
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-4.17.3.tgz#c07948a4ffda2883643f31f769cabc77c26ec15f"
-  integrity sha512-Gx9wzl9HWX5pjagkgXVu6U2BTFEPkQFdkppNnAX2n2Rpjtn2zt152wXh7NnZ5eJuVxUGYzRe66JmayAEGjzqAg==
+openai@^4.18.0:
+  version "4.18.0"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-4.18.0.tgz#445f2001c2261ca3b4372039103fa5fc072d70bb"
+  integrity sha512-0C+waXoU7mvp/1QZzwnmPCkq4t02VJkjL1EXn0Pd7pFuTA0Y4y1LwzSZSiF/tpxw+Pr7diHVJjbfJ8QbdZnEcA==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"
@@ -7737,10 +7737,10 @@ pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
-prism-react-renderer@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-2.1.0.tgz#a2f418451647412ea73d18cfe363fea20e419f9d"
-  integrity sha512-I5cvXHjA1PVGbGm1MsWCpvBCRrYyxEri0MC7/JbfIfYfcXAxHyO5PaUjs3A8H5GW6kJcLhTHxxMaOZZpRZD2iQ==
+prism-react-renderer@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-2.2.0.tgz#f199b15716e0b8d0ccfd1986ff6fa226fb7ff2b1"
+  integrity sha512-j4AN0VkEr72598+47xDvpzeYyeh/wPPRNTt9nJFZqIZUxwGKwYqYgt7RVigZ3ZICJWJWN84KEuMKPNyypyhNIw==
   dependencies:
     "@types/prismjs" "^1.26.0"
     clsx "^1.2.1"
@@ -7875,27 +7875,26 @@ react-hot-toast@^2.4.1:
   dependencies:
     goober "^2.1.10"
 
-react-icons@^4.11.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.11.0.tgz#4b0e31c9bfc919608095cc429c4f1846f4d66c65"
-  integrity sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==
+react-icons@^4.12.0:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.12.0.tgz#54806159a966961bfd5cdb26e492f4dafd6a8d78"
+  integrity sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==
 
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-markdown@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-9.0.0.tgz#7a41bde9e1b0b1d6911f6f9f8c3cdb4a3e9f9328"
-  integrity sha512-v6yNf3AB8GfJ8lCpUvzxAXKxgsHpdmWPlcVRQ6Nocsezp255E/IDrF31kLQsPJeB/cKto/geUwjU36wH784FCA==
+react-markdown@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-9.0.1.tgz#c05ddbff67fd3b3f839f8c648e6fb35d022397d1"
+  integrity sha512-186Gw/vF1uRkydbsOIkcGXw7aHq0sZOCRFFjGrr7b9+nVZg4UfA4enXCaxm4fUzecU38sWfrNDitGhshuU7rdg==
   dependencies:
     "@types/hast" "^3.0.0"
     devlop "^1.0.0"
     hast-util-to-jsx-runtime "^2.0.0"
     html-url-attributes "^3.0.0"
     mdast-util-to-hast "^13.0.0"
-    micromark-util-sanitize-uri "^2.0.0"
     remark-parse "^11.0.0"
     remark-rehype "^11.0.0"
     unified "^11.0.0"

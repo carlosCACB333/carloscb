@@ -60,21 +60,9 @@ func (d *RedisTaskProcessor) ProcessTaskSendVerifyEmail(ctx context.Context, t *
 		return err
 	}
 
-	v := model.Verification{
-		Model: model.Model{
-			ID: utils.NewID(),
-		},
-		UserId: user.ID,
-		Code:   utils.NewOtp(),
-	}
-
-	if err := d.db.Create(&v).Error; err != nil {
-		return err
-	}
-
 	// TODO: send email
 	subject := "Verify your email"
-	body := fmt.Sprintf("Your verification code is %s", v.Code)
+	body := fmt.Sprintf("Your verification code is %s", utils.NewOtp())
 
 	sender := utils.EmailSender{
 		Cfg:     d.cfg,
