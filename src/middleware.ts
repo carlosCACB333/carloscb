@@ -12,7 +12,8 @@ export default authMiddleware({
     "/auth(/.*)?",
     "/ia",
   ],
-  debug: false,
+  apiRoutes: ["/(api|trpc)(.*)"],
+  debug: true,
 });
 
 export const config = {

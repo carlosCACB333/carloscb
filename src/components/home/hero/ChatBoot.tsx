@@ -12,6 +12,7 @@ import { MdMessage } from "react-icons/md";
 export const ChatBoot = () => {
   const [isOpenTooltip, setIsopenTooltip] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
   const {
     input,
     handleInputChange,
@@ -21,6 +22,7 @@ export const ChatBoot = () => {
     setMessages,
   } = useChat({
     api: "/api/assistant",
+    credentials: "omit",
   });
 
   const containerRef = React.useRef<HTMLDivElement>(null);
